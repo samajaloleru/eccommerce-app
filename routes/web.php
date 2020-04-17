@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Frontend Routes
+Route::view('/', 'welcome'); // Home page
+Route::view('/about', 'about'); // About Page
+Route::view('/store', 'store'); // About Page
+Route::view('/new', 'new'); // About Page
+Route::view('/contact', 'contact'); // About Page
+
+
+//Backend Routes-------------------------
+Route::get('/logout', 'SuperAdminController@logout'); // Home page
+Route::get('/admin', 'AdminController@index'); // Home page
+Route::get('/dashboard', 'AdminController@show_dashboard'); // Home page
+Route::post('/admin-dashboard', 'AdminController@dashboard'); // Home page
+
+//category related route
+Route::get('/add-category', 'CategoryController@index');
