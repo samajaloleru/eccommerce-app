@@ -177,59 +177,57 @@
                 </nav>
                 <!-- End Navbar -->
                 <div class="content">
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="nc-icon nc-simple-remove"></i>
-                        </button>
-                        <span>
-                            <?php
-                            $message=Session::get('message');
-                                if($message){
-                                    echo $message;
-                                    Session::put('message',null);
-                                }
-                            ?>
-                        </span>
-                    </div>
                     <div class="row">
-                        <div class="col-md-8 ml-auto mr-auto">
-                            <div class="card card-user">
-                            <div class="card-header">
-                                <h5 class="card-title">Add Category</h5>
-                            </div>
-                            <div class="card-body">
-                                <form action="{{url('/save-category')}}" method="post">
-                                    {{ csrf_field() }}
-                                    <div class="row">
-                                        <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-                                                <label>Category Name</label>
-                                                <input type="text" class="form-control" placeholder="Category Name" name="category_name" required="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 pl-3">
-                                            <div class="form-group">
-                                                <label>Published Status</label>
-                                                <input type="checkbox" class=" ml-3" name="status" value="1">
-                                            </div>
-                                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Product Table</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                                <th>Product Name</th>
+                                                <th>Category Name</th>
+                                                <th>Brand Name</th>
+                                                <th>Price</th>
+                                                <th>Image</th>
+                                                <th>Status</th>
+                                                <th class="text-right">Action</th>
+                                            </thead>
+                                        @foreach( $product as $v_product)
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{$v_product->product_name}}</td>
+                                                    <td>{{$v_product->category_name}}</td>
+                                                    <td>{{$v_product->brand_name}}</td>
+                                                    <td>{{$v_product->price}}</td>
+                                                    <td><img src="{{URL::to($v_product->image)}}" alt="" style="height:50px; width:50px"></td>
+                                                    <td class="">
+                                                        @if($v_product->status==1)
+                                                            <span class="text-success">
+                                                                Active
+                                                            </span>
+                                                        @else
+                                                            <span class="text-danger">
+                                                                Unactive
+                                                            </span>
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <a  href="{{URL::to('/edit-product/'.$v_product->product_id)}}" class="btn btn-success btn-link btn-sm">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a href="{{URL::to('/delete-product/'.$v_product->product_id)}}" class="btn btn-danger btn-link btn-sm">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        @endforeach
+                                        </table>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea class="form-control textarea" name="description" required="" ></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="update ml-auto mr-auto">
-                                            <button type="submit" class="btn btn-primary btn-round">Add</button>
-                                            <button type="reset" class="btn btn-danger btn-round">Cancel</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>

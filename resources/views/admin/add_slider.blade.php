@@ -194,61 +194,60 @@
                     <div class="row">
                         <div class="col-md-8 ml-auto mr-auto">
                             <div class="card card-user">
-                            <div class="card-header">
-                                <h5 class="card-title">Add Category</h5>
-                            </div>
-                            <div class="card-body">
-                                <form action="{{url('/save-category')}}" method="post">
-                                    {{ csrf_field() }}
-                                    <div class="row">
-                                        <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-                                                <label>Category Name</label>
-                                                <input type="text" class="form-control" placeholder="Category Name" name="category_name" required="">
+                                <div class="card-header">
+                                    <h5 class="card-title">Add Slider</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form action="{{url('/save-slider')}}" method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+
+                                        <div class="row pb-5 justify-content-center">
+                                            <div class="col-md-5">
+                                                <label for="fileInput"> Slider Image</label> 
+                                                <br>
+                                                <input type="file" name="slider_image" accept="slider/*" required="">
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Publication Status</label>
+                                                    <input type="checkbox" class="form-control" value="1" name="status" required="">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 pl-3">
-                                            <div class="form-group">
-                                                <label>Published Status</label>
-                                                <input type="checkbox" class=" ml-3" name="status" value="1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea class="form-control textarea" name="description" required="" ></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="update ml-auto mr-auto">
+
+                                        <div class="row">
+                                            <div class="update ml-auto mr-auto">
                                             <button type="submit" class="btn btn-primary btn-round">Add</button>
                                             <button type="reset" class="btn btn-danger btn-round">Cancel</button>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="footer footer-black  footer-white ">
-                    <div class="container-fluid">
+            </div>
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
                     <div class="row">
-                        
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a></li>
+                                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+                                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+                            </ul>
+                        </nav>
                         <div class="credits ml-auto">
-                        <span class="copyright">
-                            © <script>
-                            document.write(new Date().getFullYear())
-                            </script>, Anema City Center. All rights reserved.
-                        </span>
+                            <span class="copyright">
+                                © <script>
+                                document.write(new Date().getFullYear())
+                                </script>, Anema City Center. All rights reserved.
+                            </span>
                         </div>
                     </div>
-                    </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
         </div>
 
         <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>

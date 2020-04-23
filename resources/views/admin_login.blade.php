@@ -59,7 +59,7 @@
                             <h6>&copy;
                             <script>
                             document.write(new Date().getFullYear())
-                            </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim</h6>
+                            </script>, Anema City Center. All rights reserved.</h6>
                         </div>
                     </div>
                 </div>

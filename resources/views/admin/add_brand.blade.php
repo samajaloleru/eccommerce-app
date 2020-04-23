@@ -195,16 +195,16 @@
                         <div class="col-md-8 ml-auto mr-auto">
                             <div class="card card-user">
                             <div class="card-header">
-                                <h5 class="card-title">Add Category</h5>
+                                <h5 class="card-title">Add Brand</h5>
                             </div>
                             <div class="card-body">
-                                <form action="{{url('/save-category')}}" method="post">
+                                <form action="{{url('/save-brand')}}" method="post">
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group">
-                                                <label>Category Name</label>
-                                                <input type="text" class="form-control" placeholder="Category Name" name="category_name" required="">
+                                                <label>Brand Name</label>
+                                                <input type="text" class="form-control" placeholder="Brand Name" name="brand_name" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-3">

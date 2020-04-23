@@ -36,15 +36,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{URL::to('/all-category')}}">
+                            <a href="{{URL::to('/all-brand')}}">
                                 <i class="nc-icon nc-diamond"></i>
                                 <p>All Categories</p>
                             </a>
                         </li>
                         <li>
-                            <a href="{{URL::to('/add-category')}}">
+                            <a href="{{URL::to('/add-brand')}}">
                                 <i class="nc-icon nc-pin-3"></i>
-                                <p>Add category</p>
+                                <p>Add brand</p>
                             </a>
                         </li>
                         <li>
@@ -195,22 +195,22 @@
                         <div class="col-md-8 ml-auto mr-auto">
                             <div class="card card-user">
                             <div class="card-header">
-                                <h5 class="card-title">Add Category</h5>
+                                <h5 class="card-title">Update Brand</h5>
                             </div>
                             <div class="card-body">
-                                <form action="{{url('/save-category')}}" method="post">
+                                <form action = "/edit-brand/<?php echo $brand[0]->brand_id; ?>" method="post">
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group">
-                                                <label>Category Name</label>
-                                                <input type="text" class="form-control" placeholder="Category Name" name="category_name" required="">
+                                                <label>Brand Name</label>
+                                                <input type="text" class="form-control" placeholder="Brand Name" name="brand_name" value = '<?php echo$brand[0]->brand_name; ?>'>
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-3">
                                             <div class="form-group">
                                                 <label>Published Status</label>
-                                                <input type="checkbox" class=" ml-3" name="status" value="1">
+                                                <input type="checkbox" class=" ml-3" name="status" value = '<?php echo$brand[0]->status; ?>'>
                                             </div>
                                         </div>
                                     </div>
@@ -218,14 +218,13 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea class="form-control textarea" name="description" required="" ></textarea>
+                                                <textarea class="form-control textarea" name="description" value = '<?php echo$brand[0]->description; ?>' ></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="update ml-auto mr-auto">
-                                            <button type="submit" class="btn btn-primary btn-round">Add</button>
-                                            <button type="reset" class="btn btn-danger btn-round">Cancel</button>
+                                            <button type="submit" class="btn btn-primary btn-round">Update</button>
                                         </div>
                                     </div>
                                 </form>

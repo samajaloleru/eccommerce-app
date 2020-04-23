@@ -2,12 +2,34 @@
     display: none;
 }
 
+#myButton {
+    background: url("form_send_button.gif") no-repeat;
+    width: 62px;
+    height: 24px;
+}
+
+#myInputButton { 
+    background: url("form_send_button.gif") no-repeat;
+    opacity: 0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    width: 67px;
+    height: 26px;
+    cursor: pointer;
+    cursor: hand;
+}
+
 .navbar-brand {
     padding: 10px 15px !important;
 }
 
 .text {
     font-weight: 500;   
+}
+
+.product-text {
+    font-size: 10px;
+    font-weight: 900;   
 }
 
 hr.new{
@@ -45,6 +67,7 @@ p {
 }
 
 .nav-text {
+    color:#343A40;
     font-size: 15px;
 }
 
