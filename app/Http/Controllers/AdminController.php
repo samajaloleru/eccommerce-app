@@ -17,6 +17,11 @@ class AdminController extends Controller
         return view('admin_login');
     }
 
+    public function login()
+    {
+        return view('admin');
+    }
+
     public function dashboard(Request $request)
     {
         $admin_email=$request->admin_email;
@@ -34,5 +39,21 @@ class AdminController extends Controller
                     Session::put('message','Email or Password Invalid');
                     return Redirect::to('/admin');
             }
-    }  
+    }
+    
+    public function admin_login(Request $request)
+    {   
+        $data=array();
+        $data['admin_name']=$request->admin_name;
+        $data['admin_email']=$request->admin_email;
+        $data['admin_password']=md5($request->admin_password);
+        $data['admin_phone']=$request->admin_phone;
+
+        
+        DB::table('admin')->insert($data);
+        Session::put('message','Admin added successfully');
+        return Redirect::to('/admin');
+
+            
+    }
 }
