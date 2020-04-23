@@ -45,7 +45,7 @@
                             <form class="register-form" action="{{url('/admin-dashboard')}}" method="post">
                                 {{ csrf_field() }}
                                 <label>Email</label>
-                                <input type="email" class="form-control no-border" name="admin_email" placeholder="Email">
+                                <input type="text" class="form-control no-border" name="admin_email" placeholder="Email">
                                 <label>Password</label>
                                 <input type="password" class="form-control no-border" name="admin_password" placeholder="Password">
                                 <button type="submit" class="btn btn-danger btn-block btn-round">Login</button>
