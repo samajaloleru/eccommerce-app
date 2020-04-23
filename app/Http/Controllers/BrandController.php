@@ -26,7 +26,6 @@ class BrandController extends Controller
     public function save_brand(Request $request)
     {   
         $data=array();
-        $data['brand_id']=$request->brand_id;
         $data['brand_name']=$request->brand_name;
         $data['description']=$request->description;
         $data['status']=$request->status;
