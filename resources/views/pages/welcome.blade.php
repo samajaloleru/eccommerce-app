@@ -14,9 +14,9 @@
         <link href="https://fonts.googleapis.com/css?family=Heebo&display=swap" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <!-- CSS Files -->
-        <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" >
-        <link href="{{ asset('frontend/css/paper-kit.css') }}" rel="stylesheet" type="text/css" >
-        <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" type="text/css" >
+        <link href="/frontend/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+        <link href="/frontend/css/paper-kit.css" rel="stylesheet" type="text/css" >
+        <link href="/frontend/css/style.css" rel="stylesheet" type="text/css" >
 
     </head>
     <body>
@@ -513,19 +513,19 @@
             </div>
         </footer>
 
-        <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/bootstrap-switch.js') }}"></script>
-        <script src="{{ asset('frontend/js/nouislider.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/moment.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/bootstrap-tagsinput.js') }}"></script>
-        <script src="{{ asset('frontend/js/bootstrap-selectpicker.js') }}"></script>
-        <script src="{{ asset('frontend/js/bootstrap-datetimepicker.js') }}"></script>
-        <script src="{{ asset('frontend/js/photoswipe.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/photoswipe-ui-default.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/init-gallery.js') }}"></script>
-        <script src="{{ asset('frontend/js/asny-bootstrap.min.js') }}"></script>
-        <script src="{{ asset('frontend/js/paper-kit.js') }}"></script>
+        <script src="/frontend/js/jquery.min.js"></script>
+        <script src="/frontend/js/popper.min.js"></script>
+        <script src="/frontend/js/bootstrap.min.js"></script>
+        <script src="/frontend/js/bootstrap-switch.js"></script>
+        <script src="/frontend/js/nouislider.min.js"></script>
+        <script src="/frontend/js/moment.min.js"></script>
+        <script src="/frontend/js/bootstrap-tagsinput.js"></script>
+        <script src="/frontend/js/bootstrap-selectpicker.js"></script>
+        <script src="/frontend/js/bootstrap-datetimepicker.js"></script>
+        <script src="/frontend/js/photoswipe.min.js"></script>
+        <script src="/frontend/js/photoswipe-ui-default.min.js"></script>
+        <script src="/frontend/js/init-gallery.js"></script>
+        <script src="/frontend/js/asny-bootstrap.min.js"></script>
+        <script src="/frontend/js/paper-kit.js"></script>
     </body>
 </html>
