@@ -26,7 +26,6 @@ class CategoryController extends Controller
     public function save_category(Request $request)
     {   
         $data=array();
-        $data['category_id']=$request->category_id;
         $data['category_name']=$request->category_name;
         $data['description']=$request->description;
         $data['status']=$request->status;
