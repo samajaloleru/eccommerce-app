@@ -375,7 +375,7 @@
                                                                         <h6 class="float-right">₦ {{$v_product->price}}</h6>
                                                                     </div>
                                                                     <div class="col-12 pt-4 px-0">
-                                                                        <button type="button" class="float-left btn btn-sm product-text btn-outline-success btn-round">Add to Cart</button>
+                                                                        <a href="{{URL::to('/view_product/'.$v_product->product_id)}}" class="float-left btn btn-sm product-text btn-outline-success btn-round">Add to Cart</a>
                                                                         <a class="float-right btn btn-sm product-text btn-success btn-round" href="{{URL::to('/view_product/'.$v_product->product_id)}}">View Product</a>
                                                                     </div>
                                                                 </div>

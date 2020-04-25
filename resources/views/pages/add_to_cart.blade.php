@@ -158,56 +158,48 @@
         </div>
 
         <div class="main">
-            <div class="section">
-                <div class="container">
-                    <div class="row title-row">
-                        <div class="col-md-2">
-                            <h4 class="shop">Shop</h4>
-                        </div>
-                        
-                    </div>
-                    <div class="row">
-                    
-                        <div class="col-md-7 col-sm-6">
-                            <div id="carousel" class="ml-auto mr-auto">
-                                <div class="card page-carousel">
-                                    <img src="{{URL::to($product->image)}}" alt="Rounded Image" class="img-rounded img-responsive">
-                                </div>
-                            </div>
-                            <!-- end carousel -->
-                        </div>
-                        <div class="col-md-5 col-sm-6">
-                            <h2>{{$product->product_name}}</h2>
-                            <h4 class="price"><strong>₦{{$product->price}}</strong></h4>
-                            <hr />
-                            <p>{{$product->description}}</p>
-                            <span class="label label-default shipping">{{$product->short_description}}</span>
-                            
-                            
-                            <hr />
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    2
-                                    <div class="btn-group">
-                                    <button class="btn btn-sm btn-border btn-round"> - </button>
-                                    <button class="btn btn-sm btn-border btn-round"> + </button>
+            <div class="section pt-0">
+               
+                <div class="container-fluid bg-page px-lg-5">
+                    <div class="row p-lg-4">
+                        <div class="col">
+                            <h4 class="black font-weight-bold">
+                                Home / Shop
+                            </h4>
+                            <div class="row pt-3">
+                                <div class="col-12">
+                                    <!-- Tab panes -->
+                                    <div class="container-fluid">
+                                        <div class="row" href="#food">
+                                            <div class="products">
+                                                <div class="row">
+                                                <?php foreach($product as $v_category_product){?>   
+                                                    <div class="col-md-2 col-sm-4 col-6">
+                                                        <div class="card card-product card-plain">
+                                                            <div class="card-image">
+                                                                <a href="">
+                                                                    <img src="{{URL::to($v_category_product->image)}}" alt="Rounded Image" style="height:150px; width:100%" class="img-rounded img-responsive">
+                                                                </a>
+                                                                <div class="card-body">
+                                                                    <div class="card-description">
+                                                                        <h6 class="float-left font-weight-bold">{{$v_category_product->product_name}}</h6>
+
+                                                                        <h6 class="float-right">₦ {{$v_category_product->price}}</h6>
+                                                                    </div>
+                                                                    <div class="col-12 pt-4 px-0">
+                                                                        <button type="button" class="float-left btn btn-sm product-text btn-outline-success btn-round">Add to Cart</button>
+                                                                        <button type="button" class="float-right btn btn-sm product-text btn-success btn-round">View Product</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php } ?>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                <span class="glyphicon glyphicon-minus"></span>
-                                            </button>
-                                        </span>
-                                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                                <span class="glyphicon glyphicon-plus"></span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <button class="btn btn-danger btn-block btn-round">Add to Cart &nbsp;<i class="fa fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -332,80 +324,6 @@
                 </div>
             </div>
         </footer>
-
-        <script>
-            $('.btn-number').click(function(e){
-                e.preventDefault();
-                
-                fieldName = $(this).attr('data-field');
-                type      = $(this).attr('data-type');
-                var input = $("input[name='"+fieldName+"']");
-                var currentVal = parseInt(input.val());
-                if (!isNaN(currentVal)) {
-                    if(type == 'minus') {
-                        
-                        if(currentVal > input.attr('min')) {
-                            input.val(currentVal - 1).change();
-                        } 
-                        if(parseInt(input.val()) == input.attr('min')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    } else if(type == 'plus') {
-
-                        if(currentVal < input.attr('max')) {
-                            input.val(currentVal + 1).change();
-                        }
-                        if(parseInt(input.val()) == input.attr('max')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    }
-                } else {
-                    input.val(0);
-                }
-            });
-            $('.input-number').focusin(function(){
-            $(this).data('oldValue', $(this).val());
-            });
-            $('.input-number').change(function() {
-                
-                minValue =  parseInt($(this).attr('min'));
-                maxValue =  parseInt($(this).attr('max'));
-                valueCurrent = parseInt($(this).val());
-                
-                name = $(this).attr('name');
-                if(valueCurrent >= minValue) {
-                    $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the minimum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-                if(valueCurrent <= maxValue) {
-                    $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the maximum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-                
-                
-            });
-            $(".input-number").keydown(function (e) {
-                    // Allow: backspace, delete, tab, escape, enter and .
-                    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-                        // Allow: Ctrl+A
-                        (e.keyCode == 65 && e.ctrlKey === true) || 
-                        // Allow: home, end, left, right
-                        (e.keyCode >= 35 && e.keyCode <= 39)) {
-                            // let it happen, don't do anything
-                            return;
-                    }
-                    // Ensure that it is a number and stop the keypress
-                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-                        e.preventDefault();
-                    }
-                });
-        </script>
 
         <script src="/frontend/js/jquery.min.js"></script>
         <script src="/frontend/js/popper.min.js"></script>
