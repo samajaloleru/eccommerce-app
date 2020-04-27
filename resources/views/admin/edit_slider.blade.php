@@ -138,72 +138,77 @@
                 </nav>
                 <!-- End Navbar -->
                 <div class="content">
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+                        <span>
+                            <?php
+                            $message=Session::get('message');
+                                if($message){
+                                    echo $message;
+                                    Session::put('message',null);
+                                }
+                            ?>
+                        </span>
+                    </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
+                        <div class="col-md-8 ml-auto mr-auto">
+                            <div class="card card-user">
                                 <div class="card-header">
-                                    <h4 class="card-title">Brand Table</h4>
+                                    <h5 class="card-title">Update Slider</h5>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class=" text-primary">
-                                                 <th>Brand Id</th>
-                                                <th>Brand Name</th>
-                                                <th>Description</th>
-                                                <th>Status</th>
-                                                <th class="text-right">Action</th>
-                                            </thead>
-                                        @foreach( $brand as $v_brand)
-                                            <tbody>
-                                                <tr>
-                                                    <td>{{$v_brand->brand_id}}</td>
-                                                    <td>{{$v_brand->brand_name}}</td>
-                                                    <td>{{$v_brand->description}}</td>
-                                                    <td class="">
-                                                        @if($v_brand->status==1)
-                                                            <span class="text-success">
-                                                                Active
-                                                            </span>
-                                                        @else
-                                                            <span class="text-danger">
-                                                                Unactive 
-                                                            </span>
-                                                        @endif
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a  href="{{URL::to('/edit-brand/'.$v_brand->brand_id)}}" class="btn btn-success btn-link btn-sm">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{URL::to('/delete-brand/'.$v_brand->brand_id)}}" class="btn btn-danger btn-link btn-sm">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        @endforeach
-                                        </table>
-                                    </div>
+                                    <form action="{{url('/save-slider')}}" method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+
+                                        <div class="row pb-5 justify-content-center">
+                                            <div class="col-md-5">
+                                                <label for="fileInput"> Slider Image</label> 
+                                                <br>
+                                                <input type="file" name="slider_image" accept="slider/*" required="">
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Publication Status</label>
+                                                    <input type="checkbox" class="form-control" value="1" name="status" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="update ml-auto mr-auto">
+                                            <button type="submit" class="btn btn-primary btn-round">Add</button>
+                                            <button type="reset" class="btn btn-danger btn-round">Cancel</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="footer footer-black  footer-white ">
-                    <div class="container-fluid">
+            </div>
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
                     <div class="row">
-                        
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a></li>
+                                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+                                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+                            </ul>
+                        </nav>
                         <div class="credits ml-auto">
-                        <span class="copyright">
-                            © <script>
-                            document.write(new Date().getFullYear())
-                            </script>, Anema City Center. All rights reserved.
-                        </span>
+                            <span class="copyright">
+                                © <script>
+                                document.write(new Date().getFullYear())
+                                </script>, Anema City Center. All rights reserved.
+                            </span>
                         </div>
                     </div>
-                    </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
         </div>
 
         <script src="/frontend/js/jquery.min.js"></script>

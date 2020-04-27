@@ -27,6 +27,27 @@ Route::get('/product_by_category/{category_id}','HomeController@product_by_categ
 Route::get('/product_by_brand/{brand_id}','HomeController@product_by_brand');
 Route::get('/view_product/{product_id}','HomeController@view_product');
 
+//cart routes
+Route::post('/add-to-cart','CartController@add_to_cart');
+Route::get('/show-cart','CartController@show_cart');
+Route::get('/delete-to-cart/{rowId}','CartController@delete_cart');
+Route::post('/update-cart','CartController@update_cart');
+
+//checkout routes
+Route::get('/payment','CheckoutController@payment');
+Route::post('/order-place','CheckoutController@order_place');
+Route::get('/login-check','CheckoutController@login_checkout');
+Route::post('/shipping-details','CheckoutController@shipping_details');
+Route::get('/checkout','CheckoutController@checkout');
+
+//customer routes
+Route::post('/customer-registration','CheckoutController@customer_registration');
+Route::post('/customer-login','CheckoutController@customer_login');
+Route::get('/customer-logout','CheckoutController@customer_logout');
+
+Route::get('/manage-order','CheckoutController@manage_order');
+Route::get('/view-order/{order_id}','CheckoutController@view_order');
+
 
 
 //Backend Routes-------------------------

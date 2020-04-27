@@ -76,7 +76,6 @@
                                         <span class="nav-text">Checkout</span>
                                     </a>
                             <?php } ?>
-                            
                             <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
                                 <i class="icon fa fa-shopping-cart mr-2"></i>
                                 <span class="nav-text">My Basket</span>
@@ -101,109 +100,142 @@
         </div>
 
         <div class="main">
-            <div class="section pt-0">
+            <div class="section py-0">
                
-                <div class="container-fluid bg-page px-lg-5">
+                <div class="container-fluid py-5 bg-page px-lg-5">
                     <div class="row">
-                        <div class="col-md-10 ml-auto mr-auto">
-                            <h4 class="title">Shopping Cart Table</h4>
-                            <div class="table-responsive">
-                                <?php
-                                    $contents=Cart::content();
-                                    
-                                ?>
-                                <table class="table table-shopping">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">Image</th>
-                                            <th>Name</th>
-                                            <th class="text-right">Price</th>
-                                            <th class="text-right">Quantity</th>
-                                            <th class="text-right">Total</th>
-                                            <th class="text-right">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                        <?php foreach($contents as $v_contents){?>
-                                        <tr>
-                                            <td>
-                                                <div class="img-container">
-                                                    <img src="{{URL::to($v_contents->options->image)}}">
-                                                </div>
-                                            </td>
-                                            <td class="td-product">
-                                                <strong>{{$v_contents->name}}</strong>
-                                            </td>
-                                            <td class="td-price">
-                                                <small>₦</small>{{$v_contents->price}}
-                                            </td>
-                                            <td class="td-number">
-                                                <div class="btn-group pl-3">
-                                                    <form action="{{url('/update-cart')}}" method="post">
-                                                    {{ csrf_field() }}
-                                                        <input type="number" autocomplete="off" class="text-center" style="width:30px" name="qty" value="{{$v_contents->qty}}">
-                                                        <input type="hidden" name="rowId" value="{{$v_contents->rowId}}">
-                                                        <input type="submit" name="submit" value="update">
-                                                    </form>
-                                                </div>
-                                            </td>
-                                            <td class="td-number td-quantity">
-                                                <small>₦</small>{{$v_contents->total}}
-                                            </td>
-                                            <td class="td-number">
-                                                <a href="{{URL::to('/delete-to-cart/'.$v_contents->rowId)}}"><i class="fa fa-times"></i></a>
-                                            </td>
-                                        </tr>
-                                        <?php }?>
-                                        <tr>
-                                            <td colspan="2"></td>
-                                            <td></td>
-                                            <td class="td-total">
-                                                Sub Total
-                                            </td>
-                                            <td class="td-total">
-                                                <small>₦</small>{{Cart::subtotal()}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"></td>
-                                            <td></td>
-                                            <td class="td-total">
-                                                Tax
-                                            </td>
-                                            <td class="td-total">
-                                                <small>₦</small>{{Cart::tax()}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"></td>
-                                            <td></td>
-                                            <td class="td-total">
-                                                Total
-                                            </td>
-                                            <td class="td-total">
-                                                <small>₦</small>{{Cart::total()}}
-                                            </td>
-                                        </tr>
-                                        <tr class="tr-actions">
-                                            <td colspan="3"></td>
-                                            <td colspan="2" class="text-right">
-                                            <?php $customer_id=Session::get('customer_id'); ?>
-                                                
-                                                <?php if($customer_id != NULL){?>
-                                                    <a href="{{URL::to('/checkout')}}" class="btn btn-danger btn-lg">Complete Purchase <i class="fa fa-chevron-right"></i></a>
-                                                    
-                                                <?php }else{?>
-                                                    <a href="{{URL::to('/login-check')}}" class="btn btn-danger btn-lg">Complete Purchase <i class="fa fa-chevron-right"></i></a>
-                                            <?php } ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div class="col-3">
+                            <h5 class="black pt-3">
+                                Categories
+                            </h5>
+                            <div class="card card-refine">
+                                <div class="panel-group" id="accordion" aria-expanded="true">
+
+                                    <?php
+                                        $all_published_category=DB::table('category')
+                                                                ->where('status',1)
+                                                                ->get();
+
+                                    foreach($all_published_category as $v_category){?>
+                                    <div class="card-header card-collapse">
+                                        <h6 class="mb-0 panel-title black">
+                                            <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
+                                                {{$v_category->category_name}}
+                                            </a>
+                                        </h6>
+
+                                    </div>
+                                    <?php } ?> 
+                                </div>
+                            </div>
+                            <h5 class="black pt-5">
+                                Brand
+                            </h5>
+                            <div class="card card-refine">
+                                <div class="panel-group" id="accordion" aria-expanded="true">
+
+                                    <?php
+                                        $all_published_brand=DB::table('brand')
+                                                                ->where('status',1)
+                                                                ->get();
+
+                                    foreach($all_published_brand as $v_brand){?>
+                                    <div class="card-header card-collapse">
+                                        <h6 class="mb-0 panel-title black">
+                                            <a class="font-weight-bold" href="{{URL::to('/product_by_brand/'.$v_brand->brand_id)}}">
+                                                {{$v_brand->brand_name}}
+                                            </a>
+                                        </h6>
+
+                                    </div>
+                                    <?php } ?> 
+                                </div>
                             </div>
                         </div>
-                    </div>                
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-10 pt-3 mr-auto">
+                                    <div class="table-responsive">
+                                        <?php
+                                            $contents=Cart::content();
+                                            
+                                        ?>
+                                        <table class="table table-shopping">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Image</th>
+                                                    <th>Name</th>
+                                                    <th class="text-right">Price</th>
+                                                    <th class="text-right">Quantity</th>
+                                                    <th class="text-right">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                                <?php foreach($contents as $v_contents){?>
+                                                <tr>
+                                                    <td>
+                                                        <div class="img-container">
+                                                            <img src="{{URL::to($v_contents->options->image)}}">
+                                                        </div>
+                                                    </td>
+                                                    <td class="td-product">
+                                                        <strong>{{$v_contents->name}}</strong>
+                                                    </td>
+                                                    <td class="td-price">
+                                                        <small>₦</small>{{$v_contents->price}}
+                                                    </td>
+                                                    <td class="td-number">
+                                                        <div class="btn-group pl-3">
+                                                            <form action="{{url('/update-cart')}}" method="post">
+                                                            {{ csrf_field() }}
+                                                                <input type="number" autocomplete="off" class="text-center" style="width:30px" name="qty" value="{{$v_contents->qty}}" readonly="readonly">
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                    <td class="td-number td-quantity">
+                                                        <small>₦</small>{{$v_contents->total}}
+                                                    </td>
+                                                </tr>
+                                                <?php }?>
+                                                <tr>
+                                                    <td colspan="2"></td>
+                                                    <td></td>
+                                                    <td class="td-total">
+                                                        Total
+                                                    </td>
+                                                    <td class="td-total">
+                                                        <small>₦</small>{{Cart::total()}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-8 pt-3 mr-auto">
+                                    <div class="col-12 pl-0 bg-page">
+                                        <h5 class="black py-2">Payment method</h5>
+                                    </div>
+                                    <form action="{{url('/order-place')}}"  method="post">
+                                        {{ csrf_field() }}
+                        
+                                        <div class="form-group">
+                                            <label>Hand Cash</label>
+                                            <input type="radio" placeholder="Email" name="payment_method" value="handcash"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Credit Card</label>
+                                            <input type="radio" placeholder="Email" name="payment_method" value="handcash"/>
+                                        </div>
+                                        <div class="col-2 pl-0">
+                                            <button type="submit" class="btn white bg-orange btn-sm btn-block">Done</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -274,7 +306,7 @@
                                                             <div class="col-6">
                                                                 <form class="">
                                                                     <div class="form-group">
-                                                                        <input type="text" value="" class="form-control" placeholder="Enter your email...">
+                                                                        <input type="text" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>

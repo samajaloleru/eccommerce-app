@@ -78,9 +78,28 @@ p {
     padding: 14px;
 }
 
+.text-black {
+    color: black !important;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 0px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
 .bg-page {
     
     background-color: rgb(255, 235, 218, 0.4);
+}
+
+.bg-navbar {
+    
+    background-color: #85C226 !important;
+}
+
+.bg-orange {
+    
+    background-color: #E67817 !important;
 }
 
 .icon {
@@ -91,3 +110,22 @@ p {
     font-size: 25px !important;
     color: white;
 }
+.btn-product {
+    background-color:  #85C226 !important;
+}
+  
+  input#number {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+  }

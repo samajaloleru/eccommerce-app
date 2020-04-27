@@ -2239,7 +2239,7 @@ License - nucleoapp.com/license/
 }
 
 .alert-success {
-  background-color: #86d9ab;
+  background-color: #85C226;
 }
 
 .alert-warning {
@@ -8887,7 +8887,7 @@ textarea.form-control {
 }
 
 .page-header .filter.filter-danger::after {
-  background-color: rgba(243, 48, 13, 0.5);
+  background-color: rgba(230, 120, 23, 0.5);
 }
 
 .page-header .container {

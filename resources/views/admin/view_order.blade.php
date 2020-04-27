@@ -37,15 +37,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{URL::to('/all-category')}}">
+                            <a href="{{URL::to('/all-brand')}}">
                                 <i class="nc-icon nc-diamond"></i>
                                 <p>All Categories</p>
                             </a>
                         </li>
                         <li>
-                            <a href="{{URL::to('/add-category')}}">
+                            <a href="{{URL::to('/add-brand')}}">
                                 <i class="nc-icon nc-pin-3"></i>
-                                <p>Add category</p>
+                                <p>Add brand</p>
                             </a>
                         </li>
                         <li>
@@ -139,51 +139,94 @@
                 <!-- End Navbar -->
                 <div class="content">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
+                        <div class="col-md-6">
+                            <div class="card card-user">
                                 <div class="card-header">
-                                    <h4 class="card-title">Brand Table</h4>
+                                    <h4 class="card-title">Customer Details</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead class=" text-primary">
-                                                 <th>Brand Id</th>
-                                                <th>Brand Name</th>
-                                                <th>Description</th>
-                                                <th>Status</th>
-                                                <th class="text-right">Action</th>
+                                                <th>Username</th>
+                                                <th>Mobile</th>
                                             </thead>
-                                        @foreach( $brand as $v_brand)
+                                        
                                             <tbody>
                                                 <tr>
-                                                    <td>{{$v_brand->brand_id}}</td>
-                                                    <td>{{$v_brand->brand_name}}</td>
-                                                    <td>{{$v_brand->description}}</td>
-                                                    <td class="">
-                                                        @if($v_brand->status==1)
-                                                            <span class="text-success">
-                                                                Active
-                                                            </span>
-                                                        @else
-                                                            <span class="text-danger">
-                                                                Unactive 
-                                                            </span>
-                                                        @endif
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a  href="{{URL::to('/edit-brand/'.$v_brand->brand_id)}}" class="btn btn-success btn-link btn-sm">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{URL::to('/delete-brand/'.$v_brand->brand_id)}}" class="btn btn-danger btn-link btn-sm">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-                                                    </td>
+                                                    @foreach($order_by_id as $v_order)
+                                                    @endforeach
+                                                    <td>{{$v_order->customer_name}}</td>
+                                                    <td>{{$v_order->mobile_number}}</td>
                                                 </tr>
                                             </tbody>
-                                        @endforeach
                                         </table>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-user">
+                                <div class="card-header">
+                                    <h4 class="card-title">Shipping Details</h4>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                            <thead class=" text-primary">
+                                            <th>Username</th>
+                                            <th>Address</th>
+                                            <th>Mobile</th>
+                                            <th>Email</th>
+                                        </thead>
+                                    
+                                        <tbody>
+                                            <tr>
+                                                @foreach($order_by_id as $v_order)
+                                                @endforeach
+                                                <td>{{$v_order->shipping_firstname}}</td>
+                                                <td>{{$v_order->shipping_address}}</td>
+                                                <td>{{$v_order->shipping_mobile}}</td>
+                                                <td>{{$v_order->shipping_email}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card card-user">
+                                <div class="card-header">
+                                    <h5 class="card-title">Order Details</h5>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>Id</th>
+                                            <th>Product Name</th>
+                                            <th>Product price</th>
+                                            <th>Product sales quantity</th>
+                                            <th>Product sub total</th>
+                                        </thead>
+                                    
+                                        <tbody>
+                                            @foreach($order_by_id as $v_order)
+                                            <tr>
+                                               <td>{{$v_order->order_id}}</td> 
+                                               <td>{{$v_order->product_name}}</td> 
+                                               <td>{{$v_order->product_price}}</td> 
+                                               <td>{{$v_order->product_sales_quantity}}</td> 
+                                               <td>{{$v_order->product_price*$v_order->product_sales_quantity}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                        <tfoot>
+                                            <td>Total with vat:</td> 
+                                            <td></td> 
+                                            <td></td> 
+                                            <td></td> 
+                                            <td>= ₦{{$v_order->order_total}}</td> 
+                                        </tfoot>
+                                    </table>
                                 </div>
                             </div>
                         </div>

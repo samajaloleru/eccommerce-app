@@ -22,10 +22,10 @@
     <body>
         <div class="header-2">
             <nav class="navbar navbar-expand-lg text-red bg-dark">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="navbar-brand white">
                         <i class="fa icon1 mr-3 fa-envelope"></i>
-                        service@anemacitymall.com
+                        enquiry@anemacitymall.com
                     </a>
                     <a class="navbar-brand white">7 days delivery, 10am - 5pm</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,15 +46,15 @@
                     </div>
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-lg pt-0 bg-success">
-                <div class="container">
+            <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
+                <div class="container-fluid">
                     <a class="navbar-brand mb-0">
                         <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
-                                <form class="form-inline ml-auto">
+                                <form class="form-inline pt-2 ml-auto">
                                     <input class="form-control mr-sm-2 no-border" type="text" placeholder="Search">
                                     <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split" aria-hidden="true"></i></button>
                                 </form>
@@ -65,93 +65,35 @@
                             <a href="/about" class="btn pt-lg-3 btn-link btn-neutral">
                                 <span class="nav-text">About Us</span>
                             </a>
-                            <a class="btn btn-link btn-neutral">
+                            <?php $customer_id=Session::get('customer_id'); ?>
+                            
+                                <?php if($customer_id != NULL) {?>
+                                    <a href="{{URL::to('/checkout')}}" class="btn btn-link btn-neutral pt-lg-3">
+                                        <span class="nav-text">Checkout</span>
+                                    </a>
+                                <?php }else{?>
+                                    <a href="{{URL::to('/login-check')}}" class="btn btn-link btn-neutral pt-lg-3">
+                                        <span class="nav-text">Checkout</span>
+                                    </a>
+                            <?php } ?>
+                            <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
                                 <i class="icon fa fa-shopping-cart mr-2"></i>
                                 <span class="nav-text">My Basket</span>
                             </a>
-                            <a type="button" class="btn btn-link btn-neutral" data-toggle="modal" data-target="#loginModal">
-                                <i class="icon mr-1 fa fa-user"></i>
-                                <span class="nav-text">Login /Register</span>
-                            </a>
+                            <?php $customer_id=Session::get('customer_id'); ?>
+                            
+                                <?php if($customer_id != NULL) {?>
+                                <a type="button" href="{{URL::to('/customer-logout')}}" class="btn btn-link btn-neutral">
+                                    <i class="icon mr-1 fa fa-user"></i>
+                                    <span class="nav-text">Logout</span>
+                                </a>
+                                <?php }else{?>
+                                <a type="button" href="{{URL::to('/login-check')}}" class="btn btn-link btn-neutral">
+                                    <i class="icon mr-1 fa fa-user"></i>
+                                    <span class="nav-text">Login</span>
+                                </a>
+                            <?php } ?>
                         </ul>
-                        <!-- login modal -->
-                        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="false">
-                            <div class="modal-dialog modal-register">
-                                <div class="modal-content bg-success">
-                                    <div class="modal-header no-border-header text-center">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h5 class="black">Welcome</h5>
-                                        <img class="pb-1 text-center" src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
-                                        <p class="black">Log in to your account</p>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="pb-3 text-center">
-                                            <a href="#facebook" class="btn btn-round btn-just-icon btn-facebook">
-                                              <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="#google" class="btn btn-just-icon btn-round btn-google">
-                                              <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="text" value="" placeholder="Email" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" value="" placeholder="Password" class="form-control" />
-                                        </div>
-                                        <button class="btn btn-block btn-round"> Log in</button>
-                                    </div>
-                                    <div class="modal-footer no-border-footer">
-                                        <span class="text-center">Looking to
-                                            <a data-toggle="modal" href="#myModal2" class="text-white">create an account</a> 
-                                            ?
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- register modal -->
-                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="false">
-                            <div class="modal-dialog modal-register">
-                                <div class="modal-content bg-success">
-                                    <div class="modal-header no-border-header text-center">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h6 class="black">Register</h6>
-                                        <img class="pb-1 text-center" src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
-                                        <p>Create your account free and secure</p>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="pb-3 text-center">
-                                            <a href="#facebook" class="btn btn-round btn-just-icon btn-facebook">
-                                              <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="#google" class="btn btn-just-icon btn-round btn-google">
-                                              <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="text" value="" placeholder="Email" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" value="" placeholder="Password" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Confirm Password</label>
-                                            <input type="password" value="" placeholder="Confirm Password" class="form-control" />
-                                        </div>
-                                        <button class="btn btn-block btn-round">Register</button>
-                                    </div>
-                                    <div class="modal-footer no-border-footer"></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </nav>
@@ -161,10 +103,9 @@
             <div class="section">
                 <div class="container">
                     <div class="row title-row">
-                        <div class="col-md-2">
-                            <h4 class="shop">Shop</h4>
+                        <div class="col-md-5 pb-5">
+                            <h4 class="shop">Shop/ View Product</h4>
                         </div>
-                        
                     </div>
                     <div class="row">
                     
@@ -185,31 +126,21 @@
                             
                             
                             <hr />
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    2
-                                    <div class="btn-group">
-                                    <button class="btn btn-sm btn-border btn-round"> - </button>
-                                    <button class="btn btn-sm btn-border btn-round"> + </button>
+                            <form action="{{url('/add-to-cart')}}" method="POST">
+                            {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        Quantity
+                                        <div class="btn-group pl-3">
+                                            <input type="number" class="text-center" style="width:30px" name="qty" value="1">
+                                            <input type="hidden" name="product_id" value="{{$product->product_id}}">
+                                        </div>
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                <span class="glyphicon glyphicon-minus"></span>
-                                            </button>
-                                        </span>
-                                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                                <span class="glyphicon glyphicon-plus"></span>
-                                            </button>
-                                        </span>
+                                    <div class="col-md-6 col-sm-6">
+                                        <button class="btn btn-danger btn-block btn-round">Add to Cart &nbsp;<i class="fa fa-chevron-right"></i></button>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <button class="btn btn-danger btn-block btn-round">Add to Cart &nbsp;<i class="fa fa-chevron-right"></i></button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -332,80 +263,6 @@
                 </div>
             </div>
         </footer>
-
-        <script>
-            $('.btn-number').click(function(e){
-                e.preventDefault();
-                
-                fieldName = $(this).attr('data-field');
-                type      = $(this).attr('data-type');
-                var input = $("input[name='"+fieldName+"']");
-                var currentVal = parseInt(input.val());
-                if (!isNaN(currentVal)) {
-                    if(type == 'minus') {
-                        
-                        if(currentVal > input.attr('min')) {
-                            input.val(currentVal - 1).change();
-                        } 
-                        if(parseInt(input.val()) == input.attr('min')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    } else if(type == 'plus') {
-
-                        if(currentVal < input.attr('max')) {
-                            input.val(currentVal + 1).change();
-                        }
-                        if(parseInt(input.val()) == input.attr('max')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    }
-                } else {
-                    input.val(0);
-                }
-            });
-            $('.input-number').focusin(function(){
-            $(this).data('oldValue', $(this).val());
-            });
-            $('.input-number').change(function() {
-                
-                minValue =  parseInt($(this).attr('min'));
-                maxValue =  parseInt($(this).attr('max'));
-                valueCurrent = parseInt($(this).val());
-                
-                name = $(this).attr('name');
-                if(valueCurrent >= minValue) {
-                    $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the minimum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-                if(valueCurrent <= maxValue) {
-                    $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-                } else {
-                    alert('Sorry, the maximum value was reached');
-                    $(this).val($(this).data('oldValue'));
-                }
-                
-                
-            });
-            $(".input-number").keydown(function (e) {
-                    // Allow: backspace, delete, tab, escape, enter and .
-                    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-                        // Allow: Ctrl+A
-                        (e.keyCode == 65 && e.ctrlKey === true) || 
-                        // Allow: home, end, left, right
-                        (e.keyCode >= 35 && e.keyCode <= 39)) {
-                            // let it happen, don't do anything
-                            return;
-                    }
-                    // Ensure that it is a number and stop the keypress
-                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-                        e.preventDefault();
-                    }
-                });
-        </script>
 
         <script src="/frontend/js/jquery.min.js"></script>
         <script src="/frontend/js/popper.min.js"></script>

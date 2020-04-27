@@ -79,8 +79,7 @@ class SliderController extends Controller
         $slider_name = $request->input('slider_name');
         $status = $request->input('status');
         $description = $request->input('description');
-        DB::update('update slider set slider_name = ?, status = ?, description = ? where slider_id = ?',[$slider_name,$status,$description,$slider_id]);
-        Session::put('message', 'Product updated successfuly !!');
+        Session::put('message', 'slider updated successfuly !!');
         return Redirect::to('/all-slider');
     }
 

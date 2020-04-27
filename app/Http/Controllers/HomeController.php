@@ -19,7 +19,6 @@ class HomeController extends Controller
                 ->join('brand','product.brand_id','=','brand.brand_id')
                 //->where('status',1)
                 ->select('product.*','category.category_name','brand.brand_name')
-                ->limit(17)
                 ->get(); 
 
         // echo "<pre>";
@@ -37,7 +36,6 @@ class HomeController extends Controller
             ->select('product.*','category.category_name')
             ->where('category.category_id',$category_id)
             ->where('product.status',1)
-            ->limit(20)
             ->get(); 
 
       // echo "<pre>";
@@ -54,7 +52,6 @@ class HomeController extends Controller
             ->select('product.*','brand.brand_name')
             ->where('brand.brand_id',$brand_id)
             ->where('product.status',1)
-            ->limit(20)
             ->get(); 
 
       // echo "<pre>";

@@ -22,10 +22,10 @@
     <body>
         <div class="header-2">
             <nav class="navbar navbar-expand-lg text-red bg-dark">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="navbar-brand white">
                         <i class="fa icon1 mr-3 fa-envelope"></i>
-                        service@anemacitymall.com
+                        enquiry@anemacitymall.com
                     </a>
                     <a class="navbar-brand white">7 days delivery, 10am - 5pm</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,15 +46,15 @@
                     </div>
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-lg pt-0 bg-success">
-                <div class="container">
+            <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
+                <div class="container-fluid">
                     <a class="navbar-brand mb-0">
                         <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-lg-auto">
                             <li class="nav-item">
-                                <form class="form-inline ml-auto">
+                                <form class="form-inline pt-2 ml-auto">
                                     <input class="form-control mr-sm-2 no-border" type="text" placeholder="Search">
                                     <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split" aria-hidden="true"></i></button>
                                 </form>
@@ -65,93 +65,35 @@
                             <a href="/about" class="btn pt-lg-3 btn-link btn-neutral">
                                 <span class="nav-text">About Us</span>
                             </a>
-                            <a class="btn btn-link btn-neutral">
+                            <?php $customer_id=Session::get('customer_id'); ?>
+                            
+                                <?php if($customer_id != NULL) {?>
+                                    <a href="{{URL::to('/checkout')}}" class="btn btn-link btn-neutral pt-lg-3">
+                                        <span class="nav-text">Checkout</span>
+                                    </a>
+                                <?php }else{?>
+                                    <a href="{{URL::to('/login-check')}}" class="btn btn-link btn-neutral pt-lg-3">
+                                        <span class="nav-text">Checkout</span>
+                                    </a>
+                            <?php } ?>
+                            <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
                                 <i class="icon fa fa-shopping-cart mr-2"></i>
                                 <span class="nav-text">My Basket</span>
                             </a>
-                            <a type="button" class="btn btn-link btn-neutral" data-toggle="modal" data-target="#loginModal">
-                                <i class="icon mr-1 fa fa-user"></i>
-                                <span class="nav-text">Login /Register</span>
-                            </a>
+                            <?php $customer_id=Session::get('customer_id'); ?>
+                            
+                                <?php if($customer_id != NULL) {?>
+                                    <a type="button" href="{{URL::to('/customer-logout')}}" class="btn btn-link btn-neutral">
+                                        <i class="icon mr-1 fa fa-user"></i>
+                                        <span class="nav-text">Logout</span>
+                                    </a>
+                                <?php }else{?>
+                                <a type="button" href="{{URL::to('/login-check')}}" class="btn btn-link btn-neutral">
+                                    <i class="icon mr-1 fa fa-user"></i>
+                                    <span class="nav-text">Login</span>
+                                </a>
+                            <?php } ?>
                         </ul>
-                        <!-- login modal -->
-                        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="false">
-                            <div class="modal-dialog modal-register">
-                                <div class="modal-content bg-success">
-                                    <div class="modal-header no-border-header text-center">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h5 class="black">Welcome</h5>
-                                        <img class="pb-1 text-center" src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
-                                        <p class="black">Log in to your account</p>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="pb-3 text-center">
-                                            <a href="#facebook" class="btn btn-round btn-just-icon btn-facebook">
-                                              <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="#google" class="btn btn-just-icon btn-round btn-google">
-                                              <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="text" value="" placeholder="Email" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" value="" placeholder="Password" class="form-control" />
-                                        </div>
-                                        <button class="btn btn-block btn-round"> Log in</button>
-                                    </div>
-                                    <div class="modal-footer no-border-footer">
-                                        <span class="text-center">Looking to
-                                            <a data-toggle="modal" href="#myModal2" class="text-white">create an account</a> 
-                                            ?
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- register modal -->
-                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="false">
-                            <div class="modal-dialog modal-register">
-                                <div class="modal-content bg-success">
-                                    <div class="modal-header no-border-header text-center">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h6 class="black">Register</h6>
-                                        <img class="pb-1 text-center" src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
-                                        <p>Create your account free and secure</p>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="pb-3 text-center">
-                                            <a href="#facebook" class="btn btn-round btn-just-icon btn-facebook">
-                                              <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a href="#google" class="btn btn-just-icon btn-round btn-google">
-                                              <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="text" value="" placeholder="Email" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" value="" placeholder="Password" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Confirm Password</label>
-                                            <input type="password" value="" placeholder="Confirm Password" class="form-control" />
-                                        </div>
-                                        <button class="btn btn-block btn-round">Register</button>
-                                    </div>
-                                    <div class="modal-footer no-border-footer"></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </nav>
@@ -217,101 +159,20 @@
                                 </div>
                                 <div class="col-md-8 col-sm-12 col-lg-10">
                                     <div class="row pb-5">
-                                        <div class="col-lg-6 col-12 pb-2 pb-lg-0">
-                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                                <ol class="carousel-indicators">
-                                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                                </ol>
-                                                <div class="carousel-inner" role="listbox">
-                                                    <div class="carousel-item active">
-                                                    <div class="page-header page-header-xs" style="background-image: url('../frontend/img/bgslide1.jpg');">
-                                                        <div class="filter"></div>
-                                                        <div class="content-center">
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="col-md-12 text-left">
-                                                                        <h3 class="font-weight-bold">We Got Everything You need</h3>
-                                                                        <br />
-                                                                        <div class="buttons float-right">
-                                                                            <a href="#pablo" class="btn btn-danger btn-round btn-lg">
-                                                                                Shop Now
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                    <div class="page-header page-header-xs" style="background-image: url('../frontend/img/bgslide1.jpg')">
-                                                        <div class="filter"></div>
-                                                        <div class="content-center">
-                                                            <div class="container">
-                                                                <div class="row">
-                                                                    <div class="col-md-12 ml-auto mr-auto text-center">
-                                                                        <h1 class="title font-weight-bold">WE'RE OPEN</h1>
-                                                                        <h5 class="font-weight-bold">
-                                                                            Stay Home, Stay Safe 
-                                                                        </h5>
-                                                                        <br />
-                                                                        <h6 class="font-weight-bold">We'll get all your groceries to you</h6>
-                                                                        <div class="buttons float-right">
-                                                                            <a href="#pablo" class="btn btn-danger btn-round btn-lg">
-                                                                                Shop Now
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                    <div class="page-header page-header-xs" style="background-image: url('../frontend/img/bgslide.jpg')">
-                                                        <div class="filter"></div>
-                                                        <div class="content-center">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                            <div class="col-md-7 ml-auto text-right">
-                                                                <h2 class="title">Premium Offers for Venice</h2>
-                                                                <h5>Now you have no excuses, it's time to surprise your clients, your competitors, and why not, the world. You probably won't have a better chance to show off all your potential if it's not by designing a website for your own agency or web studio.</h5>
-                                                                <br />
-                                                                <div class="buttons">
-                                                                <a href="#pablo" class="btn btn-neutral btn-link btn-lg">
-                                                                    <i class="fa fa-share-alt"></i> Share Offer
-                                                                </a>
-                                                                <a href="#pablo" class="btn btn-success btn-round btn-lg">
-                                                                    <i class="fa fa-shopping-cart"></i> Shop Now
-                                                                </a>
-                                                                </div>
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                <a class="left carousel-control carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                                    <span class="fa fa-angle-left"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="right carousel-control carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                                    <span class="fa fa-angle-right"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6 col-12 pt-2 pt-lg-0 pb-lg-0">
+                                        <div class="col-12 pt-2 pt-lg-0 pb-lg-0">
                                             <div class="card card-raised page-carousel">
                                                 <div id="carouselExample" class="carousel slide" data-ride="carousel">
                                                     <ol class="carousel-indicators">
                                                         <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
                                                         <li data-target="#carouselExample" data-slide-to="1" class=""></li>
-                                                        <li data-target="#carouselExample" data-slide-to="2" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="3" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="4" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="5" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="6" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="7" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="8" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="9" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="10" class=""></li>
                                                     </ol>
                                                     
                                                         <div class="carousel-inner" role="listbox">
@@ -358,8 +219,10 @@
                                     <!-- Tab panes -->
                                     <div class="container-fluid">
                                         <div class="row" href="#food">
-                                            <h5 class="col-12 bg-success pa5 black pl-2">Featured Product</h5>
-                                            <div class="products">
+                                            <div class="p-2 col-12 bg-orange">
+                                                <h5 class="black pt-1">Featured Product</h5>
+                                            </div>
+                                            <div class="products pt-2">
                                                 <div class="row">
                                                 <?php foreach($product as $v_product){?>   
                                                     <div class="col-md-2 col-6">
@@ -374,9 +237,8 @@
 
                                                                         <h6 class="float-right">₦ {{$v_product->price}}</h6>
                                                                     </div>
-                                                                    <div class="col-12 pt-4 px-0">
-                                                                        <a href="{{URL::to('/view_product/'.$v_product->product_id)}}" class="float-left btn btn-sm product-text btn-outline-success btn-round">Add to Cart</a>
-                                                                        <a class="float-right btn btn-sm product-text btn-success btn-round" href="{{URL::to('/view_product/'.$v_product->product_id)}}">View Product</a>
+                                                                    <div class="col-12 pt-4 text-center px-0">
+                                                                        <a href="{{URL::to('/view_product/'.$v_product->product_id)}}" class="float-left btn btn-sm product-text btn-product btn-block">Add to Cart</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

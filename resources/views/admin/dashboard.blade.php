@@ -84,21 +84,9 @@
                             </a>
                         </li>
                         <li class="active-pro">
-                            <a href="{{URL::to('/social')}}">
+                            <a href="{{URL::to('/manage-order')}}">
                                 <i class="nc-icon nc-spaceship"></i>
-                                <p>Socal Link</p>
-                            </a>
-                        </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/shop')}}">
-                                <i class="nc-icon nc-spaceship"></i>
-                                <p>Shop Name</p>
-                            </a>
-                        </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/delivery')}}">
-                                <i class="nc-icon nc-spaceship"></i>
-                                <p>Delivery Man</p>
+                                <p>Manage Order</p>
                             </a>
                         </li>
                     </ul>
@@ -106,7 +94,7 @@
             </div>
             <div class="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-orange">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
                         <div class="navbar-toggle">

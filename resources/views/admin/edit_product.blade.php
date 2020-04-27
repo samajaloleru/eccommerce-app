@@ -138,72 +138,144 @@
                 </nav>
                 <!-- End Navbar -->
                 <div class="content">
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="nc-icon nc-simple-remove"></i>
+                        </button>
+                        <span>
+                            <?php
+                            $message=Session::get('message');
+                                if($message){
+                                    echo $message;
+                                    Session::put('message',null);
+                                }
+                            ?>
+                        </span>
+                    </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
+                        <div class="col-md-10 ml-auto mr-auto">
+                            <div class="card card-user">
                                 <div class="card-header">
-                                    <h4 class="card-title">Brand Table</h4>
+                                    <h5 class="card-title">Update Product</h5>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class=" text-primary">
-                                                 <th>Brand Id</th>
-                                                <th>Brand Name</th>
-                                                <th>Description</th>
-                                                <th>Status</th>
-                                                <th class="text-right">Action</th>
-                                            </thead>
-                                        @foreach( $brand as $v_brand)
-                                            <tbody>
-                                                <tr>
-                                                    <td>{{$v_brand->brand_id}}</td>
-                                                    <td>{{$v_brand->brand_name}}</td>
-                                                    <td>{{$v_brand->description}}</td>
-                                                    <td class="">
-                                                        @if($v_brand->status==1)
-                                                            <span class="text-success">
-                                                                Active
-                                                            </span>
-                                                        @else
-                                                            <span class="text-danger">
-                                                                Unactive 
-                                                            </span>
-                                                        @endif
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a  href="{{URL::to('/edit-brand/'.$v_brand->brand_id)}}" class="btn btn-success btn-link btn-sm">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        <a href="{{URL::to('/delete-brand/'.$v_brand->brand_id)}}" class="btn btn-danger btn-link btn-sm">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        @endforeach
-                                        </table>
-                                    </div>
+                                    <form action="/edit-product/<?php echo $product[0]->product_id; ?>" method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+
+                                        <div class="row">
+                                            <div class="col-md-4 pr-2">
+                                                <div class="form-group">
+                                                    <label>Product Name</label>
+                                                    <input type="text" class="form-control" placeholder="Product Name"  required="" name="product_name">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Product Category</label>
+                                                    <select class="form-control" id="exampleFormControlSelect1" required="" name="category_id">
+                                                    <option>Select Category</option>
+                                                    <?php
+                                                        $all_published_category=DB::table('category')
+                                                                                ->where('status',1)
+                                                                                ->get();
+
+                                                        foreach($all_published_category as $v_category){?>
+                                                        <option value="{{$v_category->category_id}}">{{$v_category->category_name}}</option>
+                                                        <?php }?>    
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Brand Name</label>
+                                                    <select class="form-control" id="exampleFormControlSelect1" required="" name="brand_id">
+                                                        <option>Select Brand</option>
+                                                        <?php
+                                                        $all_published_brand=DB::table('brand')
+                                                                                ->where('status',1)
+                                                                                ->get();
+
+                                                        foreach($all_published_brand as $v_brand){?>
+                                                        <option value="{{$v_brand->brand_id}}">{{$v_brand->brand_name}}</option>
+                                                        <?php }?>    
+                                                    </select>
+                                                </div>
+                                            </div>  
+                                            
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Price</label>
+                                                    <input type="text" class="form-control" placeholder="Price" required="" name="price">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-1">
+                                                <div class="form-group">
+                                                    <label>Status</label>
+                                                    <input type="checkbox" class="form-control" value="1" required="" name="status">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-5">
+                                                <label for="image"> Select a file to upload</label> 
+                                                <br>
+                                                <input type="file" accept="image/*" required="" name="image">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Short Description</label>
+                                                    <input type="text" class="form-control" placeholder="Short Description" required="" name="short_description" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control textarea" required="" name="description" ></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="update ml-auto mr-auto">
+                                            <button type="submit" class="btn btn-primary btn-round">Add</button>
+                                            <button type="reset" class="btn btn-danger btn-round">Cancel</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer class="footer footer-black  footer-white ">
-                    <div class="container-fluid">
+            </div>
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
                     <div class="row">
-                        
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a></li>
+                                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+                                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+                            </ul>
+                        </nav>
                         <div class="credits ml-auto">
-                        <span class="copyright">
-                            © <script>
-                            document.write(new Date().getFullYear())
-                            </script>, Anema City Center. All rights reserved.
-                        </span>
+                            <span class="copyright">
+                                © <script>
+                                document.write(new Date().getFullYear())
+                                </script>, Anema City Center. All rights reserved.
+                            </span>
                         </div>
                     </div>
-                    </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
         </div>
 
         <script src="/frontend/js/jquery.min.js"></script>

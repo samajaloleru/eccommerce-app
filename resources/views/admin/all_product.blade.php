@@ -84,21 +84,9 @@
                             </a>
                         </li>
                         <li class="active-pro">
-                            <a href="{{URL::to('/social')}}">
+                            <a href="{{URL::to('/manage-order')}}">
                                 <i class="nc-icon nc-spaceship"></i>
-                                <p>Socal Link</p>
-                            </a>
-                        </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/shop')}}">
-                                <i class="nc-icon nc-spaceship"></i>
-                                <p>Shop Name</p>
-                            </a>
-                        </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/delivery')}}">
-                                <i class="nc-icon nc-spaceship"></i>
-                                <p>Delivery Man</p>
+                                <p>Manage Order</p>
                             </a>
                         </li>
                     </ul>
@@ -106,7 +94,7 @@
             </div>
             <div class="main-panel">
                 <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-orange">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
                             <div class="navbar-toggle">
@@ -124,16 +112,7 @@
                             <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form>
-                                <div class="input-group no-border">
-                                    <input type="text" name="" class="form-control" placeholder="Search...">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <i class="nc-icon nc-zoom-split"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link btn-magnify">
@@ -142,27 +121,8 @@
                                         </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link btn-magnify" href="javascript:;">
-                                        <i class="nc-icon nc-layout-11"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Stats</span>
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item btn-rotate dropdown">
-                                    <a class="nav-link dropdown-toggle" href="http://example.com/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="nc-icon nc-bell-55"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li>
+                                
+                                
                                 <li class="nav-item">
                                     <a href="{{URL::to('/logout')}}" class="nav-link btn-rotate" href="javascript:;">
                                         <i class="nc-icon nc-settings-gear-65"></i>
