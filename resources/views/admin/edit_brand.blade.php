@@ -48,18 +48,7 @@
                                 <p>Add brand</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-brand')}}">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>All Brands</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/add-brand')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>Add Brand</p>
-                            </a>
-                        </li>
+                        
                         <li>
                             <a href="{{URL::to('/all-product')}}">
                                 <i class="nc-icon nc-tile-56"></i>
@@ -82,6 +71,18 @@
                             <a href="{{URL::to('/add-slider')}}">
                                 <i class="nc-icon nc-spaceship"></i>
                                 <p>Add Slider</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/all-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>All Advert</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/add-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>Add Advert</p>
                             </a>
                         </li>
                         <li class="active-pro">
@@ -165,7 +166,7 @@
                                         <div class="col-md-6 pr-1">
                                             <div class="form-group">
                                                 <label>Brand Name</label>
-                                                <input type="text" class="form-control" placeholder="Brand Name" name="brand_name" value = '<?php echo$brand[0]->brand_name; ?>'>
+                                                <input type="text" class="form-control" placeholder="Brand Name" required="" name="brand_name" value = '<?php echo$brand[0]->brand_name; ?>'>
                                             </div>
                                         </div>
                                         <div class="col-md-6 pl-3">
@@ -179,7 +180,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea class="form-control textarea" name="description" value = '<?php echo$brand[0]->description; ?>' ></textarea>
+                                                <textarea class="form-control textarea" name="description" required="" value = '<?php echo$brand[0]->description; ?>' ></textarea>
                                             </div>
                                         </div>
                                     </div>

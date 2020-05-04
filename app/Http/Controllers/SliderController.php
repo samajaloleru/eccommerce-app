@@ -23,27 +23,23 @@ class SliderController extends Controller
         return view('admin.all_slider',['slider'=>$slider]);
     }
     
-    // //this is to Unactive part of slider
-    // public function unactive_slider(Request $request, $slider_id) {
-    //     $status = $request->input('status');
-    //         ->where('slider_id',$slider_id)
-    //         DB::update('update slider set status = 0, where slider_id = ?',[$status,$slider_id]);
-    //     Session::put('message', 'Slider Unactive successfuly !!');
-    //     return Redirect::to('/all-slider');
-    // }
-    // //this is to Active part of slider
-    // public function active_slider(Request $request, $slider_id) {
-    //     $status = $request->input('status');
-    //         ->where('slider_id',$slider_id)
-    //         DB::update('update slider set status = 1, where slider_id = ?',[$status,$slider_id]);
-    //     Session::put('message',  'Slider Active successfuly !!');
-    //     return Redirect::to('/all-slider');
-    // }
-    // @if($v_slider->status==1)
-    //     <span href="{{URL::to('/unactive-slider/'.$v_slider->slider_id)}}" class="btn btn-danger">Active</span>
-    // @else
-    //     <span href="{{URL::to('/active-slider/'.$v_slider->slider_id)}}" class="btn btn-success">Unactive</span>
-    // @endif
+    //this is to Unactive part of slider
+    public function unactive_slider(Request $request, $slider_id) {
+        DB::table('slider')
+            ->where('slider_id',$slider_id)
+            ->update(['slider.status' => 0]);
+            Session::put('message',  'Slider Active successfuly !!');
+            return Redirect::to('/all-slider');
+    }
+     //this is to Active part of slider
+     public function active_slider($slider_id) {
+        DB::table('slider')
+            ->where('slider_id',$slider_id)
+            ->update(['slider.status' => 1 ]);
+            Session::put('message',  'Slider Active successfuly !!');
+            return Redirect::to('/all-slider');
+     }
+
 
     public function save_slider(Request $request)
     {   
@@ -75,13 +71,13 @@ class SliderController extends Controller
         return view('admin.edit_slider',['slider'=>$slider]);
     }
 
-    public function edit(Request $request,$slider_id) {
-        $slider_name = $request->input('slider_name');
-        $status = $request->input('status');
-        $description = $request->input('description');
-        Session::put('message', 'slider updated successfuly !!');
-        return Redirect::to('/all-slider');
-    }
+    // public function edit(Request $request,$slider_id) {
+    //     $slider_name = $request->input('slider_name');
+    //     $status = $request->input('status');
+    //     $description = $request->input('description');
+    //     Session::put('message', 'slider updated successfuly !!');
+    //     return Redirect::to('/all-slider');
+    // }
 
     public function delete_slider($slider_id) {
         DB::table('slider')

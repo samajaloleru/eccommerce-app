@@ -52,19 +52,12 @@
                         <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-                        <ul class="navbar-nav ml-lg-auto">
-                            <li class="nav-item">
-                                <form class="form-inline pt-2 ml-auto">
-                                    <input class="form-control mr-sm-2 no-border" type="text" placeholder="Search">
-                                    <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split" aria-hidden="true"></i></button>
-                                </form>
-                            </li>
+                        <ul class="navbar-nav ml-auto">
+                            
                             <a href="/" class="btn pt-lg-3 btn-link btn-neutral">
                                 <span class="nav-text">Shop</span>
                             </a>
-                            <a href="/about" class="btn pt-lg-3 btn-link btn-neutral">
-                                <span class="nav-text">About Us</span>
-                            </a>
+                            
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
                                 <?php if($customer_id != NULL) {?>
@@ -79,6 +72,7 @@
                             <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
                                 <i class="icon fa fa-shopping-cart mr-2"></i>
                                 <span class="nav-text">My Basket</span>
+                                <sup>{{Cart::count()}}</sup>
                             </a>
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
@@ -104,57 +98,49 @@
                
                 <div class="container-fluid py-5 bg-page px-lg-5">
                     <div class="row">
-                        <div class="col-3">
-                            <h5 class="black pt-3">
-                                Categories
-                            </h5>
-                            <div class="card card-refine">
-                                <div class="panel-group" id="accordion" aria-expanded="true">
-
-                                    <?php
-                                        $all_published_category=DB::table('category')
-                                                                ->where('status',1)
-                                                                ->get();
-
-                                    foreach($all_published_category as $v_category){?>
-                                    <div class="card-header card-collapse">
-                                        <h6 class="mb-0 panel-title black">
-                                            <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
-                                                {{$v_category->category_name}}
+                        <div class="col-lg-2 col-12">
+                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="card bg-orange no-transition">
+                                    <div class="card-header card-collapse" role="tab" id="headingOne">
+                                        <h3 class="my-0 panel-title">
+                                            <a class="black-header font-weight-bold collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Categories
+                                                <i class="nc-icon nc-minimal-down"></i>
                                             </a>
-                                        </h6>
-
+                                        </h3>
                                     </div>
-                                    <?php } ?> 
-                                </div>
-                            </div>
-                            <h5 class="black pt-5">
-                                Brand
-                            </h5>
-                            <div class="card card-refine">
-                                <div class="panel-group" id="accordion" aria-expanded="true">
+                                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="card-body p-2">
+                                            <div class="card-refine">
+                                                <div class="panel-group" id="accordion" aria-expanded="true">
 
-                                    <?php
-                                        $all_published_brand=DB::table('brand')
-                                                                ->where('status',1)
-                                                                ->get();
+                                                    <?php
+                                                        $all_published_category=DB::table('category')
+                                                                                ->where('status',1)
+                                                                                ->get();
 
-                                    foreach($all_published_brand as $v_brand){?>
-                                    <div class="card-header card-collapse">
-                                        <h6 class="mb-0 panel-title black">
-                                            <a class="font-weight-bold" href="{{URL::to('/product_by_brand/'.$v_brand->brand_id)}}">
-                                                {{$v_brand->brand_name}}
-                                            </a>
-                                        </h6>
+                                                    foreach($all_published_category as $v_category){?>
+                                                    <div class="card-header card-collapse">
+                                                        <h6 class="mb-0 panel-title black">
+                                                            <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
+                                                                {{$v_category->category_name}}
+                                                            </a>
+                                                        </h6>
 
+                                                    </div>
+                                                    <?php } ?> 
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <?php } ?> 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-9">
-                            <div class="row">
-                                <div class="col-10 pt-3 mr-auto">
+
+                        <div class="col-lg-10 col-12">
+                            <div class="row p-0">
+                                <div class="col-lg-10 col-12 ml-auto mr-auto">
+                                    <h4 class="header font-weight-bold">Shopping Cart Table</h4>
                                     <div class="table-responsive">
                                         <?php
                                             $contents=Cart::content();
@@ -163,11 +149,12 @@
                                         <table class="table table-shopping">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">Image</th>
-                                                    <th>Name</th>
-                                                    <th class="text-right">Price</th>
-                                                    <th class="text-right">Quantity</th>
-                                                    <th class="text-right">Total</th>
+                                                    <th class="table-header text-center">Image</th>
+                                                    <th class="table-header">Name</th>
+                                                    <th class="table-header text-right">Price</th>
+                                                    <th class="table-header text-right">Quantity</th>
+                                                    <th class="table-header text-right">Total</th>
+                                                    <th class="table-header text-right">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -189,23 +176,65 @@
                                                         <div class="btn-group pl-3">
                                                             <form action="{{url('/update-cart')}}" method="post">
                                                             {{ csrf_field() }}
-                                                                <input type="number" autocomplete="off" class="text-center" style="width:30px" name="qty" value="{{$v_contents->qty}}" readonly="readonly">
+                                                                <input type="number" autocomplete="off" class="text-center" style="width:30px" name="qty" value="{{$v_contents->qty}}">
+                                                                <input type="hidden" name="rowId" value="{{$v_contents->rowId}}">
+                                                                <input type="submit" name="submit" value="update">
                                                             </form>
                                                         </div>
                                                     </td>
                                                     <td class="td-number td-quantity">
                                                         <small>₦</small>{{$v_contents->total}}
                                                     </td>
+                                                    <td class="td-number">
+                                                        <a href="{{URL::to('/delete-to-cart/'.$v_contents->rowId)}}"><i class="fa fa-times"></i></a>
+                                                    </td>
                                                 </tr>
                                                 <?php }?>
                                                 <tr>
                                                     <td colspan="2"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="td-total">
+                                                        Sub Total
+                                                    </td>
+                                                    <td class="td-total">
+                                                        <small>₦</small>{{Cart::subtotal()}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="td-total">
+                                                        Tax
+                                                    </td>
+                                                    <td class="td-total">
+                                                        <small>₦</small>{{Cart::tax()}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"></td>
+                                                    <td></td>
                                                     <td></td>
                                                     <td class="td-total">
                                                         Total
                                                     </td>
                                                     <td class="td-total">
                                                         <small>₦</small>{{Cart::total()}}
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-actions">
+                                                    <td></td>
+                                                    <td colspan="3"></td>
+                                                    <td colspan="2" class="text-right">
+                                                    <?php $customer_id=Session::get('customer_id'); ?>
+                                                        
+                                                        <?php if($customer_id != NULL){?>
+                                                            <a href="{{URL::to('/checkout')}}" class="btn bg-orange price-text btn-lg">Complete Purchase <i class="fa fa-chevron-right"></i></a>
+                                                            
+                                                        <?php }else{?>
+                                                            <a href="{{URL::to('/login-check')}}" class="btn bg-orange price-text btn-lg">Complete Purchase <i class="fa fa-chevron-right"></i></a>
+                                                    <?php } ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -221,15 +250,11 @@
                                         {{ csrf_field() }}
                         
                                         <div class="form-group">
-                                            <label>Hand Cash</label>
+                                            <label class="pr-3">Hand Cash</label>
                                             <input type="radio" placeholder="Email" name="payment_method" value="handcash"/>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Credit Card</label>
-                                            <input type="radio" placeholder="Email" name="payment_method" value="handcash"/>
-                                        </div>
-                                        <div class="col-2 pl-0">
-                                            <button type="submit" class="btn white bg-orange btn-sm btn-block">Done</button>
+                                        <div class="col-lg-2 col-md-4 col-12 pl-0">
+                                            <button type="submit" class="btn price-text bg-orange btn-sm btn-block">Done</button>
                                         </div>
                                     </form>
                                 </div>
@@ -242,11 +267,11 @@
 
         <div class="separator"></div>
         <footer class="footer footer-black footer-big">
-            <div class="container px-5">
+            <div class="col-lg-10 col-12 mr-auto ml-auto">
                 <div class="row">
                     <div class="col-12 ">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-lg-4 col-12">
                                 <div class="links">
                                     <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
                                     <p class="white text-left pt-3">
@@ -262,42 +287,44 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-3 pl-lg-5">
+
+                            <div class="col-12 col-lg-4 col-sm-4 pl-lg-5">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a href="#paper-kit">
-                                            Home
+                                            <a href="/">
+                                                Shop
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
-                                            Discover
+                                            <a href="/about">
+                                                About Us
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Blog
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Live Support
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Money Back
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-12 col-lg-4 col-sm-8">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a href="#paper-kit" class="col-12">
+                                            <a class="col-12">
                                                 <h4>Contact Us</h4>
                                                 <div class="separator"></div>
                                                 <div class="subscribe-line subscribe-line-black">
@@ -306,7 +333,7 @@
                                                             <div class="col-6">
                                                                 <form class="">
                                                                     <div class="form-group">
-                                                                        <input type="text" class="form-control" placeholder="Enter your email...">
+                                                                        <input type="text" value="" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -333,19 +360,19 @@
                             <div class="links pull-right">
                                 <ul>
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Company Policy
                                         </a>
                                     </li>
                                     |
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Terms
                                         </a>
                                     </li>
                                     |
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Privacy
                                         </a>
                                     </li>

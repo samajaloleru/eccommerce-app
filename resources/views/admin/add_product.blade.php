@@ -48,18 +48,7 @@
                                 <p>Add category</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-brand')}}">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>All Brands</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/add-brand')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>Add Brand</p>
-                            </a>
-                        </li>
+                        
                         <li>
                             <a href="{{URL::to('/all-product')}}">
                                 <i class="nc-icon nc-tile-56"></i>
@@ -186,28 +175,11 @@
                                                     </select>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Brand Name</label>
-                                                    <select class="form-control" id="exampleFormControlSelect1" required="" name="brand_id">
-                                                        <option>Select Brand</option>
-                                                        <?php
-                                                        $all_published_brand=DB::table('brand')
-                                                                                ->where('status',1)
-                                                                                ->get();
-
-                                                        foreach($all_published_brand as $v_brand){?>
-                                                        <option value="{{$v_brand->brand_id}}">{{$v_brand->brand_name}}</option>
-                                                        <?php }?>    
-                                                    </select>
-                                                </div>
-                                            </div>  
                                             
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Price</label>
                                                     <input type="text" class="form-control" placeholder="Price" required="" name="price">
@@ -220,7 +192,14 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-5">
+                                            <div class="col-md-3 px-1">
+                                                <div class="form-group">
+                                                    <label>Best Selling Status</label>
+                                                    <input type="checkbox" class="form-control" value="1" required="" name="best_status">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
                                                 <label for="image"> Select a file to upload</label> 
                                                 <br>
                                                 <input type="file" accept="image/*" required="" name="image">

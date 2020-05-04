@@ -62,9 +62,7 @@
                             <a href="/" class="btn pt-lg-3 btn-link btn-neutral">
                                 <span class="nav-text">Shop</span>
                             </a>
-                            <a href="/about" class="btn pt-lg-3 btn-link btn-neutral">
-                                <span class="nav-text">About Us</span>
-                            </a>
+                            
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
                                 <?php if($customer_id != NULL) {?>
@@ -79,6 +77,7 @@
                             <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
                                 <i class="icon fa fa-shopping-cart mr-2"></i>
                                 <span class="nav-text">My Basket</span>
+                                <sup>{{Cart::count()}}</sup>
                             </a>
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
@@ -104,59 +103,49 @@
                
                 <div class="container-fluid py-5 bg-page px-lg-5">
                     <div class="row">
-                        <div class="col-3">
-                            <h5 class="black pt-3">
-                                Categories
-                            </h5>
-                            <div class="card card-refine">
-                                <div class="panel-group" id="accordion" aria-expanded="true">
-
-                                    <?php
-                                        $all_published_category=DB::table('category')
-                                                                ->where('status',1)
-                                                                ->get();
-
-                                    foreach($all_published_category as $v_category){?>
-                                    <div class="card-header card-collapse">
-                                        <h6 class="mb-0 panel-title black">
-                                            <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
-                                                {{$v_category->category_name}}
+                        <div class="col-lg-3 col-12">
+                            <div id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="card bg-orange no-transition">
+                                    <div class="card-header card-collapse" role="tab" id="headingOne">
+                                        <h3 class="my-0 panel-title">
+                                            <a class="black-header font-weight-bold collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Categories
+                                                <i class="nc-icon nc-minimal-down"></i>
                                             </a>
-                                        </h6>
-
+                                        </h3>
                                     </div>
-                                    <?php } ?> 
-                                </div>
-                            </div>
-                            <h5 class="black pt-5">
-                                Brand
-                            </h5>
-                            <div class="card card-refine">
-                                <div class="panel-group" id="accordion" aria-expanded="true">
+                                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="card-body p-2">
+                                            <div class="card-refine">
+                                                <div class="panel-group" id="accordion" aria-expanded="true">
 
-                                    <?php
-                                        $all_published_brand=DB::table('brand')
-                                                                ->where('status',1)
-                                                                ->get();
+                                                    <?php
+                                                        $all_published_category=DB::table('category')
+                                                                                ->where('status',1)
+                                                                                ->get();
 
-                                    foreach($all_published_brand as $v_brand){?>
-                                    <div class="card-header card-collapse">
-                                        <h6 class="mb-0 panel-title black">
-                                            <a class="font-weight-bold" href="{{URL::to('/product_by_brand/'.$v_brand->brand_id)}}">
-                                                {{$v_brand->brand_name}}
-                                            </a>
-                                        </h6>
+                                                    foreach($all_published_category as $v_category){?>
+                                                    <div class="card-header card-collapse">
+                                                        <h6 class="mb-0 panel-title black">
+                                                            <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
+                                                                {{$v_category->category_name}}
+                                                            </a>
+                                                        </h6>
 
+                                                    </div>
+                                                    <?php } ?> 
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <?php } ?> 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-9">
+                        <div class="col-lg-9 col-12">
                             <div class="row pt-5">
-                                <div class="col-10 mr-auto ml-auto">
+                                <div class="col-md-10 col-sm-12 col-12 mr-auto ml-auto">
                                     <div class="row">
-                                        <div class="col-5">
+                                        <div class="col-sm-5 col-12">
                                             <p class="text-black">Login to your account</p>
                                             
                                             <form action="{{url('/customer-login')}}"  method="post">
@@ -167,15 +156,15 @@
                                                 <div class="form-group">
                                                     <input type="password" required="" placeholder="Password" name="password" class="form-control" />
                                                 </div>
-                                                <button type="submit" class="btn white btn-sm btn-block btn-round"> Log in</button>
+                                                <button type="submit" class="btn btn-danger price-text btn-sm btn-block"> Log in</button>
                                             </form>
                                         </div>
 
-                                        <div class="col-2 text-center">
-                                            <div class="pt-5">OR</div>
+                                        <div class="col-sm-2 col-12 text-center">
+                                            <div class="pt-5 header">OR</div>
                                         </div>
 
-                                        <div class="col-5">
+                                        <div class="col-sm-5 col-12 pt-sm-0 pt-5">
                                             <p class="text-black">Create your account free and secure</p>
                                             <form action="{{url('/customer-registration')}}"  method="post">
                                                 {{ csrf_field() }}
@@ -192,7 +181,7 @@
                                                 <div class="form-group">
                                                     <input type="text" placeholder="Mobile Number" name="mobile_number" class="form-control" required="" />
                                                 </div>
-                                                <button type="submit" class="btn white btn-sm btn-block btn-round">Register</button>
+                                                <button type="submit" class="btn btn-danger price-text btn-sm btn-block">Register</button>
                                             </form>
                                         </div>
                                     </div>
@@ -230,27 +219,27 @@
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a href="#paper-kit">
-                                            Home
+                                            <a href="/">
+                                                Shop
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
-                                            Discover
+                                            <a href="/about">
+                                                About Us
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Blog
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Live Support
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Money Back
                                             </a>
                                         </li>
@@ -270,7 +259,7 @@
                                                             <div class="col-6">
                                                                 <form class="">
                                                                     <div class="form-group">
-                                                                        <input type="text" class="form-control" placeholder="Enter your email...">
+                                                                        <input type="text" value="" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>

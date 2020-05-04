@@ -48,18 +48,7 @@
                                 <p>Add brand</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-brand')}}">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>All Brands</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/add-brand')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>Add Brand</p>
-                            </a>
-                        </li>
+                        
                         <li>
                             <a href="{{URL::to('/all-product')}}">
                                 <i class="nc-icon nc-tile-56"></i>
@@ -82,6 +71,18 @@
                             <a href="{{URL::to('/add-slider')}}">
                                 <i class="nc-icon nc-spaceship"></i>
                                 <p>Add Slider</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/all-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>All Advert</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/add-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>Add Advert</p>
                             </a>
                         </li>
                         <li class="active-pro">
@@ -139,6 +140,16 @@
                 <!-- End Navbar -->
                 <div class="content">
                     <div class="row">
+                        <div class="col-12">
+                            <div class="float-left">
+                                <h4 class="card-title">Customer Details</h4>
+                            </div>
+                            <div class="float-right">
+                                <div class="" >
+                                    <a href="{{URL::to('/manage-order')}}" class="btn btn-orange">Go Back</a>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="card card-user">
                                 <div class="card-header">

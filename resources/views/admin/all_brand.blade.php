@@ -48,18 +48,7 @@
                                 <p>Add category</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-brand')}}">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>All Brands</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/add-brand')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>Add Brand</p>
-                            </a>
-                        </li>
+                        
                         <li>
                             <a href="{{URL::to('/all-product')}}">
                                 <i class="nc-icon nc-tile-56"></i>
@@ -82,6 +71,18 @@
                             <a href="{{URL::to('/add-slider')}}">
                                 <i class="nc-icon nc-spaceship"></i>
                                 <p>Add Slider</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/all-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>All Advert</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/add-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>Add Advert</p>
                             </a>
                         </li>
                         <li class="active-pro">
@@ -142,7 +143,8 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Brand Table</h4>
+                                    <h4 class="card-title float-left">Brand Table</h4>
+                                    <h2 class="card-title float-right"><sup class="pr-2">Total Number of Brand</sup>{{$count = count($brand)}}</h2>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -172,6 +174,15 @@
                                                         @endif
                                                     </td>
                                                     <td class="text-right">
+                                                       @if($v_brand->status==1)
+                                                        <a  href="{{URL::to('/unactive-brand/'.$v_brand->brand_id)}}" class="btn btn-danger btn-link btn-sm">
+                                                            Deactivate
+                                                        </a>
+                                                        @else
+                                                        <a  href="{{URL::to('/active-brand/'.$v_brand->brand_id)}}" class="btn btn-success btn-link btn-sm">
+                                                            Activate
+                                                        </a>
+                                                        @endif
                                                         <a  href="{{URL::to('/edit-brand/'.$v_brand->brand_id)}}" class="btn btn-success btn-link btn-sm">
                                                             <i class="fa fa-edit"></i>
                                                         </a>

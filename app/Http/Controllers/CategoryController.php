@@ -39,6 +39,23 @@ class CategoryController extends Controller
         return view('admin.edit_category',['category'=>$category]);
     }
 
+    //this is to Unactive part of category
+    public function unactive_category(Request $request, $category_id) {
+        DB::table('category')
+            ->where('category_id',$category_id)
+            ->update(['category.status' => 0]);
+            Session::put('message',  'Category Active successfuly !!');
+            return Redirect::to('/all-category');
+    }
+     //this is to Active part of category
+     public function active_category($category_id) {
+        DB::table('category')
+            ->where('category_id',$category_id)
+            ->update(['category.status' => 1 ]);
+            Session::put('message',  'Category Active successfuly !!');
+            return Redirect::to('/all-category');
+     }
+
     public function edit(Request $request,$category_id) {
         $this->AdminAuthCheck();
         $category_name = $request->input('category_name');

@@ -14429,7 +14429,6 @@ body {
     text-align: left;
     border-left: 1px solid #CCC5B9;
     padding-right: 0px;
-    padding-left: 40px;
     padding-top: 15px;
     -webkit-transform: translateX(230px);
     -moz-transform: translateX(230px);
@@ -14452,7 +14451,7 @@ body {
   }
   .navbar-collapse .navbar-nav>.nav-item>.nav-link {
     margin: 0px 0px;
-    color: rgb(0, 0, 0) !important;
+    color: white !important;
     font-weight: 600;
     font-size: 12px;
     line-height: 1.5em;
@@ -14468,7 +14467,7 @@ body {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color:#13251B;
+    background-color:#E67817;
     background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);
     display: block;
     content: "";

@@ -48,18 +48,7 @@
                                 <p>Add category</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-brand')}}">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>All Brands</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/add-brand')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>Add Brand</p>
-                            </a>
-                        </li>
+                        
                         <li>
                             <a href="{{URL::to('/all-product')}}">
                                 <i class="nc-icon nc-tile-56"></i>
@@ -82,6 +71,18 @@
                             <a href="{{URL::to('/add-slider')}}">
                                 <i class="nc-icon nc-spaceship"></i>
                                 <p>Add Slider</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/all-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>All Advert</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/add-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>Add Advert</p>
                             </a>
                         </li>
                         <li class="active-pro">
@@ -142,7 +143,10 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Order Details</h4>
+                                    <div class="col-12">
+                                        <h4 class="card-title float-left">Order Details</h4>
+                                        <h2 class="card-title float-right"><sup class="pr-2">Total Number of Order</sup>{{$count = count($all_order_info)}}</h2>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -152,20 +156,39 @@
                                                 <th>Customer Name</th>
                                                 <th>Order Total</th>
                                                 <th>Status</th>
+                                                <th>Order Date / Time</th>
                                                 <th class="text-right">Action</th>
                                             </thead>
                                         @foreach( $all_order_info as $v_order)
                                             <tbody>
                                                 <tr>
-                                                    <td>{{$v_order->order_id}}</td>
+                                                    <td>{{ $no++ }}</td>
                                                     <td>{{$v_order->customer_name}}</td>
                                                     <td>{{$v_order->order_total}}</td>
-                                                    <td>{{$v_order->order_status}}</td>
+                                                    <td>
+                                                        @if($v_order->order_status=='pending')
+                                                            <span class="text-danger">
+                                                                Pending
+                                                            </span>
+                                                        @else
+                                                            <span class="text-success">
+                                                                Active
+                                                            </span>
+                                                        @endif
+                                                    </td>
+                                                    <td>{{$v_order->created_at}}</td>
                                                     <td class="text-right">
+                                                        @if($v_order->order_status=='pending')
+                                                            <a  href="{{URL::to('/unactive-order/'.$v_order->order_id)}}" class="btn btn-success btn-link btn-sm">
+                                                                Activate
+                                                            </a>
+                                                        @else
+                                                        
+                                                        @endif
                                                         <a  href="{{URL::to('/view-order/'.$v_order->order_id)}}" class="btn btn-success btn-link btn-sm">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <a href="{{URL::to('/delete/'.$v_order->order_id)}}" class="btn btn-danger btn-link btn-sm">
+                                                        <a href="{{URL::to('/delete-order/'.$v_order->order_id)}}" class="btn btn-danger btn-link btn-sm">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                     </td>

@@ -53,18 +53,11 @@
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-lg-auto">
-                            <li class="nav-item">
-                                <form class="form-inline pt-2 ml-auto">
-                                    <input class="form-control mr-sm-2 no-border" type="text" placeholder="Search">
-                                    <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split" aria-hidden="true"></i></button>
-                                </form>
-                            </li>
+                            
                             <a href="/" class="btn pt-lg-3 btn-link btn-neutral">
                                 <span class="nav-text">Shop</span>
                             </a>
-                            <a href="/about" class="btn pt-lg-3 btn-link btn-neutral">
-                                <span class="nav-text">About Us</span>
-                            </a>
+                            
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
                                 <?php if($customer_id != NULL) {?>
@@ -79,6 +72,7 @@
                             <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
                                 <i class="icon fa fa-shopping-cart mr-2"></i>
                                 <span class="nav-text">My Basket</span>
+                                <sup>{{Cart::count()}}</sup>
                             </a>
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
@@ -100,71 +94,59 @@
         </div>
 
         <div class="main">
-            <div class="section pt-0">
+            <div class="section py-0">
                
                 <div class="container-fluid bg-page px-lg-5">
                     <div class="row p-lg-4">
                         <div class="col">
-                            <h4 class="black font-weight-bold">
-                                Home / Shop
-                            </h4>
                             <div class="row">
-                                <div class="col-md-4 col-sm-12 col-lg-2 ">
-                                    <h5 class="black pt-3">
-                                        Categories
-                                    </h5>
-                                    <div class="card card-refine">
-                                        <div class="panel-group" id="accordion" aria-expanded="true">
-
-                                            <?php
-                                                $all_published_category=DB::table('category')
-                                                                        ->where('status',1)
-                                                                        ->get();
-
-                                            foreach($all_published_category as $v_category){?>
-                                            <div class="card-header card-collapse">
-                                                <h6 class="mb-0 panel-title black">
-                                                    <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
-                                                        {{$v_category->category_name}}
+                                <div class="col-sm-5 col-lg-3 col-12 pt-0 pt-2">
+                                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="card bg-navbar no-transition">
+                                            <div class="card-header card-collapse" role="tab" id="headingOne">
+                                                <h3 class="my-0 panel-title">
+                                                    <a class="black-header font-weight-bold collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                        Categories
+                                                        <i class="nc-icon nc-minimal-down"></i>
                                                     </a>
-                                                </h6>
-
+                                                </h3>
                                             </div>
-                                            <?php } ?> 
-                                        </div>
-                                    </div>
-                                    <h5 class="black pt-5">
-                                        Brand
-                                    </h5>
-                                    <div class="card card-refine">
-                                        <div class="panel-group" id="accordion" aria-expanded="true">
+                                            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="card-body p-2">
+                                                    <div class="card-refine">
+                                                        <div class="panel-group" id="accordion" aria-expanded="true">
 
-                                            <?php
-                                                $all_published_brand=DB::table('brand')
-                                                                        ->where('status',1)
-                                                                        ->get();
+                                                            <?php
+                                                                $all_published_category=DB::table('category')
+                                                                                        ->where('status',1)
+                                                                                        ->get();
 
-                                            foreach($all_published_brand as $v_brand){?>
-                                            <div class="card-header card-collapse">
-                                                <h6 class="mb-0 panel-title black">
-                                                    <a class="font-weight-bold" href="{{URL::to('/product_by_brand/'.$v_brand->brand_id)}}">
-                                                        {{$v_brand->brand_name}}
-                                                    </a>
-                                                </h6>
+                                                            foreach($all_published_category as $v_category){?>
+                                                            <div class="card-header card-collapse">
+                                                                <h6 class="mb-0 panel-title black">
+                                                                    <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
+                                                                        {{$v_category->category_name}}
+                                                                    </a>
+                                                                </h6>
 
+                                                            </div>
+                                                            <?php } ?> 
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <?php } ?> 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8 col-sm-12 col-lg-10">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
                                     <div class="row pb-5">
                                         <div class="col-12 pt-2 pt-lg-0 pb-lg-0">
                                             <div class="card card-raised page-carousel">
                                                 <div id="carouselExample" class="carousel slide" data-ride="carousel">
                                                     <ol class="carousel-indicators">
-                                                        <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
-                                                        <li data-target="#carouselExample" data-slide-to="1" class=""></li>
+                                                        <li data-target="#carouselExample" data-slide-to="1" class="active"></li>
                                                         <li data-target="#carouselExample" data-slide-to="3" class=""></li>
                                                         <li data-target="#carouselExample" data-slide-to="4" class=""></li>
                                                         <li data-target="#carouselExample" data-slide-to="5" class=""></li>
@@ -188,13 +170,7 @@
                                                                         <div class="container">
                                                                             <div class="row">
                                                                                 <div class="col-md-12 text-left">
-                                                                                    <h3 class="font-weight-bold">We Got Everything You need</h3>
-                                                                                    <br />
-                                                                                    <div class="buttons float-right">
-                                                                                        <a href="#pablo" class="btn btn-danger btn-round btn-lg">
-                                                                                            Shop Now
-                                                                                        </a>
-                                                                                    </div>
+                                                                                    
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -218,13 +194,112 @@
                                     </div>
                                     <!-- Tab panes -->
                                     <div class="container-fluid">
-                                        <div class="row" href="#food">
-                                            <div class="p-2 col-12 bg-orange">
-                                                <h5 class="black pt-1">Featured Product</h5>
+                                        <div class="row">
+                                            <div class="col-12 bg-orange">
+                                                <a class="pl-0 header-white py-2">Best Selling</a>
                                             </div>
-                                            <div class="products pt-2">
+                                            <div class="products pt-3">
                                                 <div class="row">
-                                                <?php foreach($product as $v_product){?>   
+                                                <?php 
+                                                    $product=DB::table('product')
+                                                    ->where('best_status',1)
+                                                    ->limit('20')
+                                                    ->get();
+                                                foreach($product as $v_product){?>   
+                                                    <div class="col-md-2 col-6">
+                                                        <div class="card card-product card-plain">
+                                                            <div class="card-image">
+                                                                <a href="">
+                                                                    <img src="{{$v_product->image}}" href="{{URL::to('/view_product/'.$v_product->product_id)}}" alt="Rounded Image" style="height:150px; width:100%" class="img-rounded img-responsive">
+                                                                </a>
+                                                                <div class="card-body">
+                                                                    <div class="card-description">
+                                                                        <h6 class="float-left font-weight-bold">{{$v_product->product_name}}</h6>
+
+                                                                        <h6 class="float-right">₦ {{$v_product->price}}</h6>
+                                                                    </div>
+                                                                    <div class="col-12 pt-4 text-center px-0">
+                                                                        <a href="{{URL::to('/view_product/'.$v_product->product_id)}}" class="float-left btn btn-sm product-text btn-product btn-block">Add to Cart</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php } ?>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="row py-5">
+                                            <div class="col-12 px-0 pt-2 pt-lg-0 pb-lg-0">
+                                                <div class="card card-raised page-carousel">
+                                                    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                                                        <ol class="carousel-indicators">
+                                                            <li data-target="#carouselExample" data-slide-to="1" class="active"></li>
+                                                            <li data-target="#carouselExample" data-slide-to="3" class=""></li>
+                                                            <li data-target="#carouselExample" data-slide-to="4" class=""></li>
+                                                            <li data-target="#carouselExample" data-slide-to="5" class=""></li>
+                                                            <li data-target="#carouselExample" data-slide-to="6" class=""></li>
+                                                            <li data-target="#carouselExample" data-slide-to="7" class=""></li>
+                                                            <li data-target="#carouselExample" data-slide-to="8" class=""></li>
+                                                            <li data-target="#carouselExample" data-slide-to="9" class=""></li>
+                                                            <li data-target="#carouselExample" data-slide-to="10" class=""></li>
+                                                        </ol>
+                                                        
+                                                            <div class="carousel-inner" role="listbox">
+                                                            <?php
+                                                                $all_published_advert=DB::table('advert_slider')
+                                                                                ->where('status',1)
+                                                                                ->get();
+                                                                foreach($all_published_advert as $key => $v_slider){?>
+                                                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                                                    <div class="page-header page-header-xs" style="background-image: url('{{$v_slider->advert_image}}');">
+                                                                        <div class="filter"></div>
+                                                                        <div class="content-center">
+                                                                            <div class="container">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-12 text-left">
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <?php } ?>
+                                                            </div>
+                                                        <a class="left carousel-control carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                                                            <span class="fa fa-angle-left"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                        <a class="right carousel-control carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                                                            <span class="fa fa-angle-right"></span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class=" col-12 bg-orange">
+                                                <a class="pl-0 header float-left">Featured Products</a>
+                                                <div class="float-right">
+                                                    <div class="pt-3" >
+                                                        <a href="/view-more" class="btn-sm white btn bg-navbar">view more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="products pt-3">
+                                                <div class="row">
+                                                <?php 
+                                                    $product=DB::table('product')
+                                                    ->where('status',1)
+                                                    ->limit('200')
+                                                    ->get();
+                                                foreach($product as $v_product){?>   
                                                     <div class="col-md-2 col-6">
                                                         <div class="card card-product card-plain">
                                                             <div class="card-image">
@@ -258,13 +333,12 @@
             </div>
         </div>
 
-        <div class="separator"></div>
         <footer class="footer footer-black footer-big">
-            <div class="container px-5">
+            <div class="col-lg-10 col-12 mr-auto ml-auto">
                 <div class="row">
                     <div class="col-12 ">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-lg-4 col-12">
                                 <div class="links">
                                     <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
                                     <p class="white text-left pt-3">
@@ -280,42 +354,44 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-3 pl-lg-5">
+
+                            <div class="col-12 col-lg-4 col-sm-4 pl-lg-5">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a href="#paper-kit">
-                                            Home
+                                            <a href="/">
+                                                Shop
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
-                                            Discover
+                                            <a href="/about">
+                                                About Us
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Blog
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Live Support
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Money Back
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-12 col-lg-4 col-sm-8">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a href="#paper-kit" class="col-12">
+                                            <a class="col-12">
                                                 <h4>Contact Us</h4>
                                                 <div class="separator"></div>
                                                 <div class="subscribe-line subscribe-line-black">
@@ -351,19 +427,19 @@
                             <div class="links pull-right">
                                 <ul>
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Company Policy
                                         </a>
                                     </li>
                                     |
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Terms
                                         </a>
                                     </li>
                                     |
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Privacy
                                         </a>
                                     </li>

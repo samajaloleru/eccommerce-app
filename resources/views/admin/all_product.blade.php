@@ -47,18 +47,7 @@
                                 <p>Add category</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-brand')}}">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>All Brands</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/add-brand')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>Add Brand</p>
-                            </a>
-                        </li>
+                        
                         <li>
                             <a href="{{URL::to('/all-product')}}">
                                 <i class="nc-icon nc-tile-56"></i>
@@ -81,6 +70,18 @@
                             <a href="{{URL::to('/add-slider')}}">
                                 <i class="nc-icon nc-spaceship"></i>
                                 <p>Add Slider</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/all-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>All Advert</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/add-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>Add Advert</p>
                             </a>
                         </li>
                         <li class="active-pro">
@@ -141,29 +142,30 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Product Table</h4>
+                                    <h4 class="card-title float-left">Product Table</h4>
+                                    <h2 class="card-title float-right"><sup class="pr-2">Total Number of Products</sup>{{$count = count($product)}}</h2>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead class=" text-primary">
                                                 <th>Product Name</th>
-                                                <th>Category Name</th>
-                                                <th>Brand Name</th>
                                                 <th>Price</th>
+                                                <th>Category</th>
                                                 <th>Image</th>
                                                 <th>Status</th>
+                                                <th>Best Selling Status</th>
                                                 <th class="text-right">Action</th>
                                             </thead>
                                         @foreach( $product as $v_product)
                                             <tbody>
                                                 <tr>
                                                     <td>{{$v_product->product_name}}</td>
-                                                    <td>{{$v_product->category_name}}</td>
-                                                    <td>{{$v_product->brand_name}}</td>
+                                                    
                                                     <td>{{$v_product->price}}</td>
-                                                    <td><img src="{{URL::to($v_product->image)}}" alt="" style="height:50px; width:50px"></td>
-                                                    <td class="">
+                                                    <td>{{$v_product->category_name}}</td>
+                                                    <td><img src="{{URL::to($v_product->image)}}" alt="" style="height:50px; width:150px"></td>
+                                                    <td>
                                                         @if($v_product->status==1)
                                                             <span class="text-success">
                                                                 Active
@@ -174,7 +176,27 @@
                                                             </span>
                                                         @endif
                                                     </td>
+                                                    <td>
+                                                        @if($v_product->best_status==1)
+                                                            <span class="text-success">
+                                                                Active
+                                                            </span>
+                                                        @else
+                                                            <span class="text-danger">
+                                                                Unactive
+                                                            </span>
+                                                        @endif
+                                                    </td>
                                                     <td class="text-right">
+                                                        @if($v_product->status==1)
+                                                        <a  href="{{URL::to('/unactive-product/'.$v_product->product_id)}}" class="btn btn-danger btn-link btn-sm">
+                                                            Deactivate
+                                                        </a>
+                                                        @else
+                                                        <a  href="{{URL::to('/active-product/'.$v_product->product_id)}}" class="btn btn-success btn-link btn-sm">
+                                                            Activate
+                                                        </a>
+                                                        @endif
                                                         <a  href="{{URL::to('/edit-product/'.$v_product->product_id)}}" class="btn btn-success btn-link btn-sm">
                                                             <i class="fa fa-edit"></i>
                                                         </a>

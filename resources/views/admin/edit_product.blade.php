@@ -48,18 +48,7 @@
                                 <p>Add category</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-brand')}}">
-                                <i class="nc-icon nc-bell-55"></i>
-                                <p>All Brands</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/add-brand')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>Add Brand</p>
-                            </a>
-                        </li>
+                        
                         <li>
                             <a href="{{URL::to('/all-product')}}">
                                 <i class="nc-icon nc-tile-56"></i>
@@ -82,6 +71,18 @@
                             <a href="{{URL::to('/add-slider')}}">
                                 <i class="nc-icon nc-spaceship"></i>
                                 <p>Add Slider</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/all-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>All Advert</p>
+                            </a>
+                        </li>
+                        <li class="active-pro">
+                            <a href="{{URL::to('/add-advert')}}">
+                                <i class="nc-icon nc-spaceship"></i>
+                                <p>Add Advert</p>
                             </a>
                         </li>
                         <li class="active-pro">
@@ -166,13 +167,14 @@
                                             <div class="col-md-4 pr-2">
                                                 <div class="form-group">
                                                     <label>Product Name</label>
-                                                    <input type="text" class="form-control" placeholder="Product Name"  required="" name="product_name">
+                                                    <input type="text" class="form-control" placeholder="Product Name"  name="product_name" value ='<?php echo$product[0]->product_name; ?>'>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Product Category</label>
+                                                    
                                                     <select class="form-control" id="exampleFormControlSelect1" required="" name="category_id">
                                                     <option>Select Category</option>
                                                     <?php
@@ -181,28 +183,12 @@
                                                                                 ->get();
 
                                                         foreach($all_published_category as $v_category){?>
-                                                        <option value="{{$v_category->category_id}}">{{$v_category->category_name}}</option>
+
+                                                        <option value="{{$v_category->category_id}}" >{{$v_category->category_name}}</option>
                                                         <?php }?>    
                                                     </select>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Brand Name</label>
-                                                    <select class="form-control" id="exampleFormControlSelect1" required="" name="brand_id">
-                                                        <option>Select Brand</option>
-                                                        <?php
-                                                        $all_published_brand=DB::table('brand')
-                                                                                ->where('status',1)
-                                                                                ->get();
-
-                                                        foreach($all_published_brand as $v_brand){?>
-                                                        <option value="{{$v_brand->brand_id}}">{{$v_brand->brand_name}}</option>
-                                                        <?php }?>    
-                                                    </select>
-                                                </div>
-                                            </div>  
                                             
                                         </div>
 
@@ -210,20 +196,22 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Price</label>
-                                                    <input type="text" class="form-control" placeholder="Price" required="" name="price">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 px-1">
-                                                <div class="form-group">
-                                                    <label>Status</label>
-                                                    <input type="checkbox" class="form-control" value="1" required="" name="status">
+                                                    <input type="text" class="form-control" placeholder="Price" required="" name="price" value ='<?php echo$product[0]->price; ?>'>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-5">
-                                                <label for="image"> Select a file to upload</label> 
-                                                <br>
-                                                <input type="file" accept="image/*" required="" name="image">
+                                            <div class="col-md-4 px-1">
+                                                <div class="form-group">
+                                                    <label>Status</label>
+                                                    <input type="checkbox" class="form-control" value="1" required="" name="status" value ='<?php echo$product[0]->status; ?>'>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 px-1">
+                                                <div class="form-group">
+                                                    <label>Best Selling Status</label>
+                                                    <input type="checkbox" class="form-control" value="1" name="best_status" value ='<?php echo$product[0]->best_status; ?>'>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -231,7 +219,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Short Description</label>
-                                                    <input type="text" class="form-control" placeholder="Short Description" required="" name="short_description" >
+                                                    <input type="text" class="form-control" placeholder="Short Description" name="short_description" value ='<?php echo$product[0]->short_description; ?>'>
                                                 </div>
                                             </div>
                                         </div>
@@ -240,14 +228,14 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea class="form-control textarea" required="" name="description" ></textarea>
+                                                    <textarea class="form-control textarea" name="description" value ='<?php echo$product[0]->description; ?>'></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="update ml-auto mr-auto">
-                                            <button type="submit" class="btn btn-primary btn-round">Add</button>
-                                            <button type="reset" class="btn btn-danger btn-round">Cancel</button>
+                                                <button type="submit" class="btn btn-primary btn-round">Update</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

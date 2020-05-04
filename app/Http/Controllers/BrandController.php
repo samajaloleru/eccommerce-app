@@ -42,12 +42,30 @@ class BrandController extends Controller
     public function edit(Request $request,$brand_id) {
         $this->AdminAuthCheck();
         $brand_name = $request->input('brand_name');
-        $status = $request->input('status');
+        $status = $request->input('brand.status');
         $description = $request->input('description');
         DB::update('update brand set brand_name = ?, status = ?, description = ? where brand_id = ?',[$brand_name,$status,$description,$brand_id]);
         Session::put('message', 'Brand updated successfuly !!');
         return Redirect::to('/all-brand');
     }
+
+    //this is to Unactive part of brand
+    public function unactive_brand(Request $request, $brand_id) {
+        DB::table('brand')
+            ->where('brand_id',$brand_id)
+            ->update(['brand.status' => 0]);
+            Session::put('message',  'Brand Active successfuly !!');
+            return Redirect::to('/all-brand');
+    }
+     //this is to Active part of brand
+     public function active_brand($brand_id) {
+        DB::table('brand')
+            ->where('brand_id',$brand_id)
+            ->update(['brand.status' => 1 ]);
+            Session::put('message',  'Brand Active successfuly !!');
+            return Redirect::to('/all-brand');
+     }
+
 
     public function delete_brand($brand_id) {
         DB::delete('delete from brand where brand_id = ?',[$brand_id]);

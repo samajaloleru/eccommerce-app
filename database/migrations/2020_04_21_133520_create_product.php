@@ -17,12 +17,12 @@ class CreateProduct extends Migration
             $table->increments('product_id');
             $table->string('product_name');
             $table->integer('category_id');
-            $table->integer('brand_id');
             $table->longText('short_description');
             $table->longText('description');
             $table->float('price');
             $table->mediumText('image')->nullable();
             $table->integer('status');
+            $table->integer('best_status');
             $table->timestamps();
         });
     }

@@ -16,9 +16,8 @@ class HomeController extends Controller
    {
     $product = DB::table('product')
                 ->join('category','product.category_id','=','category.category_id')
-                ->join('brand','product.brand_id','=','brand.brand_id')
-                //->where('status',1)
-                ->select('product.*','category.category_name','brand.brand_name')
+               ->where('product.status',1)
+                ->select('product.*','category.category_name')
                 ->get(); 
 
         // echo "<pre>";
@@ -26,6 +25,21 @@ class HomeController extends Controller
         // echo "</pre>";
         // exit();
     return view('pages.welcome',['product'=>$product]);
+
+   }
+   public function product_more()
+   {
+    $product = DB::table('product')
+                ->join('category','product.category_id','=','category.category_id')
+                ->where('product.status',1)
+                ->select('product.*','category.category_name')
+                ->get(); 
+
+        // echo "<pre>";
+        // print_r($product);
+        // echo "</pre>";
+        // exit();
+    return view('pages.product_more',['product'=>$product]);
    }
 
 
@@ -65,8 +79,7 @@ class HomeController extends Controller
    {
       $product = DB::table('product')
                ->join('category','product.category_id','=','category.category_id')
-               ->join('brand','product.brand_id','=','brand.brand_id')
-               ->select('product.*','category.category_name','brand.brand_name')
+               ->select('product.*','category.category_name')
                ->where('product.product_id',$product_id)
                ->where('product.status',1)
                ->first(); 

@@ -58,6 +58,25 @@ class CheckoutController extends Controller
         return Redirect::to('/login-check');
     }
 
+    public function shipping_details(Request $request)
+    {
+        $data=array();
+        $data['shipping_email']=$request->shipping_email;
+        $data['shipping_firstname']=$request->shipping_firstname;
+        $data['shipping_lastname']=$request->shipping_lastname;
+        $data['shipping_address']=$request->shipping_address;
+        $data['shipping_mobile']=$request->shipping_mobile;
+        $data['shipping_city']=$request->shipping_city;
+
+        $shipping_id=DB::table('shipping')
+            ->insertGetId($data);
+
+                Session::put('shipping_id',$shipping_id);
+                return Redirect('/payment');
+
+                   
+    }
+
     public function checkout()
     {
         return view('checkout');
@@ -103,11 +122,9 @@ class CheckoutController extends Controller
         if ($payment_gateway=='handcash') {
 
             Cart::destroy();
-            return view('pages.handcash');
+            return Redirect::to('/');
             
 
-        }elseif($payment_gateway=='cart') {
-            echo "cart";
         }else{
             echo "not selected";
         }
@@ -119,18 +136,20 @@ class CheckoutController extends Controller
         $all_order_info = DB::table('order')
                     ->join('customer','order.customer_id','=','customer.customer_id')
                      ->select('order.*','customer.customer_name')
+                     ->latest()
                     ->get(); 
 
             // echo "<pre>";
             // print_r($product);
             // echo "</pre>";
             // exit();
-        return view('admin.manage_order',['all_order_info'=>$all_order_info]);
+        return view('admin.manage_order',['all_order_info'=>$all_order_info])->with('no', 1);
     } 
     
-    public function view_order()
+    public function view_order($order_id)
     {   
         $order_by_id = DB::table('order')
+                    ->where('order.order_id',$order_id)
                     ->join('customer','order.customer_id','=','customer.customer_id')
                     ->join('order_details','order.order_id','=','order_details.order_id')
                     ->join('shipping','order.shipping_id','=','shipping.shipping_id')
@@ -145,22 +164,20 @@ class CheckoutController extends Controller
 
     } 
 
-    public function shipping_details(Request $request)
-    {
-        $data=array();
-        $data['shipping_email']=$request->shipping_email;
-        $data['shipping_firstname']=$request->shipping_firstname;
-        $data['shipping_lastname']=$request->shipping_lastname;
-        $data['shipping_address']=$request->shipping_address;
-        $data['shipping_mobile']=$request->shipping_mobile;
-        $data['shipping_city']=$request->shipping_city;
+    //this is to Unactive part of advert-slider
+    public function unactive_order($order_id) {
+        DB::table('order')
+            ->where('order_id',$order_id)
+            ->update(['order.order_status' => '']);
+            Session::put('message',  'Order Unactive successfuly !!');
+            return Redirect::to('/manage-order');
+    }
 
-        $shipping_id=DB::table('shipping')
-            ->insertGetId($data);
-
-                Session::put('shipping_id',$shipping_id);
-                return Redirect('/payment');
-
-                   
+    public function delete_order($order_id) {
+        DB::table('order')
+            ->where('order_id',$order_id)
+            ->delete();
+        Session::put('message', 'Order deleted successfuly !!');
+        return Redirect::to('/manage-order');
     }
 }

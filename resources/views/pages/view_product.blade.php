@@ -53,18 +53,11 @@
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-lg-auto">
-                            <li class="nav-item">
-                                <form class="form-inline pt-2 ml-auto">
-                                    <input class="form-control mr-sm-2 no-border" type="text" placeholder="Search">
-                                    <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split" aria-hidden="true"></i></button>
-                                </form>
-                            </li>
+                            
                             <a href="/" class="btn pt-lg-3 btn-link btn-neutral">
                                 <span class="nav-text">Shop</span>
                             </a>
-                            <a href="/about" class="btn pt-lg-3 btn-link btn-neutral">
-                                <span class="nav-text">About Us</span>
-                            </a>
+                            
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
                                 <?php if($customer_id != NULL) {?>
@@ -79,6 +72,7 @@
                             <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
                                 <i class="icon fa fa-shopping-cart mr-2"></i>
                                 <span class="nav-text">My Basket</span>
+                                <sup>{{Cart::count()}}</sup>
                             </a>
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
@@ -104,7 +98,7 @@
                 <div class="container">
                     <div class="row title-row">
                         <div class="col-md-5 pb-5">
-                            <h4 class="shop">Shop/ View Product</h4>
+                            <h3 class="black font-weight-bold">Shop/ View Product</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -118,8 +112,8 @@
                             <!-- end carousel -->
                         </div>
                         <div class="col-md-5 col-sm-6">
-                            <h2>{{$product->product_name}}</h2>
-                            <h4 class="price"><strong>₦{{$product->price}}</strong></h4>
+                            <h2 class="black">{{$product->product_name}}</h2>
+                            <h3 class="price black">₦ <span>{{$product->price}}</span></h3>
                             <hr />
                             <p>{{$product->description}}</p>
                             <span class="label label-default shipping">{{$product->short_description}}</span>
@@ -137,7 +131,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
-                                        <button class="btn btn-danger btn-block btn-round">Add to Cart &nbsp;<i class="fa fa-chevron-right"></i></button>
+                                        <button class="btn btn-danger price-text btn-block">Add to Cart &nbsp;<i class="fa fa-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -149,11 +143,11 @@
 
         <div class="separator"></div>
         <footer class="footer footer-black footer-big">
-            <div class="container px-5">
+            <div class="col-lg-10 col-12 mr-auto ml-auto">
                 <div class="row">
                     <div class="col-12 ">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-lg-4 col-12">
                                 <div class="links">
                                     <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
                                     <p class="white text-left pt-3">
@@ -169,42 +163,44 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-3 pl-lg-5">
+
+                            <div class="col-12 col-lg-4 col-sm-4 pl-lg-5">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a href="#paper-kit">
-                                            Home
+                                            <a href="/">
+                                                Shop
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
-                                            Discover
+                                            <a href="/about">
+                                                About Us
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Blog
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Live Support
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#paper-kit">
+                                            <a href="#">
                                             Money Back
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-12 col-lg-4 col-sm-8">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a href="#paper-kit" class="col-12">
+                                            <a class="col-12">
                                                 <h4>Contact Us</h4>
                                                 <div class="separator"></div>
                                                 <div class="subscribe-line subscribe-line-black">
@@ -240,19 +236,19 @@
                             <div class="links pull-right">
                                 <ul>
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Company Policy
                                         </a>
                                     </li>
                                     |
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Terms
                                         </a>
                                     </li>
                                     |
                                     <li>
-                                        <a href="#paper-kit">
+                                        <a href="#">
                                             Privacy
                                         </a>
                                     </li>

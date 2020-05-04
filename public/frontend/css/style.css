@@ -19,6 +19,11 @@
     cursor: hand;
 }
 
+
+.pointer {
+    cursor: pointer;
+    text-decoration: none;
+}
 .navbar-brand {
     padding: 10px 15px !important;
 }
@@ -55,7 +60,7 @@ hr.new{
 
 p {
     color: black !important;
-    font-size: 13px !important;
+    font-size: 15px !important;
 }
 
 .white {
@@ -64,6 +69,49 @@ p {
 
 .black {
     color:black !important;
+    text-decoration: none;
+}
+
+.header-total {
+    font-size: 20px;
+    color:black !important;
+    text-decoration: none;
+}
+
+.header {
+    font-size: 25px;
+    padding-left: 0px;
+    padding: 15px;
+    color:black !important;
+    text-decoration: none;
+}
+
+.header-white {
+    font-size: 25px;
+    padding-left: 0px;
+    padding: 15px;
+    color:white !important;
+    text-decoration: none;
+}
+
+.table-header {
+    font-size: 19px;
+    padding: 15px;
+    color:black !important;
+    text-decoration: none;
+}
+
+.black-header {
+    font-size: 17px;
+    color:black !important;
+    text-decoration: none;
+}
+
+
+.price-text {
+    font-size: 18px;
+    color:white !important;
+    text-decoration: none;
 }
 
 .nav-text {
@@ -80,6 +128,7 @@ p {
 
 .text-black {
     color: black !important;
+    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
     padding-left: 0px;
@@ -113,6 +162,9 @@ p {
 .btn-product {
     background-color:  #85C226 !important;
 }
+.btn-orange {
+    background-color:  #E67817 !important;
+}
   
   input#number {
     text-align: center;
@@ -129,3 +181,9 @@ p {
       -webkit-appearance: none;
       margin: 0;
   }
+
+sup {
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
