@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="./assets/../frontend/img//apple-icon.png">
@@ -11,140 +11,124 @@
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
-        <link href="https://fonts.googleapis.com/css?family=Heebo&display=swap" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
         <!-- CSS Files -->
-
         
-        <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" >
-        <link href="{{ asset('backend/css/paper-kit.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ asset('backend/css/material-dashboard.css?v=2.1.2') }}" rel="stylesheet" type="text/css" >
         <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" type="text/css" >
 
     </head>
     <body>
-        <div class="wrapper">
-            <div class="sidebar" data-color="white" data-active-color="danger">
-                <div class="logo">
-                    
-                    <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
+        <div class="wrapper ">
+            <div class="sidebar bg-dark">
+                <!--
+                    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+                    Tip 2: you can also add an image using data-image tag
+                    -->
+                <div class="logo text-center">
+                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
-                        <li class="active ">
-                            <a href="{{URL::to('/dashboard')}}">
-                                <i class="nc-icon nc-bank"></i>
-                                <p>Dashboard</p>
+                        <li class="nav-item active ">
+                            <a class="nav-link">
+                                <i class="material-icons">dashboard</i>
+                                <p> Dashboard </p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/all-category')}}">
-                                <i class="nc-icon nc-diamond"></i>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/all-category')}}">
+                                <i class="material-icons">dashboard</i>
                                 <p>All Categories</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/add-category')}}">
-                                <i class="nc-icon nc-pin-3"></i>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/add-category')}}">
+                                <i class="material-icons">dashboard</i>
                                 <p>Add category</p>
                             </a>
                         </li>
-                        
-                        <li>
-                            <a href="{{URL::to('/all-product')}}">
-                                <i class="nc-icon nc-tile-56"></i>
-                                <p>Products</p>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/all-product')}}">
+                                <i class="material-icons">dashboard</i>
+                                <p>All Products</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="{{URL::to('/add-product')}}">
-                                <i class="nc-icon nc-caps-small"></i>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/add-product')}}">
+                                <i class="material-icons">dashboard</i>
                                 <p>Add Product</p>
                             </a>
                         </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/all-slider')}}">
-                                <i class="nc-icon nc-spaceship"></i>
-                                <p>All Slider</p>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/all-slider')}}">
+                                <i class="material-icons">dashboard</i>
+                                <p>All Sliders</p>
                             </a>
                         </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/add-slider')}}">
-                                <i class="nc-icon nc-spaceship"></i>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/add-slider')}}">
+                                <i class="material-icons">dashboard</i>
                                 <p>Add Slider</p>
                             </a>
                         </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/all-advert')}}">
-                                <i class="nc-icon nc-spaceship"></i>
-                                <p>All Advert</p>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/all-advert')}}">
+                                <i class="material-icons">dashboard</i>
+                                <p>All Adverts</p>
                             </a>
                         </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/add-advert')}}">
-                                <i class="nc-icon nc-spaceship"></i>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/add-advert')}}">
+                                <i class="material-icons">dashboard</i>
                                 <p>Add Advert</p>
                             </a>
                         </li>
-                        <li class="active-pro">
-                            <a href="{{URL::to('/manage-order')}}">
-                                <i class="nc-icon nc-spaceship"></i>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/manage-order')}}">
+                                <i class="material-icons">dashboard</i>
                                 <p>Manage Order</p>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
+
             <div class="main-panel">
-                <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-absolute fixed-top bg-orange">
+                <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <div class="navbar-toggle">
-                            <button type="button" class="navbar-toggler">
-                                <span class="navbar-toggler-bar bar1"></span>
-                                <span class="navbar-toggler-bar bar2"></span>
-                                <span class="navbar-toggler-bar bar3"></span>
-                            </button>
-                            </div>
                             <a class="navbar-brand" href="javascript:;">Anema Mart Dashboard</a>
                         </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-bar navbar-kebab"></span>
-                            <span class="navbar-toggler-bar navbar-kebab"></span>
-                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
                         </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            
+                        <div class="collapse navbar-collapse justify-content-end">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link btn-magnify">
-                                        <p>
-                                            {{ Session::get('admin_name')}}
-                                        </p>
-                                    </a>
+                                    <a class="nav-link">{{ Session::get('admin_name')}}</a>
                                 </li>
-                                
-                                
                                 <li class="nav-item">
-                                    <a href="{{URL::to('/logout')}}" class="nav-link btn-rotate" href="javascript:;">
-                                        <i class="nc-icon nc-settings-gear-65"></i>
-                                        <p>
-                                            Logout
-                                        </p>  
-                                    </a>
+                                    <a class="nav-link" href="{{URL::to('/logout')}}">Log out</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
-                <!-- End Navbar -->
+
                 <div class="content">
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="nc-icon nc-simple-remove"></i>
+                    <div class="container-fluid">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="material-icons">close</i>
                         </button>
                         <span>
-                            <?php
+                        <?php
                             $message=Session::get('message');
                                 if($message){
                                     echo $message;
@@ -153,133 +137,137 @@
                             ?>
                         </span>
                     </div>
-                    <div class="row">
-                        <div class="col-md-10 ml-auto mr-auto">
-                            <div class="card card-user">
-                                <div class="card-header">
-                                    <h5 class="card-title">Update Product</h5>
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <div class="card ">
+                                    <div class="card-header card-header-rose card-header-icon">
+                                        <div class="card-icon">
+                                            <i class="material-icons">update</i>
+                                        </div>
+                                        <h4 class="card-title">Edit Product</h4>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <form action="/edit-product/<?php echo $product[0]->product_id; ?>" method="POST" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Product Name</label>
+                                                        <input type="text" class="form-control" name="product_name" required="" value ='<?php echo$product[0]->product_name; ?>'>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Category Name" required="" name="category_id" value ='<?php echo$product[0]->category_id; ?>'>
+                                                            <option>Select Category</option>
+                                                            <?php
+                                                                $all_published_category=DB::table('category')
+                                                                                        ->where('status',1)
+                                                                                    ->get();
+
+                                                                foreach($all_published_category as $v_category){?>
+                                                                <option value="{{$v_category->category_id}}">{{$v_category->category_name}}</option>
+                                                                <?php }?>    
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Price</label>
+                                                        <input type="number" class="form-control" name="price" required="" value ='<?php echo$product[0]->price; ?>'>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input" type="checkbox" name="status" value ='<?php echo$product[0]->status; ?>'>Status
+                                                            <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input" type="checkbox" name="best_status" value ='<?php echo$product[0]->best_status; ?>'>Best Selling Status
+                                                            <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Short Description</label>
+                                                        <input type="text" class="form-control" name="short_description" value ='<?php echo$product[0]->short_description; ?>'>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Description</label>
+                                                        <input type="text" class="form-control" name="description" value ='<?php echo$product[0]->description; ?>'>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-fill btn-success">Update</button>
+                                                <button type="reset" class="btn btn-fill btn-rose">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <form action="/edit-product/<?php echo $product[0]->product_id; ?>" method="POST" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-
-                                        <div class="row">
-                                            <div class="col-md-4 pr-2">
-                                                <div class="form-group">
-                                                    <label>Product Name</label>
-                                                    <input type="text" class="form-control" placeholder="Product Name"  name="product_name" value ='<?php echo$product[0]->product_name; ?>'>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Product Category</label>
-                                                    
-                                                    <select class="form-control" id="exampleFormControlSelect1" required="" name="category_id">
-                                                    <option>Select Category</option>
-                                                    <?php
-                                                        $all_published_category=DB::table('category')
-                                                                                ->where('status',1)
-                                                                                ->get();
-
-                                                        foreach($all_published_category as $v_category){?>
-
-                                                        <option value="{{$v_category->category_id}}" >{{$v_category->category_name}}</option>
-                                                        <?php }?>    
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Price</label>
-                                                    <input type="text" class="form-control" placeholder="Price" required="" name="price" value ='<?php echo$product[0]->price; ?>'>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4 px-1">
-                                                <div class="form-group">
-                                                    <label>Status</label>
-                                                    <input type="checkbox" class="form-control" value="1" required="" name="status" value ='<?php echo$product[0]->status; ?>'>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4 px-1">
-                                                <div class="form-group">
-                                                    <label>Best Selling Status</label>
-                                                    <input type="checkbox" class="form-control" value="1" name="best_status" value ='<?php echo$product[0]->best_status; ?>'>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Short Description</label>
-                                                    <input type="text" class="form-control" placeholder="Short Description" name="short_description" value ='<?php echo$product[0]->short_description; ?>'>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Description</label>
-                                                    <textarea class="form-control textarea" name="description" value ='<?php echo$product[0]->description; ?>'></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="update ml-auto mr-auto">
-                                                <button type="submit" class="btn btn-primary btn-round">Update</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 </div>
+
+                
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="copyright float-right">
+                            &copy;
+                            <script>
+                            document.write(new Date().getFullYear())
+                            </script>,Anema City Center. All rights reserved.
+                        </div>
+                    </div>
+                </footer>
             </div>
-            <footer class="footer footer-black  footer-white ">
-                <div class="container-fluid">
-                    <div class="row">
-                        <nav class="footer-nav">
-                            <ul>
-                                <li><a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a></li>
-                                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-                            </ul>
-                        </nav>
-                        <div class="credits ml-auto">
-                            <span class="copyright">
-                                © <script>
-                                document.write(new Date().getFullYear())
-                                </script>, Anema City Center. All rights reserved.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
 
-        <script src="/frontend/js/jquery.min.js"></script>
-        <script src="/backend/js/chartjs.min.js"></script>
-        <script src="/frontend/js/popper.min.js"></script>
-        <script src="/frontend/js/bootstrap.min.js"></script>
-        <script src="/frontend/js/bootstrap-switch.js"></script>
-        <script src="/frontend/js/nouislider.min.js"></script>
-        <script src="/frontend/js/moment.min.js"></script>
-        <script src="/frontend/js/bootstrap-tagsinput.js"></script>
-        <script src="/frontend/js/bootstrap-selectpicker.js"></script>
-        <script src="/frontend/js/bootstrap-datetimepicker.js"></script>
-        <script src="/frontend/js/photoswipe.min.js"></script>
-        <script src="/frontend/js/photoswipe-ui-default.min.js"></script>
-        <script src="/frontend/js/init-gallery.js"></script>
-        <script src="/frontend/js/asny-bootstrap.min.js"></script>
-        <script src="/frontend/js/paper-dashboard.min.js"></script>
+        <script src="/backend/js/jquery.min.js"></script>
+        <script src="/backend/js/popper.min.js"></script>
+        <script src="/backend/js/bootstrap-material-design.min.js"></script>
+        <script src="/backend/js/perfect-scrollbar.jquery.min.js"></script>
+        <script src="/backend/js/moment.min.js"></script>
+        <script src="/backend/js/sweetalert2.js"></script>
+        <script src="/backend/js/jquery.validate.min.js"></script>
+        <script src="/backend/js/jquery.bootstrap-wizard.js"></script>
+        <script src="/backend/js/bootstrap-selectpicker.js"></script>
+        <script src="/backend/js/bootstrap-datetimepicker.js"></script>
+        <script src="/backend/js/jquery.dataTables.min.js"></script>
+        <script src="/backend/js/bootstrap-tagsinput.js"></script>
+        <script src="/backend/js/jasny-bootstrap.min.js"></script>
+        <script src="/backend/js/fullcalendar.min.js"></script>
+        <script src="/backend/js/jquery-jvectormap.js"></script>
+        <script src="/backend/js/nouislider.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        <script src="/backend/js/arrive.min.js"></script>
+        <script src="/backend/js/chartist.min.js"></script>
+        <script src="/backend/js/bootstrap-notify.js"></script>
+        <script src="/backend/js/material-dashboard.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+            // Javascript method's body can be found in assets/js/demos.js
+            md.initDashboardPageCharts();
+
+            md.initVectorMap();
+
+            });
+        </script>
     </body>
 </html>

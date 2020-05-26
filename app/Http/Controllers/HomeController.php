@@ -27,11 +27,34 @@ class HomeController extends Controller
     return view('pages.welcome',['product'=>$product]);
 
    }
+
+   public function search(Request $request)
+   {
+      $q = $request->input('q');
+      if($q != ""){
+         $product = DB::table('product')
+                  ->where('product_name', 'LIKE', '%' . $q . '%')
+                  ->get();
+
+         if(count($product) > 0)
+         return view('pages.search')->withDetails($product)->withQuery($q);
+      }
+      //dd($q);
+        // echo "<pre>";
+        // print_r($product);
+        // echo "</pre>";
+        // exit();
+
+      return view('pages.search')->withMessage("No Product Found!");
+   }
+
    public function product_more()
    {
     $product = DB::table('product')
                 ->join('category','product.category_id','=','category.category_id')
                 ->where('product.status',1)
+                ->inRandomOrder()
+                ->limit('30')
                 ->select('product.*','category.category_name')
                 ->get(); 
 
@@ -49,6 +72,7 @@ class HomeController extends Controller
             ->join('category','product.category_id','=','category.category_id')
             ->select('product.*','category.category_name')
             ->where('category.category_id',$category_id)
+            ->limit('30')
             ->where('product.status',1)
             ->get(); 
 

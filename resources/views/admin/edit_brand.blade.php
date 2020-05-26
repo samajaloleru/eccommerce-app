@@ -26,7 +26,7 @@
             <div class="sidebar" data-color="white" data-active-color="danger">
                 <div class="logo">
                     
-                    <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
+                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">

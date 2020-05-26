@@ -3029,12 +3029,12 @@ body {
 }
 
 a {
-  color: #51bcda;
+  color:white;
 }
 
 a:hover,
 a:focus {
-  color: #2ba9cd;
+  color: #85C226;
   text-decoration: none;
 }
 
@@ -9003,7 +9003,7 @@ video {
 }
 
 #accordion .card-header {
-  background-color: #FFFFFF;
+  background-color: rgb(255, 235, 218, 0.4);
 }
 
 .card-collapse {
@@ -9024,7 +9024,7 @@ video {
 .card {
   border-radius: 12px;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
-  background-color: #FFFFFF;
+  background-color: rgb(255, 235, 218, 0.4);
   color: #333333;
   margin-bottom: 20px;
   position: relative;

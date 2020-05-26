@@ -7,8 +7,10 @@ use DB;
 use App\Http\Requests;
 use Session;
 use Cart;
+use App\Mail\OrderMail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -120,7 +122,17 @@ class CheckoutController extends Controller
         }
 
         if ($payment_gateway=='handcash') {
+            $email =Session::get('customer_id');
 
+            $customer = DB::table('customer')
+                        ->where('customer_id',$email)
+                        ->select('customer_email')
+                        ->first();
+                // echo "<pre>";
+                // print_r($customer);
+                // echo "</pre>";
+                // exit();
+            Mail::to($customer->customer_email)->send(new OrderMail());
             Cart::destroy();
             return Redirect::to('/');
             
@@ -128,7 +140,6 @@ class CheckoutController extends Controller
         }else{
             echo "not selected";
         }
-
     }
 
     public function manage_order()

@@ -65,7 +65,7 @@ class ProductController extends Controller
         $data['status']=$request->status;
         $data['best_status']=$request->best_status;
         $image=$request->file('image');
-
+        
         if ($image) {
             $image_name=Str::random(40);
             $ext=strtolower($image->getClientOriginalExtension());
@@ -84,6 +84,28 @@ class ProductController extends Controller
             
     }
 
+    public function search(Request $request)
+   {
+      $q = $request->input('q');
+      if($q != ""){
+         $product = DB::table('product')
+                ->where('product_name', 'LIKE', '%' . $q . '%')
+                ->join('category','product.category_id','=','category.category_id')
+                ->select('product.*','category.category_name')
+                ->get();
+
+         if(count($product) > 0)
+         return view('admin.search_product')->withDetails($product)->withQuery($q);
+      }
+      //dd($q);
+        // echo "<pre>";
+        // print_r($product);
+        // echo "</pre>";
+        // exit();
+
+      return view('admin.search_product')->withMessage("No Product Found!");
+   }
+
     public function show($product_id) {
         $product = DB::select('select * from product where product_id = ?',[$product_id]);
         return view('admin.edit_product',['product'=>$product]);
@@ -94,9 +116,26 @@ class ProductController extends Controller
         $product_name = $request->input('product_name');
         $price = $request->input('price');
         $status = $request->input('status');
+        $category_id = $request->input('category_id');
         $best_status = $request->input('best_status');
+        // $image = $request->file('image');
         
-        DB::update('update product set product_name = ?, price = ?, status = ?, best_status = ? where product_id = ?',[$product_name,$price,$status,$best_status,$product_id]);
+        // if ($image) {
+        //     $image_name=Str::random(40);
+        //     $ext=strtolower($image->getClientOriginalExtension());
+        //     $image_full_name=$image_name.'.'.$ext;
+        //     $upload_path='image/';
+        //     $image_url=$upload_path.$image_full_name;
+        //     $success=$image->move($upload_path,$image_full_name);
+        //     if (file_exists(public_path($image_full_name =  $image->getClientOriginalName()))) 
+        //     {
+        //         unlink(public_path($image_full_name));
+        //     };
+        //     //Update Image
+        //     $image->file = $image_full_name;
+        // }
+        
+        DB::update('update product set product_name = ?, price = ?, status = ?, category_id = ?, best_status = ? where product_id = ?',[$product_name,$price,$status,$category_id,$best_status,$product_id]);
         Session::put('message', 'Product updated successfuly !!');
         return Redirect::to('/all-product');
     }
@@ -117,14 +156,6 @@ class ProductController extends Controller
         }else{
             return Redirect::to('/admin')->send();
         }
-    }
-
-    public function import(Request $request){
-
-        $request->validate([
-
-            'excelFile' => 'required|mimes:xls,xlsx,csv'
-        ]);
     }
     
 }

@@ -1,6 +1,8 @@
 <?php
 
+use App\Mail\OrderMail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +23,14 @@ Route::get('/about', 'HomeController@show_about'); // About Page
 // Route::view('/new', 'new'); // About Page
 // Route::view('/contact', 'contact'); // About Page
 
+Route::post('/search', 'HomeController@search'); //search
+
 //show Product by Category
 Route::get('/product_by_category/{category_id}','HomeController@product_by_category');
 
 //show Product by Brand
 // Route::get('/product_by_brand/{brand_id}','HomeController@product_by_brand');
-// Route::get('/view_product/{product_id}','HomeController@view_product');
+Route::get('/view_product/{product_id}','HomeController@view_product');
 
 //cart routes
 Route::post('/add-to-cart','CartController@add_to_cart');
@@ -59,7 +63,7 @@ Route::get('/admin', 'AdminController@index'); // Home page
 Route::get('/dashboard', 'SuperAdminController@index'); // Home page
 Route::post('/admin-dashboard', 'AdminController@dashboard'); // Home page
 Route::get('/login', 'AdminController@login'); // Home page
-Route::post('/login', 'AdminController@admin_login'); // Home page
+Route::post('/add_admin', 'AdminController@admin_login'); // Home page
 
 //category related route
 Route::get('/add-category', 'CategoryController@index');
@@ -92,7 +96,7 @@ Route::get('active-product/{product_id}','ProductController@active_product');
 Route::get('edit-product/{product_id}','ProductController@show');
 Route::post('edit-product/{product_id}','ProductController@edit');
 Route::get('delete-product/{product_id}','ProductController@delete_product');
-Route::post('/import', 'ProductController@import');
+Route::post('/search-product', 'ProductController@search'); //search
 
 
 //slider related route

@@ -21,7 +21,7 @@
     </head>
     <body>
         <div class="header-2">
-            <nav class="navbar navbar-expand-lg text-red bg-dark">
+            <nav class="navbar navbar-expand-lg text-red bg-navbar">
                 <div class="container-fluid">
                     <a class="navbar-brand white">
                         <i class="fa icon1 mr-3 fa-envelope"></i>
@@ -46,45 +46,51 @@
                     </div>
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
+            <nav class="navbar navbar-expand-lg pt-0 bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
+                        <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-auto">
                             
-                            <a href="/" class="btn pt-lg-3 btn-link btn-neutral">
-                                <span class="nav-text">Shop</span>
+                            <form action="{{url('/search')}}" method="POST" class="form-inline">
+                                {{ csrf_field() }}
+                                <input class="form-control mr-sm-2 no-border" name="q" type="text" placeholder="Search">
+                                <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split"></i></button>
+                            </form>
+
+                            <a href="/" class="pt-lg-3 px-2 px-lg-4 ">
+                                <span class="navbar-text font-weight-bold">Shop</span>
                             </a>
                             
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
                                 <?php if($customer_id != NULL) {?>
-                                    <a href="{{URL::to('/checkout')}}" class="btn btn-link btn-neutral pt-lg-3">
-                                        <span class="nav-text">Checkout</span>
+                                    <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
+                                        <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
                                 <?php }else{?>
-                                    <a href="{{URL::to('/login-check')}}" class="btn btn-link btn-neutral pt-lg-3">
-                                        <span class="nav-text">Checkout</span>
+                                    <a href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
+                                        <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
                             <?php } ?>
-                            <a href="{{URL::to('/show-cart')}}" class="btn btn-link btn-neutral">
-                                <i class="icon fa fa-shopping-cart mr-2"></i>
-                                <span class="nav-text">My Basket</span>
-                                <sup>{{Cart::count()}}</sup>
+                            <a href="{{URL::to('/show-cart')}}" class="px-2 px-lg-4 pt-lg-3">
+                                <i class="icon white fa fa-shopping-cart mr-2"></i>
+                                <span class="navbar-text font-weight-bold">My Basket</span>
+                                <sup class="sup-text">{{Cart::count()}}</sup>
                             </a>
                             <?php $customer_id=Session::get('customer_id'); ?>
                             
                                 <?php if($customer_id != NULL) {?>
-                                <a type="button" href="{{URL::to('/customer-logout')}}" class="btn btn-link btn-neutral">
-                                    <i class="icon mr-1 fa fa-user"></i>
-                                    <span class="nav-text">Logout</span>
-                                </a>
+                                    <a type="button" href="{{URL::to('/customer-logout')}}" class="px-2 px-lg-4 pt-lg-3">
+                                        <i class="icon white mr-1 fa fa-user"></i>
+                                        <span class="navbar-text font-weight-bold">Logout</span>
+                                    </a>
                                 <?php }else{?>
-                                <a type="button" href="{{URL::to('/login-check')}}" class="btn btn-link btn-neutral">
-                                    <i class="icon mr-1 fa fa-user"></i>
-                                    <span class="nav-text">Login</span>
+                                <a type="button" href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
+                                    <i class="icon white mr-1 fa fa-user"></i>
+                                    <span class="navbar-text font-weight-bold">Login</span>
                                 </a>
                             <?php } ?>
                         </ul>
@@ -97,46 +103,7 @@
             <div class="section py-0">
                
                 <div class="container-fluid py-5 bg-page px-lg-5">
-                    <div class="row">
-                        <div class="col-lg-2 col-12">
-                            <div id="accordion" role="tablist" aria-multiselectable="true">
-                                <div class="card bg-orange no-transition">
-                                    <div class="card-header card-collapse" role="tab" id="headingOne">
-                                        <h3 class="my-0 panel-title">
-                                            <a class="black-header font-weight-bold collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                Categories
-                                                <i class="nc-icon nc-minimal-down"></i>
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="card-body p-2">
-                                            <div class="card-refine">
-                                                <div class="panel-group" id="accordion" aria-expanded="true">
-
-                                                    <?php
-                                                        $all_published_category=DB::table('category')
-                                                                                ->where('status',1)
-                                                                                ->get();
-
-                                                    foreach($all_published_category as $v_category){?>
-                                                    <div class="card-header card-collapse">
-                                                        <h6 class="mb-0 panel-title black">
-                                                            <a class="font-weight-bold" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
-                                                                {{$v_category->category_name}}
-                                                            </a>
-                                                        </h6>
-
-                                                    </div>
-                                                    <?php } ?> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="row justify-content-center">
                         <div class="col-lg-10 col-12">
                             <div class="row p-0">
                                 <div class="col-lg-10 col-12 ml-auto mr-auto">
@@ -223,20 +190,6 @@
                                                         <small>₦</small>{{Cart::total()}}
                                                     </td>
                                                 </tr>
-                                                <tr class="tr-actions">
-                                                    <td></td>
-                                                    <td colspan="3"></td>
-                                                    <td colspan="2" class="text-right">
-                                                    <?php $customer_id=Session::get('customer_id'); ?>
-                                                        
-                                                        <?php if($customer_id != NULL){?>
-                                                            <a href="{{URL::to('/checkout')}}" class="btn bg-orange price-text btn-lg">Complete Purchase <i class="fa fa-chevron-right"></i></a>
-                                                            
-                                                        <?php }else{?>
-                                                            <a href="{{URL::to('/login-check')}}" class="btn bg-orange price-text btn-lg">Complete Purchase <i class="fa fa-chevron-right"></i></a>
-                                                    <?php } ?>
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -251,7 +204,7 @@
                         
                                         <div class="form-group">
                                             <label class="pr-3">Hand Cash</label>
-                                            <input type="radio" placeholder="Email" name="payment_method" value="handcash"/>
+                                            <input type="radio" placeholder="Email" required name="payment_method" value="handcash"/>
                                         </div>
                                         <div class="col-lg-2 col-md-4 col-12 pl-0">
                                             <button type="submit" class="btn price-text bg-orange btn-sm btn-block">Done</button>
@@ -273,7 +226,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-12">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.jpg" alt="" style="width: 150px;">
+                                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
                                     <p class="white text-left pt-3">
                                         Contact: 08126432202, 08061347511, 08032461836
                                     </p>
