@@ -177,7 +177,6 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Category Name" required="" name="category_id">
-                                                            <option>Select Category</option>
                                                             <?php
                                                                 $all_published_category=DB::table('category')
                                                                                         ->where('status',1)
