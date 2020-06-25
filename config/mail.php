@@ -36,7 +36,7 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'mail.anemacitymall.com'),
+            'host' => env('MAIL_HOST', 'mail.foodthings.ng'),
             'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'SSL'),
             'username' => env('MAIL_USERNAME'),

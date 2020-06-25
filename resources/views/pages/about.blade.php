@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" href="./assets/img//favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Anema Mart
+            foodthings Mart
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -24,7 +24,7 @@
                 <div class="container-fluid">
                     <a class="navbar-brand white">
                         <i class="fa icon1 mr-3 fa-envelope"></i>
-                        enquiry@anemacitymall.com
+                        enquiry@foodthings.com
                     </a>
                     <a class="navbar-brand white">7 days delivery, 10am - 5pm</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
             <nav class="navbar navbar-expand-lg pt-0 bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
+                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-auto">
@@ -103,7 +103,7 @@
             <div class="content-center">
                 <div class="container">
                     <h1>Hello,
-                    <br /> Welcome To Anema Mart.</h1>
+                    <br /> Welcome To foodthings Mart.</h1>
                     <h3>Let us tell you more about what we do.</h3>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                 <div class="container">
                     <h3 class="font-weight-bold title-uppercase">Introduction</h3>
                     <p class="text-dark">
-                        Anema Mart is a foremost trading and agriculture company in Nigeria. 
+                        foodthings Mart is a foremost trading and agriculture company in Nigeria. 
                         We currently operate our businesses and outlets in Uyo, Akwa Ibom State, where we have established a foothold in the regional market, 
                         and are esteemed by our customers as the leading and trusted brand in retail.  Our core business pillars, mechanized farming and food processing, 
                         represents our core business ideal; which is to provide quality and affordable food and allied products in every home in our operational area. 
@@ -196,7 +196,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-12">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
+                                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                                     <p class="white text-left pt-3">
                                         Contact: 08126432202, 08061347511, 08032461836
                                     </p>
@@ -204,7 +204,7 @@
                                         <i class="fa icon1 fa-map-marker"></i>
                                         <span class="font-weight-bold">Our Outlets,</span>
                                         <br/>
-                                        29 NEPA Line, Uyo Akwa Ibom State / Anema City Mart, 
+                                        29 NEPA Line, Uyo Akwa Ibom State / foodthings City Mart, 
                                         <br/>
                                         5 Osongama Road Behind Emerald Event Center , Osongama Estate , Uyo
                                     </p>
@@ -278,7 +278,7 @@
                                 &copy;
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Anema City Center. All rights reserved.
+                                </script> foodthings City Center. All rights reserved.
                             </div>
                             <div class="links pull-right">
                                 <ul>
@@ -319,7 +319,7 @@
         <script src="/frontend/js/photoswipe.min.js"></script>
         <script src="/frontend/js/photoswipe-ui-default.min.js"></script>
         <script src="/frontend/js/init-gallery.js"></script>
-        <script src="/frontend/js/asny-bootstrap.min.js"></script>
+        <script src="/frontend/js/jasny-bootstrap.min.js"></script>
         <script src="/frontend/js/paper-kit.js"></script>
     </body>
 </html>

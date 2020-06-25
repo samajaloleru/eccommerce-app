@@ -59,7 +59,7 @@
                             <h6>&copy;
                             <script>
                             document.write(new Date().getFullYear())
-                            </script>, Anema City Center. All rights reserved.</h6>
+                            </script>, foodthings City Center. All rights reserved.</h6>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
         <script src="/frontend/js/photoswipe.min.js"></script>
         <script src="/frontend/js/photoswipe-ui-default.min.js"></script>
         <script src="/frontend/js/init-gallery.js"></script>
-        <script src="/frontend/js/asny-bootstrap.min.js"></script>
+        <script src="/frontend/js/jasny-bootstrap.min.js"></script>
         <script src="/frontend/js/paper-kit.js"></script>
     </body>
 </html>

@@ -45,9 +45,9 @@
                             <form class="register-form" action="{{url('/login')}}" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <label>Name</label>
-                                <input type="text" class="form-control no-border" name="admin_name" placeholder="Email">
+                                <input type="text" class="form-control no-border" name="admin_name" placeholder="Name">
                                 <label>Phone</label>
-                                <input type="text" class="form-control no-border" name="admin_phone" placeholder="Email">
+                                <input type="text" class="form-control no-border" name="admin_phone" placeholder="Phone Number">
                                 <label>Email</label>
                                 <input type="email" class="form-control no-border" name="admin_email" placeholder="Email">
                                 <label>Password</label>
@@ -63,7 +63,7 @@
                             <h6>&copy;
                             <script>
                             document.write(new Date().getFullYear())
-                            </script>, Anema City Center. All rights reserved.</h6>
+                            </script>, foodthings City Center. All rights reserved.</h6>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
         <script src="/frontend/js/photoswipe.min.js"></script>
         <script src="/frontend/js/photoswipe-ui-default.min.js"></script>
         <script src="/frontend/js/init-gallery.js"></script>
-        <script src="/frontend/js/asny-bootstrap.min.js"></script>
+        <script src="/frontend/js/jasny-bootstrap.min.js"></script>
         <script src="/frontend/js/paper-kit.js"></script>
     </body>
 </html>

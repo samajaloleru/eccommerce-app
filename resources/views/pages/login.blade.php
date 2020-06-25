@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href="./assets/../frontend/img//favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Anema Mart
+            foodthings Mart
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <a class="navbar-brand white">
                         <i class="fa icon1 mr-3 fa-envelope"></i>
-                        enquiry@anemacitymall.com
+                        enquiry@foodthings.com
                     </a>
                     <a class="navbar-brand white">7 days delivery, 10am - 5pm</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
             <nav class="navbar navbar-expand-lg pt-0 bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
+                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-auto">
@@ -164,7 +164,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
+                                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                                     <p class="white text-left pt-3">
                                         Contact: 08126432202, 08061347511, 08032461836
                                     </p>
@@ -172,7 +172,7 @@
                                         <i class="fa icon1 fa-map-marker"></i>
                                         <span class="font-weight-bold">Our Outlets,</span>
                                         <br/>
-                                        29 NEPA Line, Uyo Akwa Ibom State / Anema City Mart, 
+                                        29 NEPA Line, Uyo Akwa Ibom State / foodthings City Mart, 
                                         <br/>
                                         5 Osongama Road Behind Emerald Event Center , Osongama Estate , Uyo
                                     </p>
@@ -244,7 +244,7 @@
                                 &copy;
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> Anema City Center. All rights reserved.
+                                </script> foodthings City Center. All rights reserved.
                             </div>
                             <div class="links pull-right">
                                 <ul>
@@ -285,7 +285,7 @@
         <script src="/frontend/js/photoswipe.min.js"></script>
         <script src="/frontend/js/photoswipe-ui-default.min.js"></script>
         <script src="/frontend/js/init-gallery.js"></script>
-        <script src="/frontend/js/asny-bootstrap.min.js"></script>
+        <script src="/frontend/js/jasny-bootstrap.min.js"></script>
         <script src="/frontend/js/paper-kit.js"></script>
     </body>
 </html>

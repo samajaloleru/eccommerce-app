@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" href="./assets/img//favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Anema Mart
+            foodthings Mart
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
@@ -23,7 +23,7 @@
           <nav class="navbar navbar-expand-lg text-red bg-dark">
               <div class="container">
                   <a class="navbar-brand" href="#paper-kit">08135880220</a>
-                  <a class="navbar-brand" href="#paper-kit"> Info@Anema.com</a>
+                  <a class="navbar-brand" href="#paper-kit"> Info@foodthings.com</a>
                   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-bar"></span>
                       <span class="navbar-toggler-bar"></span>

@@ -26,7 +26,7 @@
             <div class="sidebar" data-color="white" data-active-color="danger">
                 <div class="logo">
                     
-                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
+                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
@@ -106,7 +106,7 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                             </div>
-                            <a class="navbar-brand" href="javascript:;">Anema Mart Dashboard</a>
+                            <a class="navbar-brand" href="javascript:;">foodthings Mart Dashboard</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -203,7 +203,7 @@
                         <span class="copyright">
                             © <script>
                             document.write(new Date().getFullYear())
-                            </script>, Anema City Center. All rights reserved.
+                            </script>, foodthings City Center. All rights reserved.
                         </span>
                         </div>
                     </div>
@@ -225,7 +225,7 @@
         <script src="/frontend/js/photoswipe.min.js"></script>
         <script src="/frontend/js/photoswipe-ui-default.min.js"></script>
         <script src="/frontend/js/init-gallery.js"></script>
-        <script src="/frontend/js/asny-bootstrap.min.js"></script>
+        <script src="/frontend/js/jasny-bootstrap.min.js"></script>
         <script src="/frontend/js/paper-dashboard.min.js"></script>
     </body>
 </html>

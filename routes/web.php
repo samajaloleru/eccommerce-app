@@ -63,7 +63,7 @@ Route::get('/admin', 'AdminController@index'); // Home page
 Route::get('/dashboard', 'SuperAdminController@index'); // Home page
 Route::post('/admin-dashboard', 'AdminController@dashboard'); // Home page
 Route::get('/login', 'AdminController@login'); // Home page
-Route::post('/add_admin', 'AdminController@admin_login'); // Home page
+Route::post('/login', 'AdminController@admin_login'); // Home page
 
 //category related route
 Route::get('/add-category', 'CategoryController@index');

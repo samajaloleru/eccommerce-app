@@ -21,19 +21,19 @@
     </head>
     <body>
         <div class="wrapper ">
-            <div class="sidebar bg-dark">
+            <div class="sidebar bg-navbar">
                 <!--
                     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
                     Tip 2: you can also add an image using data-image tag
                     -->
                 <div class="logo text-center">
-                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
+                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
                         <li class="nav-item active ">
-                            <a class="nav-link">
+                            <a class="nav-link" href="{{URL::to('/dashboard')}}">
                                 <i class="material-icons">dashboard</i>
                                 <p> Dashboard </p>
                             </a>
@@ -100,7 +100,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="javascript:;">Anema Mart Dashboard</a>
+                            <a class="navbar-brand" href="javascript:;">foodthings Mart Dashboard</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -109,15 +109,6 @@
                             <span class="navbar-toggler-icon icon-bar"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end">
-                            <form class="navbar-form">
-                                <div class="input-group no-border">
-                                    <input type="text" value="" class="form-control" placeholder="Search...">
-                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                        <i class="material-icons">search</i>
-                                        <div class="ripple-container"></div>
-                                    </button>
-                                </div>
-                            </form>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link">{{ Session::get('admin_name')}}</a>
@@ -132,73 +123,40 @@
 
                 <div class="content">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <a class="card card-stats" href="{{URL::to('/add-product')}}">
                                 <div class="card-header card-header-warning card-header-icon">
                                     <div class="card-icon">
-                                    <i class="material-icons">weekend</i>
+                                    <i class="material-icons">create</i>
                                     </div>
-                                    <p class="card-category">Bookings</p>
-                                    <h3 class="card-title">184</h3>
+                                    <p class="card-category">Click to add</p>
+                                    <h3 class="card-title">Product</h3>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                    <i class="material-icons text-danger">warning</i>
-                                    <a href="#pablo">Get More Space...</a>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <a class="card card-stats" href="{{URL::to('/all-product')}}">
                                 <div class="card-header card-header-rose card-header-icon">
                                     <div class="card-icon">
-                                        <i class="material-icons">equalizer</i>
+                                        <i class="material-icons">visibility</i>
                                     </div>
-                                    <p class="card-category">Website Visits</p>
-                                    <h3 class="card-title">75.521</h3>
+                                    <p class="card-category">click to view</p>
+                                    <h3 class="card-title">Product</h3>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">local_offer</i> Tracked from Google Analytics
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <a class="card card-stats" href="{{URL::to('/manage-order')}}">
                                 <div class="card-header card-header-success card-header-icon">
                                     <div class="card-icon">
-                                        <i class="material-icons">store</i>
+                                        <i class="material-icons">visibility</i>
                                     </div>
-                                    <p class="card-category">Revenue</p>
-                                    <h3 class="card-title">$34,245</h3>
+                                    <p class="card-category">Click to view </p>
+                                    <h3 class="card-title">Order Made</h3>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">date_range</i> Last 24 Hours
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header card-header-info card-header-icon">
-                                    <div class="card-icon">
-                                        <i class="fa fa-twitter"></i>
-                                    </div>
-                                    <p class="card-category">Followers</p>
-                                    <h3 class="card-title">+245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -210,7 +168,7 @@
                             &copy;
                             <script>
                             document.write(new Date().getFullYear())
-                            </script>,Anema City Center. All rights reserved.
+                            </script>,foodthings City Center. All rights reserved.
                         </div>
                     </div>
                 </footer>

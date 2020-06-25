@@ -158,17 +158,22 @@ p {
 
 .bg-page {
     
-    background-color: rgb(255, 235, 218, 0.4);
+    background-color: rgb(249, 245, 240, 0.1);
 }
 
 .bg-navbar {
     
-    background-color: #85C226 !important;
+    background-color: #003034 !important;
+}
+
+.bg-dark {
+    
+    background-color: #A4D469 !important;
 }
 
 .bg-orange {
     
-    background-color: #E67817 !important;
+    background-color: #B73139 !important;
 }
 
 .icon {
@@ -180,10 +185,10 @@ p {
     color: white;
 }
 .btn-product {
-    background-color:  #85C226 !important;
+    background-color:  #A4D469 !important;
 }
 .btn-orange {
-    background-color:  #E67817 !important;
+    background-color:  #B73139 !important;
 }
   
   input#number {

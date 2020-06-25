@@ -21,19 +21,19 @@
     </head>
     <body>
         <div class="wrapper ">
-            <div class="sidebar bg-dark">
+            <div class="sidebar bg-navbar">
                 <!--
                     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
                     Tip 2: you can also add an image using data-image tag
                     -->
                 <div class="logo text-center">
-                    <img src="../frontend/img/logo.png" alt="" style="width: 150px;">
+                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
                         <li class="nav-item active ">
-                            <a class="nav-link">
+                            <a class="nav-link" href="{{URL::to('/dashboard')}}">
                                 <i class="material-icons">dashboard</i>
                                 <p> Dashboard </p>
                             </a>
@@ -100,7 +100,7 @@
                 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                     <div class="container-fluid">
                         <div class="navbar-wrapper">
-                            <a class="navbar-brand" href="javascript:;">Anema Mart Dashboard</a>
+                            <a class="navbar-brand" href="javascript:;">foodthings Mart Dashboard</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="sr-only">Toggle navigation</span>
@@ -138,12 +138,8 @@
                                 <div class="card">
                                     <div class="card-header card-header-rose card-header-icon">
                                         <div class="card-icon">
-                                            <i class="material-icons">assignment</i>
-                                            <a class="material-icons">
-                                                <h3 class="font-weight-bold">
-                                                    {{$count = count($details)}}
-                                                </h3>
-                                            </a>
+                                            <i class="material-icons">search</i>
+                                            
                                         </div>
                                         <h4 class="header font-weight-bold">Product Table</h4>
                                         <a href="{{URL::to('/all-product')}}" style="margin-top:-70px;" class="float-right btn btn-orange">Go Back</a>
@@ -234,7 +230,7 @@
                             &copy;
                             <script>
                             document.write(new Date().getFullYear())
-                            </script>,Anema City Center. All rights reserved.
+                            </script>,foodthings City Center. All rights reserved.
                         </div>
                     </div>
                 </footer>
