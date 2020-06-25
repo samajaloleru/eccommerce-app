@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 return [
-    $DATABASE_URL=parse_url('postgres://ahbebwtksbcanw:377de58c24e3a67133794d5e2e936a91035f1e4e778722d0283b9ad31b8c2802@ec2-52-71-85-210.compute-1.amazonaws.com:5432/ddu8u8v5k08ap5'),
+    $DATABASE_URL=parse_url('postgres://efcfdehsrttfvf:d279350d4c7a5eeb6bfc6504777df082d60d1d8ff80cced3c390725ed37597f6@ec2-52-204-232-46.compute-1.amazonaws.com:5432/ddhq23ijthsjr2'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,8 +67,8 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $DATABASE_URL("host"),
-            'port' => $DATABASE_URL("port"),
+            'host' => $DATABASE_URL('host'),
+            'port' => $DATABASE_URL('port'),
             'database' => ltrim($DATABASE_URL["path"], "/"),
             'username' => $DATABASE_URL["user"],
             'password' => $DATABASE_URL["pass"],
