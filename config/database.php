@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 return [
-    $DATABASE_URL=parse_url("postgres://efcfdehsrttfvf:d279350d4c7a5eeb6bfc6504777df082d60d1d8ff80cced3c390725ed37597f6@ec2-52-204-232-46.compute-1.amazonaws.com:5432/ddhq23ijthsjr2");
+    $DATABASE_URL=parse_url("postgres://efcfdehsrttfvf:d279350d4c7a5eeb6bfc6504777df082d60d1d8ff80cced3c390725ed37597f6@ec2-52-204-232-46.compute-1.amazonaws.com:5432/ddhq23ijthsjr2"),
 
     /*
     |--------------------------------------------------------------------------
