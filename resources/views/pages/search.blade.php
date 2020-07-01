@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-lg pt-0 bg-dark">
+            <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container-fluid">
                     <a class="navbar-brand mb-0">
                         <img src="../frontend/img/logo.png" alt="" style="width: 100px;">

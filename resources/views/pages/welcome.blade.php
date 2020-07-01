@@ -17,40 +17,19 @@
         <link href="/frontend/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
         <link href="/frontend/css/paper-kit.css" rel="stylesheet" type="text/css" >
         <link href="/frontend/css/style.css" rel="stylesheet" type="text/css" >
-
     </head>
     <body>
         <div class="header-2">
-            <nav class="navbar navbar-expand-lg text-red bg-navbar">
-                <div class="container-fluid">
-                    <a class="navbar-brand white">
-                        <i class="fa icon1 mr-3 fa-envelope"></i>
-                        enquiry@foodthings.com
+            <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
+                <div class="container">
+                    <a class="navbar-brand mb-0">
+                        <img href="/" src="../frontend/img/logo.png" alt="" style="width: 100px;">
                     </a>
-                    <a class="navbar-brand white">7 days delivery, 10am - 5pm</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
                         <span class="navbar-toggler-bar bar2"></span>
                         <span class="navbar-toggler-bar bar3"></span>
                     </button>
-                    <div class="collapse navbar-collapse">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a target="_blank" class="btn btn-link btn-neutral">
-                                    <i class="fa fa-facebook"></i>
-                                    <i class="fa fa-instagram"></i>
-                                    <i class="fa fa-whatsapp"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <nav class="navbar navbar-expand-lg pt-0 bg-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
-                    </a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ml-auto">
                             <form action="{{url('/search')}}" method="POST" class="form-inline">
@@ -101,11 +80,11 @@
         <div class="main">
             <div class="section py-0">
                
-                <div class="container-fluid bg-page px-lg-5">
+                <div class="container bg-page px-lg-5">
                     <div class="row py-lg-4">
                         <div class="col">
                             <div class="row">
-                                <div class=" col-12">
+                                <div class="col-4 vibrate-1">
                                     <div id="blue" role="tablist" aria-multiselectable="true">
                                         <div class="card no-transition">
                                             <div class="card-header card-collapse" role="tab" id="headingTwo">
@@ -126,7 +105,7 @@
 
                                                         foreach($all_published_category as $v_category){?>
                                                         
-                                                            <div class="col-lg-2 col-12 pt-2 col-sm-6 text-center font-weight-bold">
+                                                            <div class="col-12 pt-2 text-center font-weight-bold">
                                                                 <a class="btn bg-orange click drop-header btn-block" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
                                                                     {{$v_category->category_name}}
                                                                 </a>
@@ -137,9 +116,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
+                                <div class="col-8">
                                     <div class="row pb-5">
                                         <div class="col-12 pt-2 pt-lg-0 pb-lg-0 px-lg-0">
                                             <div class="card mb-0 card-raised page-carousel">
@@ -185,141 +162,50 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <!-- Tab panes -->
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-12 bg-orange">
-                                                <a class="pl-0 header-white py-2">Best Selling</a>
-                                            </div>
-                                            <div class="products pt-3">
-                                                <div class="row">
-                                                <?php 
-                                                    $product=DB::table('product')
-                                                    ->where('best_status',1)
-                                                    ->limit('12')
-                                                    ->get();
-                                                foreach($product as $v_product){?>   
-                                                    <div class="col-md-2 col-sm-4 col-6">
-                                                        <div class="card">
-                                                            <div class="card-image">
-                                                                <a href="">
-                                                                    <img src="{{$v_product->image}}" href="{{URL::to('/view_product/'.$v_product->product_id)}}" style="height:200px; width:100%" class="img-rounded img-responsive">
-                                                                </a>
-                                                                <div class="card-body">
-                                                                    <div class="card-description text-height">
-                                                                        <h6 class="float-left font-weight-bold">{{$v_product->product_name}}</h6>
+                                </div>
+                            </div>
 
-                                                                        <h6 class="float-right">₦ {{$v_product->price}}</h6>
-                                                                    </div>
-                                                                    <div class="col-12 pt-4 text-center px-0">
-                                                                        <a href="{{URL::to('/view_product/'.$v_product->product_id)}}" class="btn product-text btn-product btn-block">Add to Cart</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php } ?>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="row py-5">
-                                            <div class="col-12 col-lg-11 ml-auto mr-auto px-0 pt-2 pt-lg-0 pb-lg-0 px-lg-0">
-                                                <div class="card mb-0 card-raised page-carousel">
-                                                    <div id="carouselExampleIndicator" class="carousel slide" data-interval="3000" data-ride="carousel">
-                                                        <ol class="carousel-indicators">
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="1" class="active"></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="3" class=""></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="4" class=""></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="5" class=""></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="6" class=""></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="7" class=""></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="8" class=""></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="9" class=""></li>
-                                                            <li data-target="#carouselExampleIndicator" data-slide-to="10" class=""></li>
-                                                        </ol>
-                                                        
-                                                            <div class="carousel-inner" role="listbox">
-                                                            <?php
-                                                                $all_published_advert=DB::table('advert_slider')
-                                                                                ->where('status',1)
-                                                                                ->get();
-                                                                foreach($all_published_advert as $key => $v_slider){?>
-                                                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                                                                    <div class="page-header page-header-xs" style="background-image: url('{{$v_slider->advert_image}}');">
-                                                                        <div class="content-center">
-                                                                            <div class="container">
-                                                                                <div class="row">
-                                                                                    <div class="col-md-12 text-left">
-                                                                                        
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <?php } ?>
-                                                            </div>
-                                                        <a class="left carousel-control carousel-control-prev" href="#carouselExampleIndicator" role="button" data-slide="prev">
-                                                            <span class="fa fa-angle-left"></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                        <a class="right carousel-control carousel-control-next" href="#carouselExampleIndicator" role="button" data-slide="next">
-                                                            <span class="fa fa-angle-right"></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class=" col-12 bg-orange">
-                                                <a class="pl-0 header float-left">Featured Products</a>
-                                                <div class="float-right">
-                                                    <div class="pt-3" >
-                                                        <a href="/view-more" class="btn-sm white btn bg-navbar">view more</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="products pt-3">
-                                                <div class="row">
-                                                <?php 
-                                                    $product=DB::table('product')
-                                                    ->where('status',1)
-                                                    ->inRandomOrder()
-                                                    ->limit('30')
-                                                    ->get();
-                                                foreach($product as $v_product){?>   
-                                                    <div class="col-md-2 col-sm-4 col-6">
-                                                        <div class="card">
-                                                            <div class="card-image">
-                                                                <a href="">
-                                                                    <img src="{{$v_product->image}}" href="{{URL::to('/view_product/'.$v_product->product_id)}}" style="height:200px; width:100%" class="img-rounded img-responsive">
-                                                                </a>
-                                                            </div>
-                                                            <div class="card-body px-1">
-                                                                <div class="card-description text-height">
-                                                                    <h6 class="float-left font-weight-bold">{{$v_product->product_name}}</h6>
-                                                                
-                                                                    <h6 class="float-right">₦ {{$v_product->price}}</h6>
-                                                                </div>
-                                                                <div class="col-12 pt-4 text-center px-0">
-                                                                    <a href="{{URL::to('/view_product/'.$v_product->product_id)}}" class="btn product-text btn-product btn-block">Add to Cart</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php } ?>
-                                                </div>
-                                                
-                                            </div>
+                            <div class="row">
+                                <div class=" col-12 bg-orange">
+                                    <a class="pl-0 header float-left">Featured Products</a>
+                                    <div class="float-right">
+                                        <div class="pt-3" >
+                                            <a href="/view-more" class="btn-sm white btn bg-navbar">view more</a>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="products pt-3">
+                                    <div class="row">
+                                    <?php 
+                                        $product=DB::table('product')
+                                        ->where('status',1)
+                                        ->inRandomOrder()
+                                        ->limit('30')
+                                        ->get();
+                                    foreach($product as $v_product){?>   
+                                        <div class="col-md-2 col-sm-4 col-6">
+                                            <div class="card">
+                                                <div class="card-image">
+                                                    <a href="">
+                                                        <img src="{{$v_product->image}}" href="{{URL::to('/view_product/'.$v_product->product_id)}}" style="height:200px; width:100%" class="img-rounded img-responsive">
+                                                    </a>
+                                                </div>
+                                                <div class="card-body px-1">
+                                                    <div class="card-description text-height">
+                                                        <h6 class="float-left font-weight-bold">{{$v_product->product_name}}</h6>
+                                                    
+                                                        <h6 class="float-right">₦ {{$v_product->price}}</h6>
+                                                    </div>
+                                                    <div class="col-12 pt-4 text-center px-0">
+                                                        <a href="{{URL::to('/view_product/'.$v_product->product_id)}}" class="btn product-text btn-product btn-block">Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
