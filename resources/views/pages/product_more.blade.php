@@ -81,7 +81,7 @@
         <div class="main">
             <div class="section py-0">
                
-                <div class="container-fluid bg-page px-lg-5">
+                <div class="container bg-page px-lg-5">
                     <div class="row p-lg-4">
                         <div class="col">
                             <h4  class="black font-weight-bold">
