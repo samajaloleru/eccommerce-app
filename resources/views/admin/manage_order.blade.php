@@ -38,54 +38,35 @@
                                 <p> Dashboard </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{URL::to('/all-category')}}">
-                                <i class="material-icons">dashboard</i>
-                                <p>All Categories</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{URL::to('/add-category')}}">
-                                <i class="material-icons">dashboard</i>
-                                <p>Add category</p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/all-product')}}">
                                 <i class="material-icons">dashboard</i>
                                 <p>All Products</p>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/add-product')}}">
                                 <i class="material-icons">dashboard</i>
                                 <p>Add Product</p>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/all-slider')}}">
                                 <i class="material-icons">dashboard</i>
                                 <p>All Sliders</p>
                             </a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/add-slider')}}">
                                 <i class="material-icons">dashboard</i>
                                 <p>Add Slider</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{URL::to('/all-advert')}}">
-                                <i class="material-icons">dashboard</i>
-                                <p>All Adverts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{URL::to('/add-advert')}}">
-                                <i class="material-icons">dashboard</i>
-                                <p>Add Advert</p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/manage-order')}}">
                                 <i class="material-icons">dashboard</i>
@@ -154,7 +135,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>{{ $no++ }}</td>
-                                                        <td>{{$v_order->customer_name}}</td>
+                                                        <td>{{$v_order->shipping_firstname}}</td>
                                                         <td>{{$v_order->order_total}}</td>
                                                         <td>
                                                             @if($v_order->order_status=='pending')

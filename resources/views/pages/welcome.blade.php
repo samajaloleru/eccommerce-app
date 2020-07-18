@@ -22,8 +22,8 @@
         <div class="header-2">
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container">
-                    <a class="navbar-brand mb-0">
-                        <img href="/" src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <a  href="/" class="navbar-brand mb-0">
+                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
@@ -35,42 +35,21 @@
                             <form action="{{url('/search')}}" method="POST" class="form-inline">
                                 {{ csrf_field() }}
                                 <input class="form-control mr-sm-2 no-border" name="q" type="text" placeholder="Search">
-                                <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split"></i></button>
+                                <button type="submit" class="btn btn-primary btn-just-icon"><i class="nc-icon icon1 nc-zoom-split"></i></button>
                             </form>
 
                             <a href="/" class="pt-lg-3 px-2 px-lg-4 ">
                                 <span class="navbar-text font-weight-bold">Shop</span>
                             </a>
                             
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
+                            <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
                                         <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
-                                <?php }else{?>
-                                    <a href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <span class="navbar-text font-weight-bold">Checkout</span>
-                                    </a>
-                            <?php } ?>
                             <a href="{{URL::to('/show-cart')}}" class="px-2 px-lg-4 pt-lg-3">
                                 <i class="icon white fa fa-shopping-cart mr-2"></i>
                                 <span class="navbar-text font-weight-bold">My Basket</span>
                                 <sup class="sup-text">{{Cart::count()}}</sup>
                             </a>
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a type="button" href="{{URL::to('/customer-logout')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <i class="icon white mr-1 fa fa-user"></i>
-                                        <span class="navbar-text font-weight-bold">Logout</span>
-                                    </a>
-                                <?php }else{?>
-                                <a type="button" href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                    <i class="icon white mr-1 fa fa-user"></i>
-                                    <span class="navbar-text font-weight-bold">Login</span>
-                                </a>
-                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -84,39 +63,7 @@
                     <div class="row py-lg-4">
                         <div class="col">
                             <div class="row">
-                                <div class="col-4 vibrate-1">
-                                    <div id="blue" role="tablist" aria-multiselectable="true">
-                                        <div class="card no-transition">
-                                            <div class="card-header card-collapse" role="tab" id="headingTwo">
-                                                <h3 class="my-0 panel-title">
-                                                    <a class="black-header font-weight-bold collapsed" data-toggle="collapse" data-parent="#blue" href="#categories" aria-expanded="false" aria-controls="categories">
-                                                        Categories
-                                                        <i class="nc-icon nc-minimal-down"></i>
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                            <div id="categories" class="bg-page collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                <div class="row p-3" id="blue" aria-expanded="true">
-
-                                                        <?php
-                                                            $all_published_category=DB::table('category')
-                                                                                    ->where('status',1)
-                                                                                    ->get();
-
-                                                        foreach($all_published_category as $v_category){?>
-                                                        
-                                                            <div class="col-12 pt-2 text-center font-weight-bold">
-                                                                <a class="btn bg-orange click drop-header btn-block" href="{{URL::to('/product_by_category/'.$v_category->category_id)}}">
-                                                                    {{$v_category->category_name}}
-                                                                </a>
-                                                            </div>
-                                                        <?php } ?> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-8">
+                                <div class="col-12">
                                     <div class="row pb-5">
                                         <div class="col-12 pt-2 pt-lg-0 pb-lg-0 px-lg-0">
                                             <div class="card mb-0 card-raised page-carousel">
@@ -167,15 +114,15 @@
                             </div>
 
                             <div class="row">
-                                <div class=" col-12 bg-orange">
-                                    <a class="pl-0 header float-left">Featured Products</a>
+                                <div class=" col-12 bg-navbar p-2 round">
+                                    <a class="header-two float-left">Featured Products</a>
                                     <div class="float-right">
-                                        <div class="pt-3" >
-                                            <a href="/view-more" class="btn-sm white btn bg-navbar">view more</a>
+                                        <div class="pt-1" >
+                                            <a href="/view-more" class="btn-sm white btn bg-orange">view more</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="products pt-3">
+                                <div class="products pt-4">
                                     <div class="row">
                                     <?php 
                                         $product=DB::table('product')
@@ -219,9 +166,13 @@
                 <div class="row">
                     <div class="col-12 ">
                         <div class="row">
-                            <div class="col-lg-4 col-12">
+                            <div class="col-12">
                                 <div class="links">
                                     <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12">
+                                <div class="links">
                                     <p class="white text-left pt-3">
                                         Contact: 08126432202, 08061347511, 08032461836
                                     </p>
@@ -236,39 +187,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-lg-4 col-sm-4 pl-lg-5">
-                                <div class="links">
-                                    <ul class="uppercase-links stacked-links">
-                                        <li>
-                                            <a href="/">
-                                                Shop
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/about">
-                                                About Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Blog
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Live Support
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Money Back
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-lg-4 col-sm-8">
+                            <div class="col-12 col-sm-8">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
@@ -278,15 +197,15 @@
                                                 <div class="subscribe-line subscribe-line-black">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="col-6">
+                                                            <div class="col-lg-6 col-12">
                                                                 <form class="">
                                                                     <div class="form-group">
                                                                         <input type="text" value="" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div class="col-6">
-                                                                <button type="button" class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
+                                                            <div class="col-lg-6 col-12">
+                                                                <button class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
                                                             </div>
                                                         </div>
                                                     </div>

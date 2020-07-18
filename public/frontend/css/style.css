@@ -72,6 +72,10 @@ p {
     text-decoration: none;
 }
 
+.round {
+    border-radius: .3rem!important;
+}
+
 .header-total {
     font-size: 20px;
     color:black !important;
@@ -81,8 +85,14 @@ p {
 .header {
     font-size: 25px;
     padding-left: 0px;
-    padding: 15px;
     color:black !important;
+    text-decoration: none;
+}
+
+.header-two {
+    font-size: 25px;
+    padding-left: 0px;
+    color:white !important;
     text-decoration: none;
 }
 
@@ -207,14 +217,13 @@ p {
       margin: 0;
   }
 
-  input[type=text] {
+input[type=text] {
     width: 100%;
-    padding: 9px 20px;
+    padding: 0px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 0;
-    border-bottom: aqua;
-  }
+    height: 35px;
+}
 
 .sup-text {
     color:white;
@@ -291,5 +300,5 @@ p {
               transform: translate(0);
     }
   }
-  
+
   

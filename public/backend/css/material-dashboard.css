@@ -12583,7 +12583,8 @@ a {
     .sidebar .nav p {
       margin: 0;
       line-height: 30px;
-      font-size: 14px;
+      font-size: 16px !important;
+      font-weight: 600;
       color: white !important;
       position: relative;
       display: block;

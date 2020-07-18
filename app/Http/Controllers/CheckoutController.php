@@ -19,47 +19,6 @@ class CheckoutController extends Controller
         return view('pages.login');
     }
 
-    public function customer_registration(Request $request)
-    {
-        $data=array();
-        $data['customer_name']=$request->customer_name;
-        $data['customer_email']=$request->customer_email;
-        $data['password']=md5($request->password);
-        $data['mobile_number']=$request->mobile_number;
-
-            $customer_id=DB::table('customer')
-                        ->insertGetId($data);
-
-                    Session::put('customer_id',$customer_id);
-                    Session::put('customer_name',$request->customer_name);
-                    return Redirect('/checkout');
-    }
-
-    public function customer_login(Request $request)
-    {
-        $customer_email=$request->customer_email;
-        $password=md5($request->password);
-
-            $result=DB::table('customer')
-                    ->where('customer_email',$customer_email)
-                    ->where('password',$password)
-                    ->first();
-                    
-                    if ($result) {
-
-                        Session::put('customer_id',$result->customer_id);
-                        return Redirect::to('/checkout');
-                    }else{
-                        return Redirect::to('/login-check');
-                    }
-    }
-
-    public function customer_logout()
-    {
-        Session::flush();
-        return Redirect::to('/login-check');
-    }
-
     public function shipping_details(Request $request)
     {
         $data=array();
@@ -100,7 +59,6 @@ class CheckoutController extends Controller
                     ->insertGetId($pdata);
 
         $odata=array();
-        $odata['customer_id']=Session::get('customer_id');
         $odata['shipping_id']=Session::get('shipping_id');
         $odata['payment_id']=$payment_id;
         $odata['order_total']=Cart::total();
@@ -122,17 +80,17 @@ class CheckoutController extends Controller
         }
 
         if ($payment_gateway=='handcash') {
-            $email =Session::get('customer_id');
+            // $email =Session::get('customer_id');
 
-            $customer = DB::table('customer')
-                        ->where('customer_id',$email)
-                        ->select('customer_email')
-                        ->first();
+            // $customer = DB::table('customer')
+            //             ->where('customer_id',$email)
+            //             ->select('customer_email')
+            //             ->first();
                 // echo "<pre>";
                 // print_r($customer);
                 // echo "</pre>";
                 // exit();
-            Mail::to($customer->customer_email)->send(new OrderMail());
+            //Mail::to($customer->customer_email)->send(new OrderMail());
             Cart::destroy();
             return Redirect::to('/');
             
@@ -145,8 +103,8 @@ class CheckoutController extends Controller
     public function manage_order()
     {
         $all_order_info = DB::table('order')
-                    ->join('customer','order.customer_id','=','customer.customer_id')
-                     ->select('order.*','customer.customer_name')
+                    ->join('shipping','order.shipping_id','=','shipping.shipping_id')
+                     ->select('order.*','shipping.shipping_firstname')
                      ->latest()
                     ->get(); 
 
@@ -161,10 +119,9 @@ class CheckoutController extends Controller
     {   
         $order_by_id = DB::table('order')
                     ->where('order.order_id',$order_id)
-                    ->join('customer','order.customer_id','=','customer.customer_id')
                     ->join('order_details','order.order_id','=','order_details.order_id')
                     ->join('shipping','order.shipping_id','=','shipping.shipping_id')
-                    ->select('order.*','order_details.*','shipping.*','customer.*')
+                    ->select('order.*','order_details.*','shipping.*')
                     ->get(); 
 
             // echo "<pre>";

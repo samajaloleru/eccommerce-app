@@ -64,17 +64,9 @@
                                 <span class="navbar-text font-weight-bold">Shop</span>
                             </a>
                             
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
+                            <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
                                         <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
-                                <?php }else{?>
-                                    <a href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <span class="navbar-text font-weight-bold">Checkout</span>
-                                    </a>
-                            <?php } ?>
                             <a href="{{URL::to('/show-cart')}}" class="px-2 px-lg-4 pt-lg-3">
                                 <i class="icon white fa fa-shopping-cart mr-2"></i>
                                 <span class="navbar-text font-weight-bold">My Basket</span>
@@ -159,9 +151,13 @@
                 <div class="row">
                     <div class="col-12 ">
                         <div class="row">
-                            <div class="col-lg-4 col-12">
+                            <div class="col-12">
                                 <div class="links">
                                     <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12">
+                                <div class="links">
                                     <p class="white text-left pt-3">
                                         Contact: 08126432202, 08061347511, 08032461836
                                     </p>
@@ -176,39 +172,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-lg-4 col-sm-4 pl-lg-5">
-                                <div class="links">
-                                    <ul class="uppercase-links stacked-links">
-                                        <li>
-                                            <a href="/">
-                                                Shop
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/about">
-                                                About Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Blog
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Live Support
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Money Back
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-lg-4 col-sm-8">
+                            <div class="col-12 col-sm-8">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
@@ -218,15 +182,15 @@
                                                 <div class="subscribe-line subscribe-line-black">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="col-6">
+                                                            <div class="col-lg-6 col-12">
                                                                 <form class="">
                                                                     <div class="form-group">
                                                                         <input type="text" value="" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div class="col-6">
-                                                                <button type="button" class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
+                                                            <div class="col-lg-6 col-12">
+                                                                <button class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
                                                             </div>
                                                         </div>
                                                     </div>

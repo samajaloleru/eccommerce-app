@@ -2799,7 +2799,7 @@ select,
 textarea {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Heebo", "Helvetica", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-weight: 300;
 }
 
@@ -2900,7 +2900,7 @@ h3 .small {
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
-  font-family: "Heebo", "Helvetica", Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .title,
@@ -3025,7 +3025,7 @@ body {
   color: #66615b;
   font-size: 14px;
   font-weight: 300;
-  font-family: 'Heebo', "Helvetica", Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 a {
@@ -3417,8 +3417,8 @@ fieldset[disabled] .btn.active {
   border-radius: 50px;
   height: 40px;
   width: 40px;
-  min-width: 40px;
-  padding: 8px;
+  /* min-width: 40px; */
+  padding: 3px;
 }
 
 .btn-just-icon.btn-sm {
@@ -8756,7 +8756,7 @@ textarea.form-control {
 
 .subscribe-line .form-control {
   height: auto;
-  font-size: 1.825em;
+  font-size: 1.5em;
   border: 0;
   padding: 0;
   font-weight: 300;

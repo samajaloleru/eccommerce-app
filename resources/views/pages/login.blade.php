@@ -23,8 +23,8 @@
         <div class="header-2">
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container">
-                    <a class="navbar-brand mb-0">
-                        <img href="/" src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <a  href="/" class="navbar-brand mb-0">
+                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
@@ -43,35 +43,14 @@
                                 <span class="navbar-text font-weight-bold">Shop</span>
                             </a>
                             
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
+                            <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
                                         <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
-                                <?php }else{?>
-                                    <a href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <span class="navbar-text font-weight-bold">Checkout</span>
-                                    </a>
-                            <?php } ?>
                             <a href="{{URL::to('/show-cart')}}" class="px-2 px-lg-4 pt-lg-3">
                                 <i class="icon white fa fa-shopping-cart mr-2"></i>
                                 <span class="navbar-text font-weight-bold">My Basket</span>
                                 <sup class="sup-text">{{Cart::count()}}</sup>
                             </a>
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a type="button" href="{{URL::to('/customer-logout')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <i class="icon white mr-1 fa fa-user"></i>
-                                        <span class="navbar-text font-weight-bold">Logout</span>
-                                    </a>
-                                <?php }else{?>
-                                <a type="button" href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                    <i class="icon white mr-1 fa fa-user"></i>
-                                    <span class="navbar-text font-weight-bold">Login</span>
-                                </a>
-                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -81,52 +60,48 @@
         <div class="main">
             <div class="section py-0">
                
-                <div class="container-fluid py-5 bg-page px-lg-5">
+                <div class="container py-5 bg-page px-lg-5">
                     <div class="row justify-content-center">
-                        <div class="col-lg-9 col-12">
-                            <div class="row pt-5">
-                                <div class="col-md-10 col-sm-12 col-12 mr-auto ml-auto">
-                                    <div class="row">
-                                        <div class="col-sm-5 col-12">
-                                            <p class="text-black">Login to your account</p>
-                                            
-                                            <form action="{{url('/customer-login')}}"  method="post">
-                                                {{ csrf_field() }}
-                                                <div class="form-group">
-                                                    <input type="email" required="" placeholder="Email" name="customer_email" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="password" required="" placeholder="Password" name="password" class="form-control" />
-                                                </div>
-                                                <button type="submit" class="btn btn-danger price-text btn-sm btn-block"> Log in</button>
-                                            </form>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-5 col-12">
+                                    <p class="text-black">Login to your account</p>
+                                    
+                                    <form action="{{url('/customer-login')}}"  method="post">
+                                        {{ csrf_field() }}
+                                        <div class="form-group">
+                                            <input type="email" required="" placeholder="Email" name="customer_email" class="form-control" />
                                         </div>
+                                        <div class="form-group">
+                                            <input type="password" required="" placeholder="Password" name="password" class="form-control" />
+                                        </div>
+                                        <button type="submit" class="btn btn-danger price-text btn-sm btn-block"> Log in</button>
+                                    </form>
+                                </div>
 
-                                        <div class="col-sm-2 col-12 text-center">
-                                            <div class="pt-5 header">OR</div>
-                                        </div>
+                                <div class="col-sm-2 col-12 text-center">
+                                    <div class="pt-5 header">OR</div>
+                                </div>
 
-                                        <div class="col-sm-5 col-12 pt-sm-0 pt-5">
-                                            <p class="text-black">Create your account free and secure</p>
-                                            <form action="{{url('/customer-registration')}}"  method="post">
-                                                {{ csrf_field() }}
-                                
-                                                <div class="form-group">
-                                                    <input type="text" placeholder="Fullname" name="customer_name" class="form-control" required="" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="email" placeholder="Email" name="customer_email" class="form-control" required="" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="password" placeholder="Password" name="password" class="form-control" required="" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" placeholder="Mobile Number" name="mobile_number" class="form-control" required="" />
-                                                </div>
-                                                <button type="submit" class="btn btn-danger price-text btn-sm btn-block">Register</button>
-                                            </form>
+                                <div class="col-sm-5 col-12 pt-sm-0 pt-5">
+                                    <p class="text-black">Create your account free and secure</p>
+                                    <form action="{{url('/customer-registration')}}"  method="post">
+                                        {{ csrf_field() }}
+                        
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Fullname" name="customer_name" class="form-control" required="" />
                                         </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <input type="email" placeholder="Email" name="customer_email" class="form-control" required="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Password" name="password" class="form-control" required="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Mobile Number" name="mobile_number" class="form-control" required="" />
+                                        </div>
+                                        <button type="submit" class="btn btn-danger price-text btn-sm btn-block">Register</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

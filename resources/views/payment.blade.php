@@ -23,8 +23,8 @@
         <div class="header-2">
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container">
-                    <a class="navbar-brand mb-0">
-                        <img href="/" src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <a  href="/" class="navbar-brand mb-0">
+                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
@@ -36,42 +36,21 @@
                             <form action="{{url('/search')}}" method="POST" class="form-inline">
                                 {{ csrf_field() }}
                                 <input class="form-control mr-sm-2 no-border" name="q" type="text" placeholder="Search">
-                                <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split"></i></button>
+                                <button type="submit" class="btn btn-primary btn-just-icon"><i class="nc-icon icon1 nc-zoom-split"></i></button>
                             </form>
 
                             <a href="/" class="pt-lg-3 px-2 px-lg-4 ">
                                 <span class="navbar-text font-weight-bold">Shop</span>
                             </a>
                             
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
+                            <a href="{{URL::to('/checkout')}}" class="px-2 px-lg-4 pt-lg-3">
                                         <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
-                                <?php }else{?>
-                                    <a href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <span class="navbar-text font-weight-bold">Checkout</span>
-                                    </a>
-                            <?php } ?>
                             <a href="{{URL::to('/show-cart')}}" class="px-2 px-lg-4 pt-lg-3">
                                 <i class="icon white fa fa-shopping-cart mr-2"></i>
                                 <span class="navbar-text font-weight-bold">My Basket</span>
                                 <sup class="sup-text">{{Cart::count()}}</sup>
                             </a>
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a type="button" href="{{URL::to('/customer-logout')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <i class="icon white mr-1 fa fa-user"></i>
-                                        <span class="navbar-text font-weight-bold">Logout</span>
-                                    </a>
-                                <?php }else{?>
-                                <a type="button" href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                    <i class="icon white mr-1 fa fa-user"></i>
-                                    <span class="navbar-text font-weight-bold">Login</span>
-                                </a>
-                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -81,116 +60,112 @@
         <div class="main">
             <div class="section py-0">
                
-                <div class="container-fluid py-5 bg-page px-lg-5">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-10 col-12">
-                            <div class="row p-0">
-                                <div class="col-lg-10 col-12 ml-auto mr-auto">
-                                    <h4 class="header font-weight-bold">Shopping Cart Table</h4>
-                                    <div class="table-responsive">
-                                        <?php
-                                            $contents=Cart::content();
-                                            
-                                        ?>
-                                        <table class="table table-shopping">
-                                            <thead>
-                                                <tr>
-                                                    <th class="table-header text-center">Image</th>
-                                                    <th class="table-header">Name</th>
-                                                    <th class="table-header text-right">Price</th>
-                                                    <th class="table-header text-right">Quantity</th>
-                                                    <th class="table-header text-right">Total</th>
-                                                    <th class="table-header text-right">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                
-                                                <?php foreach($contents as $v_contents){?>
-                                                <tr>
-                                                    <td>
-                                                        <div class="img-container">
-                                                            <img src="{{URL::to($v_contents->options->image)}}">
-                                                        </div>
-                                                    </td>
-                                                    <td class="td-product">
-                                                        <strong>{{$v_contents->name}}</strong>
-                                                    </td>
-                                                    <td class="td-price">
-                                                        <small>₦</small>{{$v_contents->price}}
-                                                    </td>
-                                                    <td class="td-number">
-                                                        <div class="btn-group pl-3">
-                                                            <form action="{{url('/update-cart')}}" method="post">
-                                                            {{ csrf_field() }}
-                                                                <input type="number" autocomplete="off" class="text-center" style="width:30px" name="qty" value="{{$v_contents->qty}}">
-                                                                <input type="hidden" name="rowId" value="{{$v_contents->rowId}}">
-                                                                <input type="submit" name="submit" value="update">
-                                                            </form>
-                                                        </div>
-                                                    </td>
-                                                    <td class="td-number td-quantity">
-                                                        <small>₦</small>{{$v_contents->total}}
-                                                    </td>
-                                                    <td class="td-number">
-                                                        <a href="{{URL::to('/delete-to-cart/'.$v_contents->rowId)}}"><i class="fa fa-times"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <?php }?>
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="td-total">
-                                                        Sub Total
-                                                    </td>
-                                                    <td class="td-total">
-                                                        <small>₦</small>{{Cart::subtotal()}}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="td-total">
-                                                        Tax
-                                                    </td>
-                                                    <td class="td-total">
-                                                        <small>₦</small>{{Cart::tax()}}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="td-total">
-                                                        Total
-                                                    </td>
-                                                    <td class="td-total">
-                                                        <small>₦</small>{{Cart::total()}}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="col-8 pt-3 mr-auto">
-                                    <div class="col-12 pl-0 bg-page">
-                                        <h5 class="black py-2">Payment method</h5>
-                                    </div>
-                                    <form action="{{url('/order-place')}}"  method="post">
-                                        {{ csrf_field() }}
-                        
-                                        <div class="form-group">
-                                            <label class="pr-3">Hand Cash</label>
-                                            <input type="radio" placeholder="Email" required name="payment_method" value="handcash"/>
-                                        </div>
-                                        <div class="col-lg-2 col-md-4 col-12 pl-0">
-                                            <button type="submit" class="btn price-text bg-orange btn-sm btn-block">Done</button>
-                                        </div>
-                                    </form>
-                                </div>
+                <div class="container py-5 bg-page px-lg-5">
+                    <div class="row p-0">
+                        <div class="col-12 ml-auto mr-auto">
+                            <h4 class="header font-weight-bold">Shopping Cart Table</h4>
+                            <div class="table-responsive">
+                                <?php
+                                    $contents=Cart::content();
+                                    
+                                ?>
+                                <table class="table table-shopping">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-header text-center">Image</th>
+                                            <th class="table-header">Name</th>
+                                            <th class="table-header text-right">Price</th>
+                                            <th class="table-header text-right">Quantity</th>
+                                            <th class="table-header text-right">Total</th>
+                                            <th class="table-header text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <?php foreach($contents as $v_contents){?>
+                                        <tr>
+                                            <td>
+                                                <div class="img-container">
+                                                    <img src="{{URL::to($v_contents->options->image)}}">
+                                                </div>
+                                            </td>
+                                            <td class="td-product">
+                                                <strong>{{$v_contents->name}}</strong>
+                                            </td>
+                                            <td class="td-price">
+                                                <small>₦</small>{{$v_contents->price}}
+                                            </td>
+                                            <td class="td-number">
+                                                <div class="btn-group pl-3">
+                                                    <form action="{{url('/update-cart')}}" method="post">
+                                                    {{ csrf_field() }}
+                                                        <input type="number" autocomplete="off" class="text-center" style="width:30px" name="qty" value="{{$v_contents->qty}}">
+                                                        <input type="hidden" name="rowId" value="{{$v_contents->rowId}}">
+                                                        <input type="submit" name="submit" value="update">
+                                                    </form>
+                                                </div>
+                                            </td>
+                                            <td class="td-number td-quantity">
+                                                <small>₦</small>{{$v_contents->total}}
+                                            </td>
+                                            <td class="td-number">
+                                                <a href="{{URL::to('/delete-to-cart/'.$v_contents->rowId)}}"><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                        <?php }?>
+                                        <tr>
+                                            <td colspan="2"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="td-total">
+                                                Sub Total
+                                            </td>
+                                            <td class="td-total">
+                                                <small>₦</small>{{Cart::subtotal()}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="td-total">
+                                                Tax
+                                            </td>
+                                            <td class="td-total">
+                                                <small>₦</small>{{Cart::tax()}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="td-total">
+                                                Total
+                                            </td>
+                                            <td class="td-total">
+                                                <small>₦</small>{{Cart::total()}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
+                        </div>
+
+                        <div class="col-8 pt-3 mr-auto">
+                            <div class="col-12 pl-0 bg-page">
+                                <h5 class="black py-2">Payment method</h5>
+                            </div>
+                            <form action="{{url('/order-place')}}"  method="post">
+                                {{ csrf_field() }}
+                
+                                <div class="form-group">
+                                    <label class="pr-3">Hand Cash</label>
+                                    <input type="radio" placeholder="Email" required name="payment_method" value="handcash"/>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-12 pl-0">
+                                    <button type="submit" class="btn price-text bg-orange btn-sm btn-block">Done</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -203,9 +178,13 @@
                 <div class="row">
                     <div class="col-12 ">
                         <div class="row">
-                            <div class="col-lg-4 col-12">
+                            <div class="col-12">
                                 <div class="links">
                                     <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12">
+                                <div class="links">
                                     <p class="white text-left pt-3">
                                         Contact: 08126432202, 08061347511, 08032461836
                                     </p>
@@ -220,39 +199,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-lg-4 col-sm-4 pl-lg-5">
-                                <div class="links">
-                                    <ul class="uppercase-links stacked-links">
-                                        <li>
-                                            <a href="/">
-                                                Shop
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/about">
-                                                About Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Blog
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Live Support
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            Money Back
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-lg-4 col-sm-8">
+                            <div class="col-12 col-sm-8">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
@@ -262,15 +209,15 @@
                                                 <div class="subscribe-line subscribe-line-black">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="col-6">
+                                                            <div class="col-lg-6 col-12">
                                                                 <form class="">
                                                                     <div class="form-group">
                                                                         <input type="text" value="" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div class="col-6">
-                                                                <button type="button" class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
+                                                            <div class="col-lg-6 col-12">
+                                                                <button class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
                                                             </div>
                                                         </div>
                                                     </div>
