@@ -149,26 +149,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-9">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Product Name</label>
                                                         <input type="text" class="form-control" name="product_name" required="">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Category Name" required="" name="category_id">
-                                                            <?php
-                                                                $all_published_category=DB::table('category')
-                                                                                        ->where('status',1)
-                                                                                    ->get();
-
-                                                                foreach($all_published_category as $v_category){?>
-                                                                <option value="{{$v_category->category_id}}">{{$v_category->category_name}}</option>
-                                                                <?php }?>    
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Price</label>

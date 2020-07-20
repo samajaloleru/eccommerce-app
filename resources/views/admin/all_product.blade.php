@@ -135,7 +135,6 @@
                                                     <tr>
                                                         <th>Product Name</th>
                                                         <th>Price</th>
-                                                        <th>Category</th>
                                                         <th>Image</th>
                                                         <th>Status</th>
                                                         <th>Best Selling Status</th>
@@ -147,7 +146,6 @@
                                                     <tr>
                                                         <td>{{$v_product->product_name}}</td>
                                                         <td>{{$v_product->price}}</td>
-                                                        <td>{{$v_product->category_name}}</td>
                                                         <td>
                                                         <img src="{{URL::to($v_product->image)}}" alt="" style="height:50px; width:150px">
                                                         </td>

@@ -80,17 +80,17 @@ class CheckoutController extends Controller
         }
 
         if ($payment_gateway=='handcash') {
-            // $email =Session::get('customer_id');
+            $email =Session::get('shipping_id');
 
-            // $customer = DB::table('customer')
-            //             ->where('customer_id',$email)
-            //             ->select('customer_email')
-            //             ->first();
-                // echo "<pre>";
-                // print_r($customer);
-                // echo "</pre>";
-                // exit();
-            //Mail::to($customer->customer_email)->send(new OrderMail());
+            $shipping = DB::table('shipping')
+                        ->where('shipping_id',$email)
+                        ->select('shipping_email')
+                        ->first();
+                //echo "<pre>";
+                //print_r($customer);
+                //echo "</pre>";
+                //exit();
+            Mail::to($shipping->shipping_email)->send(new OrderMail());
             Cart::destroy();
             return Redirect::to('/');
             

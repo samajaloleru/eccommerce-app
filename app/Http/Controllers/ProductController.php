@@ -24,8 +24,7 @@ class ProductController extends Controller
     public function all_product() {
         $this->AdminAuthCheck();
         $product = DB::table('product')
-                    ->join('category','product.category_id','=','category.category_id')
-                    ->select('product.*','category.category_name')
+                    ->select('product.*')
                     ->get(); 
 
             // echo "<pre>";
@@ -58,7 +57,6 @@ class ProductController extends Controller
     {   
         $data=array();
         $data['product_name']=$request->product_name;
-        $data['category_id']=$request->category_id;
         $data['short_description']=$request->short_description;
         $data['description']=$request->description;
         $data['price']=$request->price;
@@ -90,8 +88,7 @@ class ProductController extends Controller
       if($q != ""){
          $product = DB::table('product')
                 ->where('product_name', 'LIKE', '%' . $q . '%')
-                ->join('category','product.category_id','=','category.category_id')
-                ->select('product.*','category.category_name')
+                ->select('product.*')
                 ->get();
 
          if(count($product) > 0)
@@ -116,7 +113,6 @@ class ProductController extends Controller
         $product_name = $request->input('product_name');
         $price = $request->input('price');
         $status = $request->input('status');
-        $category_id = $request->input('category_id');
         $best_status = $request->input('best_status');
         // $image = $request->file('image');
         
@@ -135,7 +131,7 @@ class ProductController extends Controller
         //     $image->file = $image_full_name;
         // }
         
-        DB::update('update product set product_name = ?, price = ?, status = ?, category_id = ?, best_status = ? where product_id = ?',[$product_name,$price,$status,$category_id,$best_status,$product_id]);
+        DB::update('update product set product_name = ?, price = ?, status = ?, best_status = ? where product_id = ?',[$product_name,$price,$status,$best_status,$product_id]);
         Session::put('message', 'Product updated successfuly !!');
         return Redirect::to('/all-product');
     }

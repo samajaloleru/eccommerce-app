@@ -53,13 +53,12 @@
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-auto">
-
                             <form action="{{url('/search')}}" method="POST" class="form-inline">
-                                    {{ csrf_field() }}
+                                {{ csrf_field() }}
                                 <input class="form-control mr-sm-2 no-border" name="q" type="text" placeholder="Search">
-                                <button type="submit" class="btn btn-primary btn-just-icon btn-round"><i class="nc-icon nc-zoom-split"></i></button>
+                                <button type="submit" class="btn btn-primary btn-just-icon"><i class="nc-icon icon1 nc-zoom-split"></i></button>
                             </form>
-                            
+
                             <a href="/" class="pt-lg-3 px-2 px-lg-4 ">
                                 <span class="navbar-text font-weight-bold">Shop</span>
                             </a>
@@ -72,19 +71,6 @@
                                 <span class="navbar-text font-weight-bold">My Basket</span>
                                 <sup class="sup-text">{{Cart::count()}}</sup>
                             </a>
-                            <?php $customer_id=Session::get('customer_id'); ?>
-                            
-                                <?php if($customer_id != NULL) {?>
-                                    <a type="button" href="{{URL::to('/customer-logout')}}" class="px-2 px-lg-4 pt-lg-3">
-                                        <i class="icon white mr-1 fa fa-user"></i>
-                                        <span class="navbar-text font-weight-bold">Logout</span>
-                                    </a>
-                                <?php }else{?>
-                                <a type="button" href="{{URL::to('/login-check')}}" class="px-2 px-lg-4 pt-lg-3">
-                                    <i class="icon white mr-1 fa fa-user"></i>
-                                    <span class="navbar-text font-weight-bold">Login</span>
-                                </a>
-                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -156,18 +142,17 @@
                                     <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                                 </div>
                             </div>
+                            
                             <div class="col-lg-4 col-12">
                                 <div class="links">
-                                    <p class="white text-left pt-3">
-                                        Contact: 08126432202, 08061347511, 08032461836
+                                    <p class="white text-left py-3">
+                                        Contact: 08180993644, 07081584664
                                     </p>
                                     <p class="white px-0">
                                         <i class="fa icon1 fa-map-marker"></i>
                                         <span class="font-weight-bold">Our Outlets,</span>
                                         <br/>
-                                        29 NEPA Line, Uyo Akwa Ibom State / foodthings City Mart, 
-                                        <br/>
-                                        5 Osongama Road Behind Emerald Event Center , Osongama Estate , Uyo
+                                        2 Princess Awojola Shelle st, off Asanjo Way, Sangotedo Lagos
                                     </p>
                                 </div>
                             </div>

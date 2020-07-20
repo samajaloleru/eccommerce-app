@@ -81,7 +81,7 @@
                                     <input type="text" placeholder="Address" name="shipping_address" class="form-control" required="" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Mobile Number" name="shipping_mobile" class="form-control" required="" />
+                                    <input type="number" placeholder="Mobile Number" name="shipping_mobile" class="form-control" required="" />
                                 </div>
                                 <div class="form-group">
                                     <input type="text" placeholder="City" name="shipping_city" class="form-control" required="" />
@@ -105,18 +105,17 @@
                                     <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
                                 </div>
                             </div>
+                            
                             <div class="col-lg-4 col-12">
                                 <div class="links">
-                                    <p class="white text-left pt-3">
-                                        Contact: 08126432202, 08061347511, 08032461836
+                                    <p class="white text-left py-3">
+                                        Contact: 08180993644, 07081584664
                                     </p>
                                     <p class="white px-0">
                                         <i class="fa icon1 fa-map-marker"></i>
                                         <span class="font-weight-bold">Our Outlets,</span>
                                         <br/>
-                                        29 NEPA Line, Uyo Akwa Ibom State / foodthings City Mart, 
-                                        <br/>
-                                        5 Osongama Road Behind Emerald Event Center , Osongama Estate , Uyo
+                                        2 Princess Awojola Shelle st, off Asanjo Way, Sangotedo Lagos
                                     </p>
                                 </div>
                             </div>
