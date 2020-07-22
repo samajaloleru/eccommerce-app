@@ -132,7 +132,7 @@
                             
                             <div class="col-lg-4 col-12">
                                 <div class="links">
-                                    <p class="white text-left py-3">
+                                    <p class="white text-left p-top pb-3">
                                         Contact: 08180993644, 07081584664
                                     </p>
                                     <p class="white px-0">
@@ -144,24 +144,24 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-sm-8">
+                            <div class="col-12 col-lg-8">
                                 <div class="links">
                                     <ul class="uppercase-links stacked-links">
                                         <li>
-                                            <a class="col-12">
+                                            <a class="col-12 px-0">
                                                 <h4>Contact Us</h4>
                                                 <div class="separator"></div>
                                                 <div class="subscribe-line subscribe-line-black">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="col-lg-6 col-12">
+                                                            <div class="pl-0 col-md-6 col-12">
                                                                 <form class="">
                                                                     <div class="form-group">
                                                                         <input type="text" value="" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div class="col-lg-6 col-12">
+                                                            <div class="col-md-6 col-12">
                                                                 <button class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
                                                             </div>
                                                         </div>

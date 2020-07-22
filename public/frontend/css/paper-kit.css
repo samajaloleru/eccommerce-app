@@ -8560,7 +8560,7 @@ textarea.form-control {
 }
 
 .footer .links {
-  display: inline-block;
+  display: block;
 }
 
 .footer .links ul {
@@ -8743,7 +8743,7 @@ textarea.form-control {
 
 .subscribe-line {
   background-color: #FFFCF5;
-  padding: 35px 0;
+  padding: 22px 0;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
