@@ -56,7 +56,7 @@
                             <form action="{{url('/search')}}" method="POST" class="form-inline">
                                 {{ csrf_field() }}
                                 <input class="form-control mr-sm-2 no-border" name="q" type="text" placeholder="Search">
-                                <button type="submit" class="btn btn-primary btn-just-icon"><i class="nc-icon icon1 nc-zoom-split"></i></button>
+                                <button type="submit" class="btn bg-orange btn-just-icon"><i class="nc-icon icon1 nc-zoom-split"></i></button>
                             </form>
 
                             <a href="/" class="pt-lg-3 px-2 px-lg-4 ">
@@ -67,7 +67,7 @@
                                         <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
                             <a href="{{URL::to('/show-cart')}}" class="px-2 px-lg-4 pt-lg-3">
-                                <i class="icon white fa fa-shopping-cart mr-2"></i>
+                                <i class="icon orange fa fa-shopping-cart mr-2"></i>
                                 <span class="navbar-text font-weight-bold">My Basket</span>
                                 <sup class="sup-text">{{Cart::count()}}</sup>
                             </a>
@@ -145,14 +145,15 @@
                             
                             <div class="col-lg-4 col-12">
                                 <div class="links">
-                                    <p class="white text-left p-top pb-3">
-                                        Contact: 08180993644, 07081584664
-                                    </p>
-                                    <p class="white px-0">
+                                    <p class="white px-0 p-top pb-3">
                                         <i class="fa icon1 fa-map-marker"></i>
                                         <span class="font-weight-bold">Our Outlets,</span>
                                         <br/>
                                         2 Princess Awojola Shelle st, off Asanjo Way, Sangotedo Lagos
+                                    </p>
+
+                                    <p class="white text-left">
+                                        Contact Us: 08180993644, 07081584664
                                     </p>
                                 </div>
                             </div>
@@ -162,19 +163,18 @@
                                     <ul class="uppercase-links stacked-links">
                                         <li>
                                             <a class="col-12 px-0">
-                                                <h4>Contact Us</h4>
                                                 <div class="separator"></div>
                                                 <div class="subscribe-line subscribe-line-black">
                                                     <div class="container">
                                                         <div class="row">
-                                                            <div class="pl-0 col-md-6 col-12">
+                                                            <div class="pl-0 col-md-6 col-lg-4 col-12">
                                                                 <form class="">
                                                                     <div class="form-group">
                                                                         <input type="text" value="" class="form-control" placeholder="Enter your email...">
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div class="col-md-6 col-12">
+                                                            <div class="col-md-6 col-lg-4 col-12">
                                                                 <button class="btn btn-neutral btn-block btn-lg">Join Newsletter</button>
                                                             </div>
                                                         </div>

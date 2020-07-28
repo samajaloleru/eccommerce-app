@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+body {
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -185,6 +191,11 @@ p {
     background-color: #B73139 !important;
 }
 
+.orange {
+    
+    color: #B73139 !important;
+}
+
 .icon {
     font-size: 30px !important;
 }
@@ -200,7 +211,16 @@ p {
     background-color:  #B73139 !important;
 }
 .p-top {
-    padding-top: .6rem !important;
+    padding-top: .6rem;
+}
+
+.p-title {
+    font-size: 1.1em !important;
+    line-height: 1.2em !important;
+}
+
+.p-sub {
+    font-size: 13px !important;
 }
 
   

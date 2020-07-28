@@ -2799,7 +2799,6 @@ select,
 textarea {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: Arial, sans-serif;
   font-weight: 300;
 }
 
@@ -2900,7 +2899,6 @@ h3 .small {
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
-  font-family: Arial, sans-serif;
 }
 
 .title,
@@ -3025,7 +3023,6 @@ body {
   color: #66615b;
   font-size: 14px;
   font-weight: 300;
-  font-family: Arial, sans-serif;
 }
 
 a {
@@ -14467,7 +14464,7 @@ body {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #B73139;
+    background-color: #003337;
     background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);
     display: block;
     content: "";

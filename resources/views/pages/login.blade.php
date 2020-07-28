@@ -47,7 +47,7 @@
                                         <span class="navbar-text font-weight-bold">Checkout</span>
                                     </a>
                             <a href="{{URL::to('/show-cart')}}" class="px-2 px-lg-4 pt-lg-3">
-                                <i class="icon white fa fa-shopping-cart mr-2"></i>
+                                <i class="icon orange fa fa-shopping-cart mr-2"></i>
                                 <span class="navbar-text font-weight-bold">My Basket</span>
                                 <sup class="sup-text">{{Cart::count()}}</sup>
                             </a>
