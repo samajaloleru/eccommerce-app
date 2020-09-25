@@ -28,7 +28,7 @@
                     Tip 2: you can also add an image using data-image tag
                     -->
                 <div class="logo text-center">
-                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <img src="../frontend/img/logo.png" alt="" >
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
@@ -137,7 +137,6 @@
                                                         <th>Price</th>
                                                         <th>Image</th>
                                                         <th>Status</th>
-                                                        <th>Best Selling Status</th>
                                                         <th class="text-right">Action</th>
                                                     </tr>
                                                 </thead>
@@ -147,21 +146,10 @@
                                                         <td>{{$v_product->product_name}}</td>
                                                         <td>{{$v_product->price}}</td>
                                                         <td>
-                                                        <img src="{{URL::to($v_product->image)}}" alt="" style="height:50px; width:150px">
+                                                        <img src="/storage/image/{{$v_product->image}}" alt="" style="height:50px; width:150px">
                                                         </td>
                                                         <td class="">
                                                             @if($v_product->status==1)
-                                                                <span class="text-success">
-                                                                    Active
-                                                                </span>
-                                                            @else
-                                                                <span class="text-danger">
-                                                                    Unactive
-                                                                </span>
-                                                            @endif
-                                                        </td>
-                                                        <td class="">
-                                                            @if($v_product->best_status==1)
                                                                 <span class="text-success">
                                                                     Active
                                                                 </span>

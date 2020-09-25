@@ -21,6 +21,7 @@ class CreateShipping extends Migration
             $table->string('shipping_address');
             $table->string('shipping_mobile');
             $table->string('shipping_city');
+            $table->string('note');
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@
                     Tip 2: you can also add an image using data-image tag
                     -->
                 <div class="logo text-center">
-                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <img src="../frontend/img/logo.png" alt="" >
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">

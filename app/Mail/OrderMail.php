@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Cart;
 use Illuminate\Queue\SerializesModels;
 
 class OrderMail extends Mailable
@@ -16,9 +17,11 @@ class OrderMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $contents;
+
+    public function __construct($contents)
     {
-        //
+        $contents=Cart::content();
     }
 
     /**
@@ -28,6 +31,7 @@ class OrderMail extends Mailable
      */
     public function build()
     {
+        
         return $this->markdown('email.order');
     }
 }

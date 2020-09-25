@@ -28,7 +28,7 @@
                     Tip 2: you can also add an image using data-image tag
                     -->
                 <div class="logo text-center">
-                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <img src="../frontend/img/logo.png" alt="" >
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
@@ -142,7 +142,7 @@
                                                                 <span class="btn btn-rose btn-round btn-file">
                                                                     <span class="fileinput-new">Select image</span>
                                                                     <span class="fileinput-exists">Change</span>
-                                                                    <input type="file" accept="image/*" required="" name="image"/>
+                                                                    <input type="file" accept="image/" required="" name="image"/>
                                                                 </span>
                                                                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                                                             </div>
@@ -162,7 +162,7 @@
                                                         <input type="number" class="form-control" name="price" required="">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
                                                             <input class="form-check-input" type="checkbox" name="status" value="1">Status
@@ -172,18 +172,8 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" name="best_status" value="1">Best Selling Status
-                                                            <span class="form-check-sign">
-                                                            <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </div>
                                                 
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Short Description</label>
                                                         <input type="text" class="form-control" name="short_description" required="">

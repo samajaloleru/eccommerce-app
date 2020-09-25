@@ -24,7 +24,7 @@
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container">
                     <a  href="/" class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                        <img src="../frontend/img/logo.png" alt="" >
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
@@ -86,7 +86,7 @@
                                         <tr>
                                             <td>
                                                 <div class="img-container">
-                                                    <img src="{{URL::to($v_contents->options->image)}}">
+                                                    <img src="/storage/image/{{$v_contents->options->image}}">
                                                 </div>
                                             </td>
                                             <td class="td-product">
@@ -153,14 +153,37 @@
 
                         <div class="col-8 pt-3 mr-auto">
                             <div class="col-12 pl-0 bg-page">
-                                <h5 class="black py-2">Payment method</h5>
+                                <h5 class="black py-2">Payment and Delivery method</h5>
                             </div>
-                            <form action="{{url('/order-place')}}"  method="post">
+                            <form action="{{url('/order-place')}}" class="row"  method="post">
                                 {{ csrf_field() }}
                 
-                                <div class="form-group">
-                                    <label class="pr-3">Hand Cash</label>
-                                    <input type="radio" placeholder="Email" required name="payment_method" value="handcash"/>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label class="pr-3">Hand Cash</label>
+                                                <input type="radio" placeholder="Email" required name="payment_method" value="handcash"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="pr-3">Credit Card</label>
+                                                <input type="radio" placeholder="Email" disabled required name="payment_method" value="handcash"/>
+                                                <div class="typography-line heartbeat">
+                                                    <p class="font-weight-bold text-danger">Credit Card payment coming soon ...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <select class="selectpicker" data-style="bg-navbar" data-menu-style="dropdown-success" name="delivery_method" required>
+                                                    <option value="" disabled selected> Choose Delivery Method</option>
+                                                    <option value="Delivery">Delivery</option>
+                                                    <option value="Self Pickup">Self Pickup</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-2 col-md-4 col-12 pl-0">
                                     <button type="submit" class="btn price-text bg-orange btn-sm btn-block">Done</button>
@@ -180,7 +203,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                    <img src="../frontend/img/logo.png" alt="" >
                                 </div>
                             </div>
                             

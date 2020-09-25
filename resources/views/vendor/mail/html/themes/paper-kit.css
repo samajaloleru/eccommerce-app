@@ -25,6 +25,22 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
+ ::-webkit-scrollbar {
+  display: none;
+}
+
+.bg-page {
+    
+  background-color: rgb(249, 245, 240, 0.1);
+}
+
+.table-header {
+  font-size: 19px;
+  padding: 15px;
+  color:black !important;
+  text-decoration: none;
+}
+
 .bootstrap-switch {
   display: inline-block;
   direction: ltr;
@@ -14248,14 +14264,14 @@ body {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     border: 1px solid #dddddd;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
   }
   .typography-line {
-    
+    padding-left: 100px !important;
   }
   .projects-1 .project-pills .nav.nav-pills {
     display: block !important;

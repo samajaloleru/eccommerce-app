@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
-use App\Http\Requests;
-use App\Imports\ProductsImport;
 use Session;
-use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests;
+use Excel;
+use App\Product;
+//use App\Imports\ProductsImport;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Input;
-use Excel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
+
 Session_start();
 
 class ProductController extends Controller
@@ -23,15 +26,17 @@ class ProductController extends Controller
 
     public function all_product() {
         $this->AdminAuthCheck();
-        $product = DB::table('product')
-                    ->select('product.*')
-                    ->get(); 
+        $product = Product::select('product.*')->get();
+        return view('admin.all_product')->with('product', $product);
+        // $product = DB::table('product')
+        //             ->select('product.*')
+        //             ->get(); 
 
-            // echo "<pre>";
-            // print_r($product);
-            // echo "</pre>";
-            // exit();
-        return view('admin.all_product',['product'=>$product]);
+        //     // echo "<pre>";
+        //     // print_r($product);
+        //     // echo "</pre>";
+        //     // exit();
+        // return view('admin.all_product',['product'=>$product]);
     }
 
      //this is to Unactive part of product
@@ -55,30 +60,42 @@ class ProductController extends Controller
 
     public function save_product(Request $request)
     {   
-        $data=array();
-        $data['product_name']=$request->product_name;
-        $data['short_description']=$request->short_description;
-        $data['description']=$request->description;
-        $data['price']=$request->price;
-        $data['status']=$request->status;
-        $data['best_status']=$request->best_status;
-        $image=$request->file('image');
-        
-        if ($image) {
-            $image_name=Str::random(40);
-            $ext=strtolower($image->getClientOriginalExtension());
-            $image_full_name=$image_name.'.'.$ext;
-            $upload_path='image/';
-            $image_url=$upload_path.$image_full_name;
-            $success=$image->move($upload_path,$image_full_name);
-            if ($success) {
-                $data['image']=$image_url;
-                DB::table('product')->insert($data);
-                Session::put('message','Product added successfully');
-                return Redirect::to('/add-product');
-                
-            }
+        $this->validate($request, [
+            'product_name' => 'required',
+            'price' => 'required',
+            'image' => 'image|nullable|max:1999'
+        ]);
+
+        //Handle file upload
+        if ($request->hasFile('image')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        } else {
+            $fileNameToStore = '';
         }
+
+        // Create Post
+        $data = new Product;
+        $data->product_name = $request ->input('product_name');
+        $data->short_description = $request ->input('short_description');
+        $data->description = $request ->input('description');
+        $data->price = $request ->input('price');
+        $data->status = $request ->input('status');
+        // for add user to Post.
+        //$data->user_id = auth()->user()->id;
+        //for adding image
+        $data->image = $fileNameToStore;
+        $data->save();
+        Session::put('message','Product added successfully');
+        return redirect('/add-product');
             
     }
 
@@ -113,25 +130,7 @@ class ProductController extends Controller
         $product_name = $request->input('product_name');
         $price = $request->input('price');
         $status = $request->input('status');
-        $best_status = $request->input('best_status');
-        // $image = $request->file('image');
-        
-        // if ($image) {
-        //     $image_name=Str::random(40);
-        //     $ext=strtolower($image->getClientOriginalExtension());
-        //     $image_full_name=$image_name.'.'.$ext;
-        //     $upload_path='image/';
-        //     $image_url=$upload_path.$image_full_name;
-        //     $success=$image->move($upload_path,$image_full_name);
-        //     if (file_exists(public_path($image_full_name =  $image->getClientOriginalName()))) 
-        //     {
-        //         unlink(public_path($image_full_name));
-        //     };
-        //     //Update Image
-        //     $image->file = $image_full_name;
-        // }
-        
-        DB::update('update product set product_name = ?, price = ?, status = ?, best_status = ? where product_id = ?',[$product_name,$price,$status,$best_status,$product_id]);
+        DB::update('update product set product_name = ?, price = ?, status = ? where product_id = ?',[$product_name,$price,$status,$product_id]);
         Session::put('message', 'Product updated successfuly !!');
         return Redirect::to('/all-product');
     }

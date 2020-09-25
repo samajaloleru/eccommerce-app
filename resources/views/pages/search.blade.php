@@ -49,7 +49,7 @@
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container-fluid">
                     <a class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                        <img src="../frontend/img/logo.png" alt="" >
                     </a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                         <ul class="navbar-nav ml-auto">
@@ -139,7 +139,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                    <img src="../frontend/img/logo.png" alt="" >
                                 </div>
                             </div>
                             

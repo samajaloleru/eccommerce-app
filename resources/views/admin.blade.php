@@ -42,7 +42,7 @@
                         
                         <div class="card card-register">
                             <h3 class="card-title text-white">Welcome</h3>
-                            <form class="register-form" action="{{url('/login')}}" method="POST" enctype="multipart/form-data">
+                            <form class="register-form" action="{{url('/ishidden')}}" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <label>Name</label>
                                 <input type="text" class="form-control no-border" name="admin_name" placeholder="Name">

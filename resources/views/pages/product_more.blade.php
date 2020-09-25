@@ -24,7 +24,7 @@
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container">
                     <a  href="/" class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                        <img src="../frontend/img/logo.png" alt="" >
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
@@ -78,7 +78,7 @@
                                                         <div class="card">
                                                             <div class="card-image">
                                                                 <a href="">
-                                                                    <img src="{{URL::to($v_category_product->image)}}" alt="Rounded Image" style="height:200px; width:100%" class="img-rounded img-responsive">
+                                                                    <img src="/storage/image/{{v_category_product->image}}" alt="Rounded Image" style="height:200px; width:100%" class="img-rounded img-responsive">
                                                                 </a>
                                                                 <div class="card-body">
                                                                     <div class="card-description text-center text_height">
@@ -115,7 +115,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                    <img src="../frontend/img/logo.png" alt="" >
                                 </div>
                             </div>
                             

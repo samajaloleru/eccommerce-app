@@ -28,7 +28,7 @@
                     Tip 2: you can also add an image using data-image tag
                     -->
                 <div class="logo text-center">
-                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <img src="../frontend/img/logo.png" alt="" >
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
@@ -131,55 +131,32 @@
                                         <form action="/edit-product/<?php echo $product[0]->product_id; ?>" method="POST" enctype="multipart/form-data">
                                             {{ csrf_field() }}
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Product Name</label>
                                                         <input type="text" class="form-control" name="product_name" required="" value ='<?php echo$product[0]->product_name; ?>'>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Category Name" required="" name="category_id" value ='<?php echo$product[0]->category_id; ?>'>
-                                                            <option>Select Category</option>
-                                                            <?php
-                                                                $all_published_category=DB::table('category')
-                                                                                        ->where('status',1)
-                                                                                    ->get();
 
-                                                                foreach($all_published_category as $v_category){?>
-                                                                <option value="{{$v_category->category_id}}">{{$v_category->category_name}}</option>
-                                                                <?php }?>    
-                                                        </select>
-                                                    </div>
-                                                </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Price</label>
                                                         <input type="number" class="form-control" name="price" required="" value ='<?php echo$product[0]->price; ?>'>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+
+                                                <div class="col-md-2">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" name="status" value ='<?php echo$product[0]->status; ?>'>Status
+                                                            <input class="form-check-input" type="checkbox" checked="" name="status" value ='<?php echo$product[0]->status; ?>'>Status
                                                             <span class="form-check-sign">
-                                                            <span class="check"></span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" name="best_status" value ='<?php echo$product[0]->best_status; ?>'>Best Selling Status
-                                                            <span class="form-check-sign">
-                                                            <span class="check"></span>
+                                                                <span class="check"></span>
                                                             </span>
                                                         </label>
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Short Description</label>
                                                         <input type="text" class="form-control" name="short_description" value ='<?php echo$product[0]->short_description; ?>'>

@@ -29,15 +29,15 @@ class CartController extends Controller
 
     public function show_cart(Request $request)
     {
-        $category = DB::table('category')
-                ->where('category.status',1)
-                ->get(); 
+        // $category = DB::table('category')
+        //         ->where('category.status',1)
+        //         ->get(); 
 
         // echo "<pre>";
         // print_r($category);
         // echo "</pre>";
         // exit();
-        return view('pages.add_to_cart',['category'=>$category]);
+        return view('pages.add_to_cart');
     }
 
     public function delete_cart($rowId)

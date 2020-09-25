@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
-    public function login_checkout()
-    {
-        return view('pages.login');
-    }
-
     public function shipping_details(Request $request)
     {
         $data=array();
@@ -28,6 +23,7 @@ class CheckoutController extends Controller
         $data['shipping_address']=$request->shipping_address;
         $data['shipping_mobile']=$request->shipping_mobile;
         $data['shipping_city']=$request->shipping_city;
+        $data['note']=$request->note;
 
         $shipping_id=DB::table('shipping')
             ->insertGetId($data);
@@ -51,9 +47,11 @@ class CheckoutController extends Controller
     public function order_place(Request $request)
     {
         $payment_gateway=$request->payment_method;
+        $delivery_gateway=$request->delivery_method;
 
         $pdata=array();
         $pdata['payment_method']=$payment_gateway;
+        $pdata['delivery_method']=$delivery_gateway;
         $pdata['payment_status']='pending';
         $payment_id=DB::table('payment')
                     ->insertGetId($pdata);
@@ -78,7 +76,7 @@ class CheckoutController extends Controller
             $order_details_id=DB::table('order_details')
                     ->insertGetId($oddata);
         }
-
+        
         if ($payment_gateway=='handcash') {
             $email =Session::get('shipping_id');
 
@@ -86,11 +84,8 @@ class CheckoutController extends Controller
                         ->where('shipping_id',$email)
                         ->select('shipping_email')
                         ->first();
-                //echo "<pre>";
-                //print_r($customer);
-                //echo "</pre>";
-                //exit();
-            Mail::to($shipping->shipping_email)->send(new OrderMail());
+                
+            Mail::to($shipping->shipping_email)->send(new OrderMail($contents));
             Cart::destroy();
             return Redirect::to('/');
             
@@ -108,10 +103,6 @@ class CheckoutController extends Controller
                      ->latest()
                     ->get(); 
 
-            // echo "<pre>";
-            // print_r($product);
-            // echo "</pre>";
-            // exit();
         return view('admin.manage_order',['all_order_info'=>$all_order_info])->with('no', 1);
     } 
     
@@ -121,13 +112,9 @@ class CheckoutController extends Controller
                     ->where('order.order_id',$order_id)
                     ->join('order_details','order.order_id','=','order_details.order_id')
                     ->join('shipping','order.shipping_id','=','shipping.shipping_id')
-                    ->select('order.*','order_details.*','shipping.*')
+                    ->join('payment','order.payment_id','=','payment.payment_id')
+                    ->select('order.*','order_details.*','shipping.*','payment.*')
                     ->get(); 
-
-            // echo "<pre>";
-            // print_r($order_by_id);
-            // echo "</pre>";
-            // exit();
         return view('admin.view_order',['order_by_id'=>$order_by_id]);  
 
     } 
@@ -141,11 +128,11 @@ class CheckoutController extends Controller
             return Redirect::to('/manage-order');
     }
 
-    public function delete_order($order_id) {
-        DB::table('order')
-            ->where('order_id',$order_id)
-            ->delete();
-        Session::put('message', 'Order deleted successfuly !!');
-        return Redirect::to('/manage-order');
-    }
+    // public function delete_order($order_id) {
+    //     DB::table('order')
+    //         ->where('order_id',$order_id)
+    //         ->delete();
+    //     Session::put('message', 'Order deleted successfuly !!');
+    //     return Redirect::to('/manage-order');
+    // }
 }

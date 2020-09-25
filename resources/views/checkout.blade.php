@@ -24,7 +24,7 @@
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container">
                     <a  href="/" class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                        <img src="../frontend/img/logo.png" alt="" >
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
@@ -81,10 +81,13 @@
                                     <input type="text" placeholder="Address" name="shipping_address" class="form-control" required="" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" placeholder="Mobile Number" name="shipping_mobile" class="form-control" required="" />
+                                    <input type="number" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" max="12" placeholder="Mobile Number" name="shipping_mobile" class="form-control" required="" />
                                 </div>
                                 <div class="form-group">
                                     <input type="text" placeholder="City" name="shipping_city" class="form-control" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control textarea-limited" name="note" placeholder="Note" rows="3" , maxlength="150"></textarea>
                                 </div>
                                 <button type="submit" class="btn white icon bg-orange btn-sm btn-block">Done</button>
                             </form>
@@ -102,7 +105,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                    <img src="../frontend/img/logo.png" alt="" >
                                 </div>
                             </div>
                             

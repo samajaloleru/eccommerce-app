@@ -28,7 +28,7 @@
                     Tip 2: you can also add an image using data-image tag
                     -->
                 <div class="logo text-center">
-                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                    <img src="../frontend/img/logo.png" alt="" >
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header card-header-rose card-header-icon">
                                         
@@ -131,6 +131,8 @@
                                                         <th>Address</th>
                                                         <th>Mobile</th>
                                                         <th>Email</th>
+                                                        <th>Note</th>
+                                                        <th>Delivery Method</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -141,6 +143,8 @@
                                                         <td>{{$v_order->shipping_address}}</td>
                                                         <td>{{$v_order->shipping_mobile}}</td>
                                                         <td>{{$v_order->shipping_email}}</td>
+                                                        <td>{{$v_order->note}}</td>
+                                                        <td>{{$v_order->delivery_method}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

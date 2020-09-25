@@ -24,7 +24,7 @@
             <nav class="navbar navbar-expand-lg pt-0 bg-navbar">
                 <div class="container">
                     <a  href="/" class="navbar-brand mb-0">
-                        <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                        <img src="../frontend/img/logo.png" alt="" >
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar bar1"></span>
@@ -118,7 +118,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="links">
-                                    <img src="../frontend/img/logo.png" alt="" style="width: 100px;">
+                                    <img src="../frontend/img/logo.png" alt="" >
                                     <p class="white text-left pt-3">
                                         Contact: 08126432202, 08061347511, 08032461836
                                     </p>

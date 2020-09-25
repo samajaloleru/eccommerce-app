@@ -21,7 +21,6 @@ class CreateProduct extends Migration
             $table->float('price');
             $table->mediumText('image')->nullable();
             $table->integer('status');
-            $table->integer('best_status');
             $table->timestamps();
         });
     }
